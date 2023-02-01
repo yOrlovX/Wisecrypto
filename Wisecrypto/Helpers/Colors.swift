@@ -15,5 +15,6 @@ struct Colors {
   static let bgBlueGradient = Color("bgBlueGradient")
   static let textGray = Color("textGray")
   static let primaryRed = Color("primaryRed")
+  static let lightBackground = Color("lightBackground")
   static let backgroundGradient = LinearGradient(colors: [Colors.bgGreenGradient, Colors.bgBlueGradient], startPoint: .top, endPoint: .bottom)
 }

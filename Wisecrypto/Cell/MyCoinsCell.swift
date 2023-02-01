@@ -39,6 +39,7 @@ struct MyCoinsCell: View {
             .font(.system(size: 10, weight: .regular))
             .foregroundColor(Colors.textGray)
         }
+        Spacer()
         Rectangle()
           .frame(width: 55, height: 22)
           .foregroundColor(priceChange < 0 ? Colors.primaryRed : Colors.primaryGreen)
@@ -58,22 +59,31 @@ struct MyCoinsCell: View {
             }
           }
       }
+      .padding(.horizontal, 16)
+      .padding(.top, 16)
       Divider()
         .frame(width: 160, height: 1)
-      VStack {
+      VStack(alignment: .leading) {
         Text("Portfolio")
           .font(.system(size: 10, weight: .regular))
           .foregroundColor(Colors.textGray)
         HStack {
           Text("$26.46")
             .font(.system(size: 14, weight: .bold))
-//          Spacer()
+          Spacer()
           Text("0.0012 BTC")
             .font(.system(size: 10, weight: .bold))
         }
       }
+      .padding(.horizontal, 16)
+      .padding(.bottom, 16)
+      .padding(.top, 8)
     }
+    .frame(maxWidth: 190)
+    .background(.white)
+    .cornerRadius(10)
   }
+  
   func changeImage() -> String {
     if priceChange < 0 {
       return "arrow.down.left"
@@ -81,11 +91,12 @@ struct MyCoinsCell: View {
       return "arrow.up.right"
     }
   }
+  
 }
-  struct MyCoinsCell_Previews: PreviewProvider {
-    static var previews: some View {
-      MyCoinsCell(image: "bts", symbol: "BTC", name: "Bitcoin", currentPrice: 54.38264, priceChange: 15.3)
-        .previewLayout(.sizeThatFits)
-    }
+struct MyCoinsCell_Previews: PreviewProvider {
+  static var previews: some View {
+    MyCoinsCell(image: "bts", symbol: "BTC", name: "Bitcoin", currentPrice: 54.38264, priceChange: 15.3)
+      .previewLayout(.sizeThatFits)
   }
+}
 

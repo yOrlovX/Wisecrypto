@@ -14,7 +14,9 @@ struct HomeView: View {
     var body: some View {
       VStack {
         userSection
-        
+        totalPortfolioSection
+        myCoinSection
+      
         if viewModel.isLoading {
           List(viewModel.coinData) { data in
             CoinCell(image: data.image, symbol: data.symbol, name: data.name, currentPrice: data.currentPrice, priceChange: data.priceChangePercentage24H)
@@ -23,6 +25,7 @@ struct HomeView: View {
           ProgressView()
         }
       }
+      .background(Colors.lightBackground)
     }
 }
 
@@ -46,6 +49,55 @@ extension HomeView {
         .frame(width: 24, height: 24)
     }
     .padding(.horizontal, 15)
+  }
+  
+  private var totalPortfolioSection: some View {
+    Rectangle()
+      .frame(width: UIScreen.main.bounds.width - 30, height: 112)
+      .foregroundColor(Colors.primaryGreen)
+      .cornerRadius(10)
+      .overlay {
+        HStack {
+          VStack {
+            Text("Total Portofolio")
+              .font(.system(size: 16, weight: .semibold))
+              .foregroundColor(.white)
+            Text("$56.98")
+              .font(.system(size: 32, weight: .bold))
+              .foregroundColor(.white)
+          }
+          Spacer()
+          Rectangle()
+            .frame(width: 55, height: 22)
+            .foregroundColor(.white)
+            .cornerRadius(8)
+            .overlay {
+              HStack(spacing: 2) {
+                Image(systemName: "arrow.up.right")
+                  .resizable()
+                  .scaledToFit()
+                  .frame(width: 6, height: 6)
+                  .foregroundColor(Colors.primaryGreen)
+                  .padding(.vertical, 4)
+                Text("\(String(format:"%.1f", 15))%")
+                  .font(.system(size: 10, weight: .bold))
+                  .foregroundColor(Colors.primaryGreen)
+                  .padding(.vertical, 4)
+              }
+            }
+        }
+        .padding(.horizontal, 25)
+      }
+  }
+  
+  private var myCoinSection: some View {
+    ScrollView(.horizontal, showsIndicators: false) {
+      LazyHStack(spacing: 16) {
+        ForEach(viewModel.coinData) { data in
+          MyCoinsCell(image: data.image, symbol: data.symbol, name: data.name, currentPrice: data.currentPrice, priceChange: data.priceChange24H)
+        }
+      }
+    }
   }
 }
 
