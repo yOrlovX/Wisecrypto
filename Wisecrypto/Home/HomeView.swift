@@ -11,22 +11,15 @@ struct HomeView: View {
   
   @StateObject var viewModel = CoinViewModel()
   
-    var body: some View {
-      VStack {
-        userSection
-        totalPortfolioSection
-        myCoinSection
-      
-        if viewModel.isLoading {
-          List(viewModel.coinData) { data in
-            CoinCell(image: data.image, symbol: data.symbol, name: data.name, currentPrice: data.currentPrice, priceChange: data.priceChangePercentage24H)
-          }
-        } else {
-          ProgressView()
-        }
-      }
-      .background(Colors.lightBackground)
+  var body: some View {
+    VStack {
+      userSection
+      totalPortfolioSection
+      myCoinSection
+      watchlistSection
     }
+    .background(Colors.lightBackground)
+  }
 }
 
 extension HomeView {
@@ -91,10 +84,30 @@ extension HomeView {
   }
   
   private var myCoinSection: some View {
-    ScrollView(.horizontal, showsIndicators: false) {
-      LazyHStack(spacing: 16) {
-        ForEach(viewModel.coinData) { data in
-          MyCoinsCell(image: data.image, symbol: data.symbol, name: data.name, currentPrice: data.currentPrice, priceChange: data.priceChange24H)
+    VStack(alignment: .leading, spacing: 8) {
+      Text("My Coins")
+        .font(.system(size: 14, weight: .semibold))
+      ScrollView(.horizontal) {
+        LazyHStack(spacing: 16) {
+          ForEach(viewModel.coinData) { data in
+            MyCoinsCell(image: data.image, symbol: data.symbol, name: data.name, currentPrice: data.currentPrice, priceChange: data.priceChange24H)
+          }
+        }
+      }
+      .frame(height: 119)
+    }
+    .padding(.horizontal, 15)
+  }
+  
+  private var watchlistSection: some View {
+    VStack(alignment: .leading, spacing: 8) {
+      Text("Watchlist")
+        .font(.system(size: 14, weight: .semibold))
+      ScrollView(.vertical, showsIndicators: true) {
+        LazyVStack {
+          ForEach(viewModel.coinData) { data in
+            CoinCell(image: data.image, symbol: data.symbol, name: data.name, currentPrice: data.currentPrice, priceChange: data.priceChangePercentage24H)
+          }
         }
       }
     }
@@ -102,7 +115,7 @@ extension HomeView {
 }
 
 struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView()
-    }
+  static var previews: some View {
+    HomeView()
+  }
 }
