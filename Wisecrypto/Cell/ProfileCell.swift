@@ -23,8 +23,10 @@ struct ProfileCell: View {
         VStack(alignment: .leading) {
           Text(name)
             .font(.system(size: 16, weight: .bold))
+            .foregroundColor(.black)
           Text(description)
             .font(.system(size: 12, weight: .regular))
+            .foregroundColor(.gray)
         }
         Spacer()
         Image(systemName: "chevron.right")

@@ -7,30 +7,54 @@
 
 import SwiftUI
 
+enum ProfileLinksSwitcher {
+  case Privacy
+  case Notifications
+  case nonSelected
+}
+
 struct ProfileView: View {
   private let sectionsData = ProfileCellModel.profileCellData
+  var destination: ProfileLinksSwitcher = .nonSelected
   
   var body: some View {
-    ZStack {
-      Colors.lightBackground
-        .ignoresSafeArea()
-      VStack {
-        Image("userImage")
-          .resizable()
-          .scaledToFit()
-          .frame(width: 80, height: 80)
-        
-        currentBalanceSection
-        buttonsSections
-          .offset(y: -30)
-        
-        VStack(spacing: 8) {
-          ForEach(sectionsData) { data in
-            ProfileCell(image: data.image, name: data.name, description: data.description)
+    NavigationView {
+      ZStack {
+        Colors.lightBackground
+          .ignoresSafeArea()
+        VStack {
+          Image("userImage")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 80, height: 80)
+          
+          currentBalanceSection
+          buttonsSections
+            .offset(y: -30)
+          
+          VStack(spacing: 8) {
+            ForEach(sectionsData) { data in
+              NavigationLink {
+                switch data.name {
+                case "Privacy":
+                  PrivacyView()
+                case "Notifications":
+                  ProfileNotificationsView()
+                case "Payment":
+                  PaymentView()
+                case "Transaction List":
+                  TransactionsListView()
+                default:
+                  EmptyView()
+                }
+              } label: {
+                ProfileCell(image: data.image, name: data.name, description: data.description)
+              }
+            }
           }
         }
+        .background(Colors.lightBackground)
       }
-      .background(Colors.lightBackground)
     }
   }
 }
