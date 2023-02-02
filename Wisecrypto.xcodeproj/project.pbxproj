@@ -19,7 +19,6 @@
 		920C1B942988057C00311990 /* Coin.json in Resources */ = {isa = PBXBuildFile; fileRef = 920C1B932988057C00311990 /* Coin.json */; };
 		920C1B96298813C400311990 /* CoinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C1B95298813C400311990 /* CoinViewModel.swift */; };
 		920C1B992988147900311990 /* CoinService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920C1B982988147900311990 /* CoinService.swift */; };
-		923D58C4298914FF008BFD8C /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923D58C3298914FF008BFD8C /* ImageService.swift */; };
 		923D58C629892A88008BFD8C /* MyCoinsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923D58C529892A88008BFD8C /* MyCoinsCell.swift */; };
 		92C8793B298BB860000A4AB8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C8793A298BB860000A4AB8 /* MainView.swift */; };
 /* End PBXBuildFile section */
@@ -38,7 +37,6 @@
 		920C1B932988057C00311990 /* Coin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Coin.json; sourceTree = "<group>"; };
 		920C1B95298813C400311990 /* CoinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinViewModel.swift; sourceTree = "<group>"; };
 		920C1B982988147900311990 /* CoinService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinService.swift; sourceTree = "<group>"; };
-		923D58C3298914FF008BFD8C /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		923D58C529892A88008BFD8C /* MyCoinsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoinsCell.swift; sourceTree = "<group>"; };
 		92C8793A298BB860000A4AB8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				920C1B982988147900311990 /* CoinService.swift */,
-				923D58C3298914FF008BFD8C /* ImageService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -263,7 +260,6 @@
 				92C8793B298BB860000A4AB8 /* MainView.swift in Sources */,
 				920C1B992988147900311990 /* CoinService.swift in Sources */,
 				920C1B732987D8BE00311990 /* ContentView.swift in Sources */,
-				923D58C4298914FF008BFD8C /* ImageService.swift in Sources */,
 				920C1B922987EF7000311990 /* CoinCell.swift in Sources */,
 				920C1B96298813C400311990 /* CoinViewModel.swift in Sources */,
 				920C1B882987E21D00311990 /* SplashView.swift in Sources */,

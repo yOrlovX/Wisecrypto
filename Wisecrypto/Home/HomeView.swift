@@ -12,7 +12,7 @@ struct HomeView: View {
   @StateObject var viewModel = CoinViewModel()
   
   var body: some View {
-    VStack {
+    VStack(spacing: 20) {
       userSection
       totalPortfolioSection
       myCoinSection
@@ -23,6 +23,7 @@ struct HomeView: View {
 }
 
 extension HomeView {
+  
   private var userSection: some View {
     HStack(spacing: 12) {
       Image("userImage")
@@ -85,8 +86,14 @@ extension HomeView {
   
   private var myCoinSection: some View {
     VStack(alignment: .leading, spacing: 8) {
-      Text("My Coins")
-        .font(.system(size: 14, weight: .semibold))
+      HStack {
+        Text("My Coins")
+          .font(.system(size: 14, weight: .semibold))
+        Spacer()
+        Text("See all")
+          .font(.system(size: 12, weight: .bold))
+          .foregroundColor(Colors.primaryGreen)
+      }
       ScrollView(.horizontal) {
         LazyHStack(spacing: 16) {
           ForEach(viewModel.coinData) { data in
@@ -104,13 +111,14 @@ extension HomeView {
       Text("Watchlist")
         .font(.system(size: 14, weight: .semibold))
       ScrollView(.vertical, showsIndicators: true) {
-        LazyVStack {
+        LazyVStack(spacing: 8) {
           ForEach(viewModel.coinData) { data in
             CoinCell(image: data.image, symbol: data.symbol, name: data.name, currentPrice: data.currentPrice, priceChange: data.priceChangePercentage24H)
           }
         }
       }
     }
+    .padding(.horizontal, 15)
   }
 }
 

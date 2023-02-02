@@ -79,7 +79,6 @@ struct MyCoinsCell: View {
       .padding(.bottom, 16)
       .padding(.top, 8)
     }
-    .frame(maxWidth: 190)
     .background(.white)
     .cornerRadius(10)
   }
@@ -91,7 +90,6 @@ struct MyCoinsCell: View {
       return "arrow.up.right"
     }
   }
-  
 }
 struct MyCoinsCell_Previews: PreviewProvider {
   static var previews: some View {

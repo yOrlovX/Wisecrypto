@@ -24,7 +24,6 @@ struct CoinCell: View {
   
     var body: some View {
       HStack {
-        
         AsyncImage(url: URL(string: image)) { image in
           image
             .resizable()
@@ -42,7 +41,7 @@ struct CoinCell: View {
         }
         Spacer()
         VStack(alignment:.trailing, spacing: 2) {
-          Text("$\(currentPrice)")
+          Text("$\(String(format:"%.4f", currentPrice))")
             .font(.system(size: 16, weight: .bold))
           Rectangle()
             .frame(width: 55, height: 22)
@@ -63,9 +62,12 @@ struct CoinCell: View {
               }
             }
         }
+        .padding(.horizontal, 16)
       }
       .frame(maxWidth: .infinity)
       .padding(.vertical, 12)
+      .background(.white)
+      .cornerRadius(10)
     }
   
   func changeImage() -> String {
