@@ -7,15 +7,8 @@
 
 import SwiftUI
 
-enum ProfileLinksSwitcher {
-  case Privacy
-  case Notifications
-  case nonSelected
-}
-
 struct ProfileView: View {
   private let sectionsData = ProfileCellModel.profileCellData
-  var destination: ProfileLinksSwitcher = .nonSelected
   
   var body: some View {
     NavigationView {
@@ -35,18 +28,7 @@ struct ProfileView: View {
           VStack(spacing: 8) {
             ForEach(sectionsData) { data in
               NavigationLink {
-                switch data.name {
-                case "Privacy":
-                  PrivacyView()
-                case "Notifications":
-                  ProfileNotificationsView()
-                case "Payment":
-                  PaymentView()
-                case "Transaction List":
-                  TransactionsListView()
-                default:
-                  EmptyView()
-                }
+                NavigationLazyView(returnSelectView(name: ProfileLinksSwitcher(rawValue: data.name) ?? .nonSelected))
               } label: {
                 ProfileCell(image: data.image, name: data.name, description: data.description)
               }
@@ -114,6 +96,30 @@ extension ProfileView {
     .background(.white)
     .cornerRadius(16)
   }
+  
+  @ViewBuilder
+  func returnSelectView(name: ProfileLinksSwitcher) -> some View {
+    switch name {
+    case .transactions:
+      TransactionsListView()
+    case .privacy:
+     PrivacyView()
+    case .payment:
+      PaymentView()
+    case .notifications:
+      ProfileNotificationsView()
+    default:
+      EmptyView()
+    }
+  }
+}
+
+enum ProfileLinksSwitcher: String {
+  case privacy
+  case notifications
+  case payment
+  case transactions
+  case nonSelected
 }
 
 struct ProfileView_Previews: PreviewProvider {
