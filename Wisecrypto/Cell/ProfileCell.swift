@@ -54,9 +54,9 @@ struct ProfileCellModel: Identifiable {
     ProfileCellModel(image: "list", name: "Transaction List", description: "Your Transactions"),
     ProfileCellModel(image: "privacy", name: "Privacy", description: "Change email and password"),
     ProfileCellModel(image: "wallet", name: "Payment", description: "Update payment settings"),
-    ProfileCellModel(image: "bell", name: "Notifications", description: "Change notification settings"),
-    ProfileCellModel(image: "logout", name: "Logout", description: "Exit the application")
+    ProfileCellModel(image: "bell", name: "Notifications", description: "Change notification settings")
   ]
+  static var logoutData: ProfileCellModel = ProfileCellModel(image: "logout", name: "Logout", description: "Exit the application")
 }
 
 struct ProfileCell_Previews: PreviewProvider {

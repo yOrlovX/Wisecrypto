@@ -8,34 +8,46 @@
 import SwiftUI
 
 struct ProfileView: View {
+  @State private var showLogoutAlert = false
   private let sectionsData = ProfileCellModel.profileCellData
+  private let logoutData = ProfileCellModel.logoutData
   
   var body: some View {
     NavigationView {
       ZStack {
         Colors.lightBackground
           .ignoresSafeArea()
-        VStack {
-          Image("userImage")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 80, height: 80)
-          
-          currentBalanceSection
-          buttonsSections
-            .offset(y: -30)
-          
-          VStack(spacing: 8) {
-            ForEach(sectionsData) { data in
-              NavigationLink {
-                NavigationLazyView(returnSelectView(name: ProfileLinksSwitcher(rawValue: data.name) ?? .nonSelected))
-              } label: {
-                ProfileCell(image: data.image, name: data.name, description: data.description)
+        ScrollView {
+          VStack {
+            Image("userImage")
+              .resizable()
+              .scaledToFit()
+              .frame(width: 80, height: 80)
+            
+            currentBalanceSection
+            buttonsSections
+              .offset(y: -30)
+            
+            VStack(spacing: 8) {
+              ForEach(sectionsData) { data in
+                NavigationLink {
+                  NavigationLazyView(returnSelectView(name: ProfileLinksSwitcher(rawValue: data.name) ?? .nonSelected))
+                } label: {
+                  ProfileCell(image: data.image, name: data.name, description: data.description)
+                }
               }
+              ProfileCell(image: logoutData.image, name: logoutData.name, description: logoutData.description)
+                .onTapGesture {
+                  showLogoutAlert = true
+                }
+                .alert("Are you sure you want to leave?", isPresented: $showLogoutAlert) {
+                  Button("OK", role: .cancel) { }
+                  Button("Cancel", role: .destructive) {}
+                }
             }
           }
+          .background(Colors.lightBackground)
         }
-        .background(Colors.lightBackground)
       }
     }
   }
@@ -103,7 +115,7 @@ extension ProfileView {
     case .transactions:
       TransactionsListView()
     case .privacy:
-     PrivacyView()
+      PrivacyView()
     case .payment:
       PaymentView()
     case .notifications:
@@ -115,11 +127,11 @@ extension ProfileView {
 }
 
 enum ProfileLinksSwitcher: String {
-  case privacy
-  case notifications
-  case payment
-  case transactions
-  case nonSelected
+  case privacy = "Privacy"
+  case notifications = "Notifications"
+  case payment = "Payment"
+  case transactions = "Transaction List"
+  case nonSelected = "nonSelected"
 }
 
 struct ProfileView_Previews: PreviewProvider {
