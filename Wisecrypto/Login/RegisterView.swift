@@ -52,40 +52,19 @@ extension RegisterView {
       Text("Full name")
         .font(.system(size: 14, weight: .medium))
       TextField("Axel Rose", text: $email)
-        .padding()
-        .background(.white)
-        .overlay(
-          RoundedRectangle(cornerRadius: 8)
-            .stroke(Colors.primaryGreen, lineWidth: 2)
-        )
+        .modifier(TextFieldModifier())
       Text("Email")
         .font(.system(size: 14, weight: .medium))
       TextField("botpablo@gmail.com", text: $email)
-        .padding()
-        .background(.white)
-        .overlay(
-          RoundedRectangle(cornerRadius: 8)
-            .stroke(Colors.primaryGreen, lineWidth: 2)
-        )
+        .modifier(TextFieldModifier())
       Text("Password")
         .font(.system(size: 14, weight: .medium))
       TextField("Please enter the password", text: $password)
-        .padding()
-        .background(.white)
-        .overlay(
-          RoundedRectangle(cornerRadius: 8)
-            .stroke(Colors.primaryGreen, lineWidth: 2)
-        )
-      
+        .modifier(TextFieldModifier())
       Text("Conform Password")
         .font(.system(size: 14, weight: .medium))
       TextField("Please conform Password", text: $password)
-        .padding()
-        .background(.white)
-        .overlay(
-          RoundedRectangle(cornerRadius: 8)
-            .stroke(Colors.primaryGreen, lineWidth: 2)
-        )
+        .modifier(TextFieldModifier())
     }
     .padding(.horizontal, 15)
   }
@@ -94,10 +73,7 @@ extension RegisterView {
     VStack(spacing: 24) {
       Button(action: {}) {
         Text("Login")
-          .foregroundColor(.white)
-          .frame(width: UIScreen.main.bounds.width - 30, height: 38)
-          .background(Colors.primaryGreen)
-          .cornerRadius(4)
+          .modifier(PrimaryGreenButtonModifier())
       }
       Text("Already have account ? Log In")
         .font(.system(size: 12, weight: .regular))

@@ -51,21 +51,11 @@ extension LoginView {
       Text("Email")
         .font(.system(size: 14, weight: .medium))
       TextField("botpablo@gmail.com", text: $email)
-        .padding()
-        .background(.white)
-        .overlay(
-          RoundedRectangle(cornerRadius: 8)
-            .stroke(Colors.primaryGreen, lineWidth: 2)
-        )
+        .modifier(TextFieldModifier())
       Text("Password")
         .font(.system(size: 14, weight: .medium))
       TextField("Please enter the password", text: $password)
-        .padding()
-        .background(.white)
-        .overlay(
-          RoundedRectangle(cornerRadius: 8)
-            .stroke(Colors.primaryGreen, lineWidth: 2)
-        )
+        .modifier(TextFieldModifier())
     }
     .padding(.horizontal, 15)
   }
@@ -79,10 +69,7 @@ extension LoginView {
       }
       Button(action: {}) {
         Text("Login")
-          .foregroundColor(.white)
-          .frame(width: UIScreen.main.bounds.width - 30, height: 38)
-          .background(Colors.primaryGreen)
-          .cornerRadius(4)
+          .modifier(PrimaryGreenButtonModifier())
       }
       Text("Don't have an account yet? Register here")
         .font(.system(size: 12, weight: .regular))
