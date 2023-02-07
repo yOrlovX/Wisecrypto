@@ -51,12 +51,24 @@ extension LoginView {
     VStack(alignment: .leading, spacing: 8) {
       Text("Email")
         .font(.system(size: 14, weight: .medium))
-      TextField("botpablo@gmail.com", text: $email)
-        .modifier(TextFieldModifier())
+      HStack {
+        TextField("botpablo@gmail.com", text: $email)
+        if email.count != 0 {
+          Image(systemName: email.isValidEmail() ? "checkmark" : "xmark")
+            .foregroundColor(email.isValidEmail() ? Colors.primaryGreen : Colors.primaryRed)
+        }
+      }
+      .modifier(TextFieldModifier())
       Text("Password")
         .font(.system(size: 14, weight: .medium))
-      TextField("Please enter the password", text: $password)
-        .modifier(TextFieldModifier())
+      HStack {
+        TextField("Please enter the password", text: $password)
+        if password.count != 0 {
+          Image(systemName: "checkmark")
+            .foregroundColor(Colors.primaryGreen)
+        }
+      }
+      .modifier(TextFieldModifier())
     }
     .padding(.horizontal, 15)
   }
