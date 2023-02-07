@@ -16,10 +16,15 @@ struct MarketView: View {
           .ignoresSafeArea()
         VStack {
           SearchBarView(searchText: $viewModel.searchText)
+            .onChange(of: viewModel.searchText) { newValue in
+              viewModel.searchResults = viewModel.coinData.filter({ result in
+                result.name.contains(viewModel.searchText) && viewModel.searchText.count > 1
+              })
+            }
           
             ScrollView(.vertical, showsIndicators: true) {
               LazyVStack(spacing: 8) {
-                ForEach(viewModel.coinData) { data in
+                ForEach(viewModel.listData) { data in
                   CoinCell(rowData: data)
                 }
               }

@@ -13,11 +13,19 @@ class CoinViewModel: ObservableObject {
   @Published var coinData: [Coin] = []
   @Published var isLoading: Bool = false
   @Published var searchText: String = ""
-  
+  @Published var searchResults: [Coin] = []
   
   private let coinService = CoinService()
   
   private var cancellables = Set<AnyCancellable>()
+  
+  var listData: [Coin] {
+    if searchText.isEmpty {
+      return coinData
+    } else {
+      return searchResults
+    }
+  }
   
   init() {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
