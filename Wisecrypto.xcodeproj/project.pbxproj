@@ -22,6 +22,7 @@
 		9217475C298E64B50066301F /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217475B298E64B50066301F /* NavigationLazyView.swift */; };
 		92174760298EA60C0066301F /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217475F298EA60C0066301F /* MarketView.swift */; };
 		923D58C629892A88008BFD8C /* MyCoinsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923D58C529892A88008BFD8C /* MyCoinsCell.swift */; };
+		92C76322299244DA00F5161C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C76321299244DA00F5161C /* LoginView.swift */; };
 		92C8793B298BB860000A4AB8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C8793A298BB860000A4AB8 /* MainView.swift */; };
 		92C8793D298BD389000A4AB8 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C8793C298BD389000A4AB8 /* ProfileView.swift */; };
 		92C8793F298BD493000A4AB8 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C8793E298BD493000A4AB8 /* ProfileCell.swift */; };
@@ -48,6 +49,7 @@
 		9217475B298E64B50066301F /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		9217475F298EA60C0066301F /* MarketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
 		923D58C529892A88008BFD8C /* MyCoinsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoinsCell.swift; sourceTree = "<group>"; };
+		92C76321299244DA00F5161C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		92C8793A298BB860000A4AB8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		92C8793C298BD389000A4AB8 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		92C8793E298BD493000A4AB8 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 		920C1B822987DB6900311990 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				92C76321299244DA00F5161C /* LoginView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				9217475C298E64B50066301F /* NavigationLazyView.swift in Sources */,
 				923D58C629892A88008BFD8C /* MyCoinsCell.swift in Sources */,
 				92C87947298C0010000A4AB8 /* TransactionsListView.swift in Sources */,
+				92C76322299244DA00F5161C /* LoginView.swift in Sources */,
 				920C1B712987D8BE00311990 /* WisecryptoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
