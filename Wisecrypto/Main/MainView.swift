@@ -14,7 +14,7 @@ struct MainView: View {
         .tabItem {
           Label("Home", systemImage: "house")
         }
-      Text("Market")
+      MarketView()
         .tabItem {
           Label("Market", systemImage: "cart")
         }
