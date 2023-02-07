@@ -12,6 +12,7 @@ import UIKit
 class CoinViewModel: ObservableObject {
   @Published var coinData: [Coin] = []
   @Published var isLoading: Bool = false
+  @Published var searchText: String = ""
   
   
   private let coinService = CoinService()

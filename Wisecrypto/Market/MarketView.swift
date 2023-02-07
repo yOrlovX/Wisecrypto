@@ -15,7 +15,7 @@ struct MarketView: View {
         Colors.lightBackground
           .ignoresSafeArea()
         VStack {
-          Text("Custom search bar")
+          SearchBarView(searchText: $viewModel.searchText)
           
             ScrollView(.vertical, showsIndicators: true) {
               LazyVStack(spacing: 8) {
