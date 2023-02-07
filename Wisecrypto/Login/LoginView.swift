@@ -64,8 +64,8 @@ extension LoginView {
       HStack {
         TextField("Please enter the password", text: $password)
         if password.count != 0 {
-          Image(systemName: "checkmark")
-            .foregroundColor(Colors.primaryGreen)
+          Image(systemName: isValidPassword(password) ? "checkmark" : "xmark")
+            .foregroundColor(isValidPassword(password) ? Colors.primaryGreen : Colors.primaryRed)
         }
       }
       .modifier(TextFieldModifier())
@@ -94,6 +94,12 @@ extension LoginView {
           .foregroundColor(Colors.primaryGreen)
       }
     }
+  }
+  
+  func isValidPassword(_ password: String) -> Bool {
+    let passwordRegex = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])(?=.*[A-Z]).{6,}$")
+    
+    return passwordRegex.evaluate(with: password)
   }
 }
 
