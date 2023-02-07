@@ -113,7 +113,7 @@ extension HomeView {
       ScrollView(.vertical, showsIndicators: true) {
         LazyVStack(spacing: 8) {
           ForEach(viewModel.coinData) { data in
-            CoinCell(image: data.image, symbol: data.symbol, name: data.name, currentPrice: data.currentPrice, priceChange: data.priceChangePercentage24H)
+            CoinCell(rowData: data)
           }
         }
       }
