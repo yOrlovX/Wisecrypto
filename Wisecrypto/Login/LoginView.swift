@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
   @State var email: String = ""
   @State var password: String = ""
+  @Binding var currentViewShowing: AuthViewState
   
   var body: some View {
     ZStack {
@@ -71,15 +72,21 @@ extension LoginView {
         Text("Login")
           .modifier(PrimaryGreenButtonModifier())
       }
-      Text("Don't have an account yet? Register here")
-        .font(.system(size: 12, weight: .regular))
-        .foregroundColor(Colors.primaryGreen)
+      Button(action: {
+        withAnimation(.easeIn) {
+          self.currentViewShowing = .register
+        }
+      }) {
+        Text("Don't have an account yet? Register here")
+          .font(.system(size: 12, weight: .regular))
+          .foregroundColor(Colors.primaryGreen)
+      }
     }
   }
 }
 
 struct LoginView_Previews: PreviewProvider {
   static var previews: some View {
-    LoginView()
+    LoginView(currentViewShowing: .constant(.login))
   }
 }

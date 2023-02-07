@@ -11,6 +11,7 @@ struct RegisterView: View {
   @State var fullName: String = ""
   @State var email: String = ""
   @State var password: String = ""
+  @Binding var currentViewShowing: AuthViewState
   
   var body: some View {
     ZStack {
@@ -75,15 +76,21 @@ extension RegisterView {
         Text("Login")
           .modifier(PrimaryGreenButtonModifier())
       }
-      Text("Already have account ? Log In")
-        .font(.system(size: 12, weight: .regular))
-        .foregroundColor(Colors.primaryGreen)
+      Button(action: {
+        withAnimation(.easeOut) {
+          self.currentViewShowing = .login
+        }
+      }) {
+        Text("Already have account ? Log In")
+          .font(.system(size: 12, weight: .regular))
+          .foregroundColor(Colors.primaryGreen)
+      }
     }
   }
 }
 
 struct RegisterView_Previews: PreviewProvider {
   static var previews: some View {
-    RegisterView()
+    RegisterView(currentViewShowing: .constant(.register))
   }
 }
