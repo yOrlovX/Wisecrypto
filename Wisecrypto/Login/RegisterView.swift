@@ -73,7 +73,7 @@ extension RegisterView {
   private var buttonsContainer: some View {
     VStack(spacing: 24) {
       Button(action: {}) {
-        Text("Login")
+        Text("Register")
           .modifier(PrimaryGreenButtonModifier())
       }
       Button(action: {
