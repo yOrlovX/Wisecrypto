@@ -12,13 +12,15 @@ struct HomeView: View {
   @StateObject var viewModel = CoinViewModel()
   
   var body: some View {
-    VStack(spacing: 20) {
-      userSection
-      totalPortfolioSection
-      myCoinSection
-      watchlistSection
+    NavigationView {
+      VStack(spacing: 20) {
+        userSection
+        totalPortfolioSection
+        myCoinSection
+        watchlistSection
+      }
+      .background(Colors.lightBackground)
     }
-    .background(Colors.lightBackground)
   }
 }
 
