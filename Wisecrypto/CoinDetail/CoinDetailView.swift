@@ -12,31 +12,40 @@ struct CoinDetailView: View {
   
   var body: some View {
     ZStack {
-      VStack {
-        Text(coin.name)
-          .font(.system(size: 16, weight: .bold))
-        Image(coin.image)
-          .resizable()
-          .scaledToFit()
-          .frame(width: 60, height: 60)
-        Text(String(format: "%.4f", coin.currentPrice))
-          .font(.system(size: 24, weight: .semibold))
-        RoundedRectangle(cornerRadius: 20)
-          .frame(width: 80, height: 33)
-          .foregroundColor(coin.priceChangePercentage24H < 0 ? Colors.primaryRed : Colors.primaryGreen)
-          .overlay {
-            HStack(spacing: 4) {
-              Image(systemName: coin.priceChangePercentage24H < 0 ? "chevron.down" : "chevron.up")
-                .foregroundColor(.white)
-              Text("\(String(format: "%.2f", coin.priceChangePercentage24H))%")
-                .font(.system(size: 14, weight: .medium))
-                .foregroundColor(.white)
-            }
+      ScrollView {
+        VStack {
+          Spacer()
+          Text(coin.name)
+            .font(.system(size: 16, weight: .bold))
+          AsyncImage(url: URL(string: coin.image)) { image in
+            image
+              .resizable()
+              .scaledToFit()
+          } placeholder: {
+            ProgressView()
           }
-        HStack {
-          Text("Days section")
+          .frame(width: 64, height: 64)
+          Text(String(format: "%.4f", coin.currentPrice))
+            .font(.system(size: 24, weight: .semibold))
+          RoundedRectangle(cornerRadius: 20)
+            .frame(width: 80, height: 33)
+            .foregroundColor(coin.priceChangePercentage24H < 0 ? Colors.primaryRed : Colors.primaryGreen)
+            .overlay {
+              HStack(spacing: 4) {
+                Image(systemName: coin.priceChangePercentage24H < 0 ? "chevron.down" : "chevron.up")
+                  .foregroundColor(.white)
+                Text("\(String(format: "%.2f", coin.priceChangePercentage24H))%")
+                  .font(.system(size: 14, weight: .medium))
+                  .foregroundColor(.white)
+              }
+            }
+          ChartView(data: coin.sparklineIn7D.price)
+          HStack {
+            Text("Days section")
+          }
+          coinStaticticSection
         }
-        coinStaticticSection
+        .padding(.top, 50)
       }
     }
     .background(Colors.lightBackground)
