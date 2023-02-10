@@ -39,10 +39,7 @@ struct CoinDetailView: View {
                   .foregroundColor(.white)
               }
             }
-          ChartView(data: coin.sparklineIn7D.price)
-          HStack {
-            Text("Days section")
-          }
+          ChartView(data: coin.sparklineIn7D.price, maxPrice: coin.sparklineIn7D.price.max() ?? 0, minPrice: coin.sparklineIn7D.price.min() ?? 0, startingDate: Date(), endingDate: Date().addingTimeInterval(-7*24*60*60))
           coinStaticticSection
         }
         .padding(.top, 50)

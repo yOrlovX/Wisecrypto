@@ -115,7 +115,11 @@ extension HomeView {
       ScrollView(.vertical, showsIndicators: true) {
         LazyVStack(spacing: 8) {
           ForEach(viewModel.coinData) { data in
-            CoinCell(rowData: data)
+            NavigationLink {
+              NavigationLazyView(CoinDetailView(coin: data))
+            } label: {
+              CoinCell(rowData: data)
+            }
           }
         }
       }

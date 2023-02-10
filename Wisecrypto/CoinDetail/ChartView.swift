@@ -9,9 +9,12 @@ import SwiftUI
 
 struct ChartView: View {
   let data: [Double]
+  let maxPrice: Double
+  let minPrice: Double
+  let startingDate: Date
+  let endingDate: Date
   @State private var percentage: CGFloat = 0
   
- 
     var body: some View {
       VStack {
         chart
@@ -22,9 +25,22 @@ struct ChartView: View {
             Spacer()
             Divider()
           }
-           
         )
+        .overlay(
+          VStack {
+            Text("\(String(format: "%.2f", maxPrice))")
+            Spacer()
+            Text("\(String(format: "%.2f", minPrice))")
+          }
+          , alignment: .leading)
+        HStack {
+          Text(endingDate.shortDate())
+          Spacer()
+          Text(startingDate.shortDate())
+        }
+        .padding(.horizontal, 5)
       }
+      .padding(.horizontal, 5)
       .onAppear {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
           withAnimation(.linear(duration: 1)) {
@@ -74,6 +90,6 @@ struct ChartView_Previews: PreviewProvider {
                                    22970.847176497045,
                                    23066.963597958547,]
   static var previews: some View {
-    ChartView(data: mockData)
+    ChartView(data: mockData, maxPrice: 300, minPrice: 100, startingDate: Date(), endingDate: Date())
   }
 }

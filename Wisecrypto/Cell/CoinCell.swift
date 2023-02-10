@@ -24,6 +24,7 @@ struct CoinCell: View {
         VStack(alignment: .leading, spacing: 4) {
           Text(rowData.symbol.uppercased())
             .font(.system(size: 20, weight: .bold))
+            .foregroundColor(.black)
           Text(rowData.name)
             .font(.system(size: 16, weight: .regular))
             .foregroundColor(Colors.textGray)
@@ -32,6 +33,7 @@ struct CoinCell: View {
         VStack(alignment:.trailing, spacing: 2) {
           Text("$\(String(format:"%.4f", rowData.currentPrice))")
             .font(.system(size: 16, weight: .bold))
+            .foregroundColor(.black)
           Rectangle()
             .frame(width: 55, height: 22)
             .foregroundColor(rowData.priceChangePercentage24H < 0 ? Colors.primaryRed : Colors.primaryGreen)
