@@ -37,7 +37,7 @@ struct AddCoinsView: View {
           .font(.system(size: 20, weight: .bold))
           .foregroundColor(.black)
       }
-      Button(action: { portfolioViewModel.addCoin(image: coin.image, symbol: coin.symbol, name: coin.name, priceChange: coin.priceChangePercentage24H, sum: Double(sumForCoin) ?? 0)
+      Button(action: { portfolioViewModel.addCoin(image: coin.image, symbol: coin.symbol, name: coin.name, priceChange: coin.priceChangePercentage24H, sum: Double(sumForCoin) ?? 0, currentPrice: coin.currentPrice)
         self.presentationMode.wrappedValue.dismiss()
       }) {
         Text("Buy coins")

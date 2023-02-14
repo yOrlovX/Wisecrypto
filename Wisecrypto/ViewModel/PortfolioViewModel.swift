@@ -26,7 +26,7 @@ class PortfolioViewModel: ObservableObject {
     }
   }
   
-  func addCoin(image: String, symbol: String, name: String, priceChange: Double, sum: Double) {
+  func addCoin(image: String, symbol: String, name: String, priceChange: Double, sum: Double, currentPrice: Double) {
     let newCoin = PortofolioEntity(context: manager.context)
     
     newCoin.image = image
@@ -34,6 +34,7 @@ class PortfolioViewModel: ObservableObject {
     newCoin.name = name
     newCoin.priceChange = priceChange
     newCoin.sum = sum
+    newCoin.currentPrice = currentPrice
     
     saveData() 
   }

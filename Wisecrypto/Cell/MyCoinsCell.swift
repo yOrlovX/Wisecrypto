@@ -73,7 +73,7 @@ struct MyCoinsCell: View {
           Text("$\(String(format:"%.2f", sum))")
             .font(.system(size: 14, weight: .bold))
           Spacer()
-          Text("0.0012 BTC")
+          Text("\(sum / currentPrice) \(symbol.uppercased())")
             .font(.system(size: 10, weight: .bold))
         }
       }
