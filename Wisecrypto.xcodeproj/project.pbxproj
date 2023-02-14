@@ -39,6 +39,9 @@
 		92C87943298BF634000A4AB8 /* ProfileNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C87942298BF634000A4AB8 /* ProfileNotificationsView.swift */; };
 		92C87945298BFFE9000A4AB8 /* PaymentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C87944298BFFE9000A4AB8 /* PaymentView.swift */; };
 		92C87947298C0010000A4AB8 /* TransactionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C87946298C0010000A4AB8 /* TransactionsListView.swift */; };
+		92CFA072299A5029002D939A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CFA071299A5029002D939A /* DataManager.swift */; };
+		92CFA075299A5056002D939A /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92CFA073299A5056002D939A /* CoreDataModel.xcdatamodeld */; };
+		92CFA077299A53F7002D939A /* PortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CFA076299A53F7002D939A /* PortfolioViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +78,9 @@
 		92C87942298BF634000A4AB8 /* ProfileNotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotificationsView.swift; sourceTree = "<group>"; };
 		92C87944298BFFE9000A4AB8 /* PaymentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentView.swift; sourceTree = "<group>"; };
 		92C87946298C0010000A4AB8 /* TransactionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListView.swift; sourceTree = "<group>"; };
+		92CFA071299A5029002D939A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		92CFA074299A5056002D939A /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		92CFA076299A53F7002D939A /* PortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 			children = (
 				920C1B702987D8BE00311990 /* WisecryptoApp.swift */,
 				920C1B722987D8BE00311990 /* ContentView.swift */,
+				92CFA070299A500B002D939A /* Managers */,
 				92873D1A2994215700114EBB /* CoinDetail */,
 				92C7632A29929A3700F5161C /* Extensions */,
 				920C1B972988146900311990 /* Service */,
@@ -206,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				920C1B95298813C400311990 /* CoinViewModel.swift */,
+				92CFA076299A53F7002D939A /* PortfolioViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -261,6 +269,15 @@
 				921471D0299668EE00072D97 /* Date.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		92CFA070299A500B002D939A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				92CFA071299A5029002D939A /* DataManager.swift */,
+				92CFA073299A5056002D939A /* CoreDataModel.xcdatamodeld */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				92C87943298BF634000A4AB8 /* ProfileNotificationsView.swift in Sources */,
+				92CFA072299A5029002D939A /* DataManager.swift in Sources */,
 				92C8793F298BD493000A4AB8 /* ProfileCell.swift in Sources */,
 				920C1B8B2987E41000311990 /* CoinModel.swift in Sources */,
 				92C763242992565D00F5161C /* RegisterView.swift in Sources */,
@@ -358,9 +376,11 @@
 				920C1B8F2987EC7000311990 /* HomeView.swift in Sources */,
 				920C1B862987DC2900311990 /* Colors.swift in Sources */,
 				9217475C298E64B50066301F /* NavigationLazyView.swift in Sources */,
+				92CFA075299A5056002D939A /* CoreDataModel.xcdatamodeld in Sources */,
 				923D58C629892A88008BFD8C /* MyCoinsCell.swift in Sources */,
 				92873D1C2994218300114EBB /* CoinDetailView.swift in Sources */,
 				92C87947298C0010000A4AB8 /* TransactionsListView.swift in Sources */,
+				92CFA077299A53F7002D939A /* PortfolioViewModel.swift in Sources */,
 				92C76322299244DA00F5161C /* LoginView.swift in Sources */,
 				920C1B712987D8BE00311990 /* WisecryptoApp.swift in Sources */,
 			);
@@ -565,6 +585,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		92CFA073299A5056002D939A /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				92CFA074299A5056002D939A /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 92CFA074299A5056002D939A /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 920C1B652987D8BE00311990 /* Project object */;
 }

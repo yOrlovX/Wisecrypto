@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CoinDetailView: View {
   let coin: Coin
+  @StateObject var portfolioViewModel = PortfolioViewModel()
   
   var body: some View {
     ZStack {
@@ -43,6 +44,10 @@ struct CoinDetailView: View {
           coinStaticticSection
         }
         .padding(.top, 50)
+        
+        Button(action: { portfolioViewModel.addCoin(coin: coin)}) {
+          Text("Add Coin to Portfolio")
+        }
       }
     }
     .background(Colors.lightBackground)

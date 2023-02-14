@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
   
   @StateObject var viewModel = CoinViewModel()
+  @StateObject var portfolioViewModel = PortfolioViewModel()
   
   var body: some View {
     NavigationView {
@@ -20,6 +21,9 @@ struct HomeView: View {
         watchlistSection
       }
       .background(Colors.lightBackground)
+      .onAppear {
+        portfolioViewModel.getUserData()
+      }
     }
   }
 }
@@ -98,8 +102,8 @@ extension HomeView {
       }
       ScrollView(.horizontal) {
         LazyHStack(spacing: 16) {
-          ForEach(viewModel.coinData) { data in
-            MyCoinsCell(image: data.image, symbol: data.symbol, name: data.name, currentPrice: data.currentPrice, priceChange: data.priceChange24H)
+          ForEach(portfolioViewModel.userCoins) { data in
+            MyCoinsCell(image: data.image ?? "", symbol: data.symbol ?? "", name: data.name ?? "", currentPrice: 30, priceChange: data.priceChange)
           }
         }
       }
