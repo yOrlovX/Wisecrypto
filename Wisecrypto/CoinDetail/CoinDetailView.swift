@@ -30,12 +30,12 @@ struct CoinDetailView: View {
             .font(.system(size: 24, weight: .semibold))
           RoundedRectangle(cornerRadius: 20)
             .frame(width: 80, height: 33)
-            .foregroundColor(coin.priceChangePercentage24H < 0 ? Colors.primaryRed : Colors.primaryGreen)
+            .foregroundColor(coin.priceChangePercentage24H ?? 0 < 0 ? Colors.primaryRed : Colors.primaryGreen)
             .overlay {
               HStack(spacing: 4) {
-                Image(systemName: coin.priceChangePercentage24H < 0 ? "chevron.down" : "chevron.up")
+                Image(systemName: coin.priceChangePercentage24H ?? 0 < 0 ? "chevron.down" : "chevron.up")
                   .foregroundColor(.white)
-                Text("\(String(format: "%.2f", coin.priceChangePercentage24H))%")
+                Text("\(String(format: "%.2f", coin.priceChangePercentage24H ?? 0))%")
                   .font(.system(size: 14, weight: .medium))
                   .foregroundColor(.white)
               }
@@ -83,11 +83,11 @@ extension CoinDetailView {
         }
         Spacer()
         HStack(spacing: 4) {
-          Image(systemName: coin.marketCapChangePercentage24H < 0 ? "chevron.down" : "chevron.up")
-            .foregroundColor(coin.marketCapChangePercentage24H < 0 ? Colors.primaryRed : Colors.primaryGreen)
-          Text("\(String(format: "%.2f", coin.marketCapChangePercentage24H))%")
+          Image(systemName: coin.marketCapChangePercentage24H ?? 0 < 0 ? "chevron.down" : "chevron.up")
+            .foregroundColor(coin.marketCapChangePercentage24H ?? 0 < 0 ? Colors.primaryRed : Colors.primaryGreen)
+          Text("\(String(format: "%.2f", coin.marketCapChangePercentage24H ?? 0))%")
             .font(.system(size: 14, weight: .medium))
-            .foregroundColor(coin.marketCapChangePercentage24H < 0 ? Colors.primaryRed : Colors.primaryGreen)
+            .foregroundColor(coin.marketCapChangePercentage24H ?? 0 < 0 ? Colors.primaryRed : Colors.primaryGreen)
         }
       }
       Divider()
@@ -95,7 +95,7 @@ extension CoinDetailView {
         VStack(alignment: .leading, spacing: 4) {
           Text("High 24h")
             .font(.system(size: 12, weight: .medium))
-          Text(String(format: "%.2f", coin.high24H))
+          Text(String(format: "%.2f", coin.high24H ?? 0))
             .font(.system(size: 16, weight: .medium))
         }
         Spacer()
@@ -105,7 +105,7 @@ extension CoinDetailView {
         VStack(alignment: .leading, spacing: 4) {
           Text("Low 24h")
             .font(.system(size: 12, weight: .medium))
-          Text(String(format: "%.2f", coin.low24H))
+          Text(String(format: "%.2f", coin.low24H ?? 0))
             .font(.system(size: 16, weight: .medium))
         }
         Spacer()

@@ -12,8 +12,10 @@ struct Coin: Codable, Identifiable {
     let currentPrice: Double
     let marketCap, marketCapRank: Int
     let fullyDilutedValuation: Int?
-    let totalVolume, high24H, low24H, priceChange24H: Double
-    let priceChangePercentage24H, marketCapChange24H, marketCapChangePercentage24H, circulatingSupply: Double
+    let totalVolume: Double
+    let high24H, low24H, priceChange24H, priceChangePercentage24H: Double?
+    let marketCapChange24H, marketCapChangePercentage24H: Double?
+    let circulatingSupply: Double
     let totalSupply, maxSupply: Double?
     let ath, athChangePercentage: Double
     let athDate: String
@@ -22,7 +24,7 @@ struct Coin: Codable, Identifiable {
     let roi: Roi?
     let lastUpdated: String
     let sparklineIn7D: SparklineIn7D
-    let priceChangePercentage24HInCurrency: Double
+    let priceChangePercentage24HInCurrency: Double?
 
     enum CodingKeys: String, CodingKey {
         case id, symbol, name, image
