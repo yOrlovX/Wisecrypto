@@ -103,7 +103,7 @@ extension HomeView {
       ScrollView(.horizontal) {
         LazyHStack(spacing: 16) {
           ForEach(portfolioViewModel.userCoins) { data in
-            MyCoinsCell(image: data.image ?? "", symbol: data.symbol ?? "", name: data.name ?? "", currentPrice: 30, priceChange: data.priceChange)
+            MyCoinsCell(image: data.image ?? "", symbol: data.symbol ?? "", name: data.name ?? "", currentPrice: 30, priceChange: data.priceChange, sum: data.sum)
           }
         }
       }

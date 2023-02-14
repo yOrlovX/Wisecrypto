@@ -13,13 +13,15 @@ struct MyCoinsCell: View {
   var name: String
   var currentPrice: Double
   var priceChange: Double
+  var sum: Double
   
-  init(image: String, symbol: String, name: String, currentPrice: Double, priceChange: Double) {
+  init(image: String, symbol: String, name: String, currentPrice: Double, priceChange: Double, sum: Double) {
     self.image = image
     self.symbol = symbol
     self.name = name
     self.currentPrice = currentPrice
     self.priceChange = priceChange
+    self.sum = sum
   }
   var body: some View {
     VStack {
@@ -68,7 +70,7 @@ struct MyCoinsCell: View {
           .font(.system(size: 10, weight: .regular))
           .foregroundColor(Colors.textGray)
         HStack {
-          Text("$26.46")
+          Text("$\(String(format:"%.2f", sum))")
             .font(.system(size: 14, weight: .bold))
           Spacer()
           Text("0.0012 BTC")
@@ -93,7 +95,7 @@ struct MyCoinsCell: View {
 }
 struct MyCoinsCell_Previews: PreviewProvider {
   static var previews: some View {
-    MyCoinsCell(image: "bts", symbol: "BTC", name: "Bitcoin", currentPrice: 54.38264, priceChange: 15.3)
+    MyCoinsCell(image: "bts", symbol: "BTC", name: "Bitcoin", currentPrice: 54.38264, priceChange: 15.3, sum: 300)
       .previewLayout(.sizeThatFits)
   }
 }

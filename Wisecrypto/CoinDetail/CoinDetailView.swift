@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CoinDetailView: View {
   let coin: Coin
-  @StateObject var portfolioViewModel = PortfolioViewModel()
+  @State var isPresented: Bool = false
   
   var body: some View {
     ZStack {
@@ -45,14 +45,20 @@ struct CoinDetailView: View {
         }
         .padding(.top, 50)
         
-        Button(action: { portfolioViewModel.addCoin(coin: coin)}) {
+        Button(action: { isPresented.toggle()}) {
           Text("Add Coin to Portfolio")
+            .modifier(PrimaryGreenButtonModifier())
         }
       }
     }
     .background(Colors.lightBackground)
     .ignoresSafeArea()
+    .sheet(isPresented: $isPresented, onDismiss: dismiss) {
+      AddCoinsView(coin: coin)
+    }
   }
+  
+  func dismiss() {}
 }
 
 extension CoinDetailView {
@@ -108,4 +114,3 @@ extension CoinDetailView {
     .padding(15)
   }
 }
-  
