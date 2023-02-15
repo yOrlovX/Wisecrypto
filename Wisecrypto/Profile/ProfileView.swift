@@ -11,6 +11,7 @@ struct ProfileView: View {
   @State private var showLogoutAlert = false
   private let sectionsData = ProfileCellModel.profileCellData
   private let logoutData = ProfileCellModel.logoutData
+  @State var isPresented: Bool = false
   
   var body: some View {
     NavigationView {
@@ -49,8 +50,13 @@ struct ProfileView: View {
           .background(Colors.lightBackground)
         }
       }
+      .sheet(isPresented: $isPresented, onDismiss: dismiss) {
+        AddBalanceView()
+      }
     }
   }
+  
+  func dismiss() {}
 }
 
 extension ProfileView {
@@ -98,9 +104,12 @@ extension ProfileView {
           .scaledToFit()
           .frame(width: 24, height: 24)
           .foregroundColor(Colors.primaryGreen)
-        Text("Add")
-          .font(.system(size: 14, weight: .semibold))
-          .foregroundColor(Colors.primaryGreen)
+        
+        Button(action: { self.isPresented = true }) {
+          Text("Add")
+            .font(.system(size: 14, weight: .semibold))
+            .foregroundColor(Colors.primaryGreen)
+        }
       }
       .padding(.vertical, 12)
       .padding(.horizontal, 40)
