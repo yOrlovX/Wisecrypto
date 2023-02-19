@@ -34,6 +34,22 @@ class CoinViewModel: ObservableObject {
 //   fetchCoinsFromResponse()
   }
   
+  func sortedByPercentChange() {
+    coinData.sort { $0.priceChangePercentage24H ?? 0 > $1.priceChangePercentage24H ?? 0 }
+  }
+  
+  func sortedByCoinRank() {
+    coinData.sort { $0.marketCapRank < $1.marketCapRank }
+  }
+  
+  func sortByMaxPrice() {
+    coinData.sort { $0.high24H ?? 0 < $1.high24H ?? 0}
+  }
+  
+  func sortByMinPrice() {
+    coinData.sort { $0.high24H ?? 0 > $1.high24H ?? 0}
+  }
+  
   private func fetchCoinsFromResponse() {
     guard let url = URL(string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h") else { return }
     coinService.download(url: url)

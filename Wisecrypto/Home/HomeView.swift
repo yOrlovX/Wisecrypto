@@ -11,6 +11,8 @@ struct HomeView: View {
   
   @StateObject var viewModel = CoinViewModel()
   @StateObject var portfolioViewModel = PortfolioViewModel()
+  @State var selection: String = ""
+  var filterConditions = ["Rank", "Max", "Min", "Percentage"]
   
   var body: some View {
     NavigationView {
@@ -43,10 +45,18 @@ extension HomeView {
           .font(.system(size: 20, weight: .bold))
       }
       Spacer()
-      Image(systemName: "bell")
-        .resizable()
-        .scaledToFit()
-        .frame(width: 24, height: 24)
+      Picker("", selection: $selection) {
+        ForEach(filterConditions, id: \.self) { item in
+          Text(item)
+        }
+      }
+      .pickerStyle(.menu)
+      Button(action: { switchFilterButtonActions() }) {
+        Image(systemName: "line.3.horizontal.decrease.circle.fill")
+          .resizable()
+          .scaledToFit()
+          .frame(width: 24, height: 24)
+      }
     }
     .padding(.horizontal, 15)
   }
@@ -130,10 +140,25 @@ extension HomeView {
     }
     .padding(.horizontal, 15)
   }
-}
-
-struct HomeView_Previews: PreviewProvider {
-  static var previews: some View {
-    HomeView()
+  
+  private func switchFilterButtonActions() {
+    switch selection {
+    case "Rank":
+      viewModel.sortedByCoinRank()
+    case "Max":
+      viewModel.sortByMaxPrice()
+    case "Min":
+      viewModel.sortByMinPrice()
+    case "Percentage":
+      viewModel.sortedByPercentChange()
+    default:
+      break
+    }
+  }
+  
+  struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+      HomeView()
+    }
   }
 }
