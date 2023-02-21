@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import UIKit
 
+@MainActor
 class CoinViewModel: ObservableObject {
   @Published var coinData: [Coin] = []
   @Published var isLoading: Bool = false
@@ -28,10 +29,7 @@ class CoinViewModel: ObservableObject {
   }
   
   init() {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
-      self.getCoinsDataFromLocalJSON()
-    }
-//   fetchCoinsFromResponse()
+    Task { await fetchCoinsDataWithAsyncAwait() }
   }
   
   func sortedByPercentChange() {
@@ -43,11 +41,11 @@ class CoinViewModel: ObservableObject {
   }
   
   func sortByMaxPrice() {
-    coinData.sort { $0.high24H ?? 0 < $1.high24H ?? 0}
+    coinData.sort { $0.high24H ?? 0 > $1.high24H ?? 0}
   }
   
   func sortByMinPrice() {
-    coinData.sort { $0.high24H ?? 0 > $1.high24H ?? 0}
+    coinData.sort { $0.high24H ?? 0 < $1.high24H ?? 0}
   }
   
   private func fetchCoinsFromResponse() {
@@ -88,5 +86,16 @@ class CoinViewModel: ObservableObject {
         self.coinData = returnedData
       }
       .store(in: &cancellables)
+  }
+  
+  private func fetchCoinsDataWithAsyncAwait() async {
+    guard let url = URL(string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=true&price_change_percentage=24h") else { return }
+    
+    do {
+      let (data, _) = try await URLSession.shared.data(from: url, delegate: nil)
+      self.coinData = try JSONDecoder().decode(CoinResponse.self, from: data)
+    } catch {
+      
+    }
   }
 }
