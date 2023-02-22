@@ -9,8 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
   
-  @StateObject var viewModel = CoinViewModel()
-  @StateObject var portfolioViewModel = PortfolioViewModel()
+  @EnvironmentObject var coinsViewModel: CoinsViewModel
+  @EnvironmentObject var portfolioViewModel: PortfolioViewModel
   @State var selection: String = ""
   var filterConditions = ["Rank", "Max", "Min", "Percentage"]
   
@@ -128,7 +128,7 @@ extension HomeView {
         .font(.system(size: 14, weight: .semibold))
       ScrollView(.vertical, showsIndicators: true) {
         LazyVStack(spacing: 8) {
-          ForEach(viewModel.coinData) { data in
+          ForEach(coinsViewModel.coinData) { data in
             NavigationLink {
               NavigationLazyView(CoinDetailView(coin: data))
             } label: {
@@ -144,13 +144,13 @@ extension HomeView {
   private func switchFilterButtonActions() {
     switch selection {
     case "Rank":
-      viewModel.sortedByCoinRank()
+      coinsViewModel.sortedByCoinRank()
     case "Max":
-      viewModel.sortByMaxPrice()
+      coinsViewModel.sortByMaxPrice()
     case "Min":
-      viewModel.sortByMinPrice()
+      coinsViewModel.sortByMinPrice()
     case "Percentage":
-      viewModel.sortedByPercentChange()
+      coinsViewModel.sortedByPercentChange()
     default:
       break
     }
@@ -159,6 +159,7 @@ extension HomeView {
   struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
       HomeView()
+        .environmentObject(CoinsViewModel())
     }
   }
 }

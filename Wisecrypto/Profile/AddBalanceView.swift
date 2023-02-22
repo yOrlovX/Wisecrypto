@@ -9,7 +9,6 @@
 enum Payments: String, CaseIterable, Identifiable {
     case ovo
     case goPay
-   
     var id: String { self.rawValue }
 }
 
@@ -17,7 +16,6 @@ import SwiftUI
 
 struct AddBalanceView: View {
     @Environment(\.presentationMode) var presentationMode
-  //  @StateObject var portfolioViewModel = PortfolioViewModel()
   @State private var balance: String = ""
   let payments = PaymentModel.paymentData
   @State private var selectedPayment = Payments.ovo

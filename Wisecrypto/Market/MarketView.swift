@@ -8,23 +8,22 @@
 import SwiftUI
 
 struct MarketView: View {
-  @StateObject private var viewModel = CoinViewModel()
+  @EnvironmentObject var coinsViewModel: CoinsViewModel
   
     var body: some View {
       ZStack {
         Colors.lightBackground
           .ignoresSafeArea()
         VStack {
-          SearchBarView(searchText: $viewModel.searchText)
-            .onChange(of: viewModel.searchText) { newValue in
-              viewModel.searchResults = viewModel.coinData.filter({ result in
-                result.name.contains(viewModel.searchText) && viewModel.searchText.count > 1
+          SearchBarView(searchText: $coinsViewModel.searchText)
+            .onChange(of: coinsViewModel.searchText) { newValue in
+              coinsViewModel.searchResults = coinsViewModel.coinData.filter({ result in
+                result.name.contains(coinsViewModel.searchText) && coinsViewModel.searchText.count > 1
               })
             }
-          
             ScrollView(.vertical, showsIndicators: true) {
               LazyVStack(spacing: 8) {
-                ForEach(viewModel.listData) { data in
+                ForEach(coinsViewModel.listData) { data in
                   CoinCell(rowData: data)
                 }
               }
@@ -38,5 +37,6 @@ struct MarketView: View {
 struct MarketView_Previews: PreviewProvider {
     static var previews: some View {
         MarketView()
+        .environmentObject(CoinsViewModel())
     }
 }

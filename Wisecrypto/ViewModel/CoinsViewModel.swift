@@ -9,8 +9,7 @@ import Foundation
 import Combine
 import UIKit
 
-@MainActor
-class CoinViewModel: ObservableObject {
+class CoinsViewModel: ObservableObject {
   @Published var coinData: [Coin] = []
   @Published var isLoading: Bool = false
   @Published var searchText: String = ""
@@ -93,9 +92,12 @@ class CoinViewModel: ObservableObject {
     
     do {
       let (data, _) = try await URLSession.shared.data(from: url, delegate: nil)
-      self.coinData = try JSONDecoder().decode(CoinResponse.self, from: data)
+      let returnedData = try JSONDecoder().decode(CoinResponse.self, from: data)
+      await MainActor.run {
+        self.coinData = returnedData
+      }
     } catch {
-      
+      print(error.localizedDescription)
     }
   }
 }
