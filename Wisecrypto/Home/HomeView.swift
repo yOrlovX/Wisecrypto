@@ -16,16 +16,20 @@ struct HomeView: View {
   
   var body: some View {
     NavigationView {
-      VStack(spacing: 20) {
-        userSection
-        totalPortfolioSection
-        myCoinSection
-        watchlistSection
+      ZStack {
+        ScrollView {
+          VStack(spacing: 20) {
+            userSection
+            totalPortfolioSection
+            myCoinSection
+            watchlistSection
+          }
+          .onAppear {
+            portfolioViewModel.getUserData()
+          }
+        }
       }
       .background(Colors.lightBackground)
-      .onAppear {
-        portfolioViewModel.getUserData()
-      }
     }
   }
 }

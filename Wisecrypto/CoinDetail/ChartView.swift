@@ -13,11 +13,12 @@ struct ChartView: View {
   let minPrice: Double
   let startingDate: Date
   let endingDate: Date
+  let rank: Int
   @State private var percentage: CGFloat = 0
   
-    var body: some View {
-      VStack {
-        chart
+  var body: some View {
+    VStack {
+      chart
         .frame(height: 200)
         .background(
           VStack {
@@ -28,27 +29,34 @@ struct ChartView: View {
         )
         .overlay(
           VStack {
-            Text("\(String(format: "%.2f", maxPrice))")
+            HStack {
+              Text("Max Price: \(String(format: "%.2f", maxPrice))")
+              Spacer()
+              Text("Market cap rank: \(rank)")
+            }
             Spacer()
-            Text("\(String(format: "%.2f", minPrice))")
+            HStack {
+              Text("Min Price: \(String(format: "%.2f", minPrice))")
+              Spacer()
+            }
           }
           , alignment: .leading)
-        HStack {
-          Text(endingDate.shortDate())
-          Spacer()
-          Text(startingDate.shortDate())
-        }
-        .padding(.horizontal, 5)
+      HStack {
+        Text(endingDate.shortDate())
+        Spacer()
+        Text(startingDate.shortDate())
       }
       .padding(.horizontal, 5)
-      .onAppear {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-          withAnimation(.linear(duration: 1)) {
-            percentage = 1.0
-          }
+    }
+    .padding(.horizontal, 5)
+    .onAppear {
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        withAnimation(.linear(duration: 1)) {
+          percentage = 1.0
         }
       }
     }
+  }
 }
 
 extension ChartView {
@@ -90,6 +98,6 @@ struct ChartView_Previews: PreviewProvider {
                                    22970.847176497045,
                                    23066.963597958547,]
   static var previews: some View {
-    ChartView(data: mockData, maxPrice: 300, minPrice: 100, startingDate: Date(), endingDate: Date())
+    ChartView(data: mockData, maxPrice: 300, minPrice: 100, startingDate: Date(), endingDate: Date(), rank: 1)
   }
 }

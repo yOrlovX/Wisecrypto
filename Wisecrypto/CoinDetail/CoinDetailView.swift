@@ -15,7 +15,6 @@ struct CoinDetailView: View {
     ZStack {
       ScrollView {
         VStack {
-          Spacer()
           Text(coin.name)
             .font(.system(size: 16, weight: .bold))
           AsyncImage(url: URL(string: coin.image)) { image in
@@ -40,8 +39,8 @@ struct CoinDetailView: View {
                   .foregroundColor(.white)
               }
             }
-          ChartView(data: coin.sparklineIn7D.price, maxPrice: coin.sparklineIn7D.price.max() ?? 0, minPrice: coin.sparklineIn7D.price.min() ?? 0, startingDate: Date(), endingDate: Date().addingTimeInterval(-7*24*60*60))
-          coinStaticticSection
+          ChartView(data: coin.sparklineIn7D.price, maxPrice: coin.sparklineIn7D.price.max() ?? 0, minPrice: coin.sparklineIn7D.price.min() ?? 0, startingDate: Date(), endingDate: Date().addingTimeInterval(-7*24*60*60), rank: coin.marketCapRank)
+//          coinStaticticSection
         }
         .padding(.top, 50)
         

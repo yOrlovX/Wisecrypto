@@ -43,6 +43,7 @@
 		92CFA072299A5029002D939A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CFA071299A5029002D939A /* DataManager.swift */; };
 		92CFA075299A5056002D939A /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92CFA073299A5056002D939A /* CoreDataModel.xcdatamodeld */; };
 		92CFA077299A53F7002D939A /* PortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CFA076299A53F7002D939A /* PortfolioViewModel.swift */; };
+		92DE364C29A69BDF00352C9A /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DE364B29A69BDF00352C9A /* AnimationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +84,7 @@
 		92CFA071299A5029002D939A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		92CFA074299A5056002D939A /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		92CFA076299A53F7002D939A /* PortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewModel.swift; sourceTree = "<group>"; };
+		92DE364B29A69BDF00352C9A /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +254,7 @@
 				92873D1B2994218300114EBB /* CoinDetailView.swift */,
 				9223C7AF29954F16002288F5 /* ChartView.swift */,
 				929A158B299B9C95001FFD23 /* AddCoinsView.swift */,
+				92DE364B29A69BDF00352C9A /* AnimationView.swift */,
 			);
 			path = CoinDetail;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				92C763242992565D00F5161C /* RegisterView.swift in Sources */,
 				92C8793B298BB860000A4AB8 /* MainView.swift in Sources */,
 				921471D1299668EE00072D97 /* Date.swift in Sources */,
+				92DE364C29A69BDF00352C9A /* AnimationView.swift in Sources */,
 				922180FA2992B7D3006EF9BE /* SearchBarView.swift in Sources */,
 				9223C7B029954F16002288F5 /* ChartView.swift in Sources */,
 				920C1B992988147900311990 /* CoinService.swift in Sources */,
