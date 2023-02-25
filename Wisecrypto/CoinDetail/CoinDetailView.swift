@@ -42,11 +42,14 @@ struct CoinDetailView: View {
           ChartView(data: coin.sparklineIn7D.price, maxPrice: coin.sparklineIn7D.price.max() ?? 0, minPrice: coin.sparklineIn7D.price.min() ?? 0, startingDate: Date(), endingDate: Date().addingTimeInterval(-7*24*60*60), rank: coin.marketCapRank)
 //          coinStaticticSection
         }
-        .padding(.top, 50)
+        .padding(.top, 100)
         
         Button(action: { isPresented.toggle()}) {
-          Text("Add Coin to Portfolio")
-            .modifier(PrimaryGreenButtonModifier())
+          Image(systemName: "plus.circle")
+            .resizable()
+            .scaledToFit()
+            .foregroundColor(Colors.primaryGreen)
+            .frame(width: 50, height: 50)
         }
       }
     }

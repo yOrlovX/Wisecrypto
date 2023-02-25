@@ -14,44 +14,23 @@ struct ChartView: View {
   let startingDate: Date
   let endingDate: Date
   let rank: Int
+ 
   @State private var percentage: CGFloat = 0
   
   var body: some View {
-    VStack {
+    VStack(spacing: 10) {
+      topLabels
+      Divider()
       chart
-        .frame(height: 200)
-        .background(
-          VStack {
-            Divider()
-            Spacer()
-            Divider()
-          }
-        )
-        .overlay(
-          VStack {
-            HStack {
-              Text("Max Price: \(String(format: "%.2f", maxPrice))")
-              Spacer()
-              Text("Market cap rank: \(rank)")
-            }
-            Spacer()
-            HStack {
-              Text("Min Price: \(String(format: "%.2f", minPrice))")
-              Spacer()
-            }
-          }
-          , alignment: .leading)
-      HStack {
-        Text(endingDate.shortDate())
-        Spacer()
-        Text(startingDate.shortDate())
-      }
+      Divider()
+      bottomLabels
+      dateLabels
       .padding(.horizontal, 5)
     }
     .padding(.horizontal, 5)
     .onAppear {
       DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-        withAnimation(.linear(duration: 1)) {
+        withAnimation(.linear(duration: 2)) {
           percentage = 1.0
         }
       }
@@ -78,6 +57,31 @@ extension ChartView {
       }
       .trim(from: 0, to: percentage)
       .stroke(Colors.primaryGreen, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
+      .shadow(color: .black, radius: 20, x: 0, y: 0)
+    }
+    .frame(height: 200)
+  }
+  
+  private var topLabels: some View {
+    HStack {
+      Text("Max Price: \(String(format: "%.2f", maxPrice))")
+      Spacer()
+      Text("Market cap rank: \(rank)")
+    }
+  }
+  
+  private var bottomLabels: some View {
+    HStack {
+      Text("Min Price: \(String(format: "%.2f", minPrice))")
+      Spacer()
+    }
+  }
+  
+  private var dateLabels: some View {
+    HStack {
+      Text(endingDate.shortDate())
+      Spacer()
+      Text(startingDate.shortDate())
     }
   }
 }
