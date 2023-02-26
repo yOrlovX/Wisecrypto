@@ -21,6 +21,7 @@ struct CoinCell: View {
           ProgressView()
         }
         .frame(width: 64, height: 64)
+        .padding(.leading, 10)
         VStack(alignment: .leading, spacing: 4) {
           Text(rowData.symbol.uppercased())
             .font(.system(size: 20, weight: .bold))
