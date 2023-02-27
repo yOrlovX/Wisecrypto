@@ -30,8 +30,8 @@ class CoinsViewModel: ObservableObject {
   init() {
 //    Task { await fetchCoinsDataWithAsyncAwait() }
     
-//    getCoinsDataFromLocalJSON()
-    fetchCoinsFromResponse()
+    getCoinsDataFromLocalJSON()
+//    fetchCoinsFromResponse()
   }
   
   func sortedByPercentChange() {

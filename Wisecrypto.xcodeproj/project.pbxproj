@@ -23,6 +23,8 @@
 		92174760298EA60C0066301F /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217475F298EA60C0066301F /* MarketView.swift */; };
 		922180FA2992B7D3006EF9BE /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922180F92992B7D3006EF9BE /* SearchBarView.swift */; };
 		922180FC2992BE83006EF9BE /* UIAplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922180FB2992BE83006EF9BE /* UIAplication.swift */; };
+		9223506929ABB53800EF1AD3 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9223506829ABB53800EF1AD3 /* CachedAsyncImage */; };
+		9223506F29ABE4D300EF1AD3 /* URLCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223506E29ABE4D300EF1AD3 /* URLCache.swift */; };
 		9223C7B029954F16002288F5 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9223C7AF29954F16002288F5 /* ChartView.swift */; };
 		923D58C629892A88008BFD8C /* MyCoinsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923D58C529892A88008BFD8C /* MyCoinsCell.swift */; };
 		92671FAE299CE43A004ACA87 /* AddBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92671FAD299CE43A004ACA87 /* AddBalanceView.swift */; };
@@ -64,6 +66,7 @@
 		9217475F298EA60C0066301F /* MarketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
 		922180F92992B7D3006EF9BE /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		922180FB2992BE83006EF9BE /* UIAplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAplication.swift; sourceTree = "<group>"; };
+		9223506E29ABE4D300EF1AD3 /* URLCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLCache.swift; sourceTree = "<group>"; };
 		9223C7AF29954F16002288F5 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		923D58C529892A88008BFD8C /* MyCoinsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoinsCell.swift; sourceTree = "<group>"; };
 		92671FAD299CE43A004ACA87 /* AddBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBalanceView.swift; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9223506929ABB53800EF1AD3 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +277,7 @@
 				92C7632B29929A5B00F5161C /* String.swift */,
 				922180FB2992BE83006EF9BE /* UIAplication.swift */,
 				921471D0299668EE00072D97 /* Date.swift */,
+				9223506E29ABE4D300EF1AD3 /* URLCache.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -302,6 +307,9 @@
 			dependencies = (
 			);
 			name = Wisecrypto;
+			packageProductDependencies = (
+				9223506829ABB53800EF1AD3 /* CachedAsyncImage */,
+			);
 			productName = Wisecrypto;
 			productReference = 920C1B6D2987D8BE00311990 /* Wisecrypto.app */;
 			productType = "com.apple.product-type.application";
@@ -330,6 +338,9 @@
 				Base,
 			);
 			mainGroup = 920C1B642987D8BE00311990;
+			packageReferences = (
+				9223506729ABB53800EF1AD3 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
+			);
 			productRefGroup = 920C1B6E2987D8BE00311990 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -372,6 +383,7 @@
 				92C763292992905600F5161C /* AuthView.swift in Sources */,
 				92174760298EA60C0066301F /* MarketView.swift in Sources */,
 				92C87945298BFFE9000A4AB8 /* PaymentView.swift in Sources */,
+				9223506F29ABE4D300EF1AD3 /* URLCache.swift in Sources */,
 				92C763272992648300F5161C /* ViewModifiers.swift in Sources */,
 				92C87941298BF5FE000A4AB8 /* PrivacyView.swift in Sources */,
 				92C8793D298BD389000A4AB8 /* ProfileView.swift in Sources */,
@@ -593,6 +605,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9223506729ABB53800EF1AD3 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9223506829ABB53800EF1AD3 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9223506729ABB53800EF1AD3 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		92CFA073299A5056002D939A /* CoreDataModel.xcdatamodeld */ = {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct CoinDetailView: View {
   let coin: Coin
@@ -17,7 +18,7 @@ struct CoinDetailView: View {
         VStack {
           Text(coin.name)
             .font(.system(size: 16, weight: .bold))
-          AsyncImage(url: URL(string: coin.image)) { image in
+          CachedAsyncImage(url: URL(string: coin.image), urlCache: .imageCache) { image in
             image
               .resizable()
               .scaledToFit()

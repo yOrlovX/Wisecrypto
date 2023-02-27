@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct AddCoinsView: View {
   @Environment(\.presentationMode) var presentationMode
@@ -29,7 +30,7 @@ struct AddCoinsView: View {
           .keyboardType(.numberPad)
         
         VStack(spacing: 10) {
-          AsyncImage(url: URL(string: coin.image)) { image in
+          CachedAsyncImage(url: URL(string: coin.image), urlCache: .imageCache) { image in
             image
               .resizable()
               .scaledToFit()
