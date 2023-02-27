@@ -26,6 +26,7 @@ struct HomeView: View {
           }
           .onAppear {
             portfolioViewModel.getUserData()
+            portfolioViewModel.getPortfolioData()
           }
         }
       }

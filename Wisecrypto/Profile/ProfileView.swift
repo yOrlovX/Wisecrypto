@@ -12,6 +12,7 @@ struct ProfileView: View {
   private let sectionsData = ProfileCellModel.profileCellData
   private let logoutData = ProfileCellModel.logoutData
   @State var isPresented: Bool = false
+  @StateObject var portfolioViewModel = PortfolioViewModel()
   
   var body: some View {
     NavigationView {
@@ -50,13 +51,11 @@ struct ProfileView: View {
           .background(Colors.lightBackground)
         }
       }
-      .sheet(isPresented: $isPresented, onDismiss: dismiss) {
-        AddBalanceView()
-      }
+      .onAppear(perform: {
+        portfolioViewModel.getUserData()
+      })
     }
   }
-  
-  func dismiss() {}
 }
 
 extension ProfileView {
@@ -73,7 +72,7 @@ extension ProfileView {
               .foregroundColor(.white)
               .padding()
             Spacer()
-            Text("$25,000")
+            Text("$ \(String(format:"%.2f",portfolioViewModel.getUserBalance()))")
               .font(.system(size: 32, weight: .bold))
               .foregroundColor(.white)
               .padding()
@@ -98,21 +97,23 @@ extension ProfileView {
       Divider()
         .frame(height: 35)
         .background(Colors.primaryGreen)
-      VStack {
-        Image(systemName: "plus.app")
-          .resizable()
-          .scaledToFit()
-          .frame(width: 24, height: 24)
-          .foregroundColor(Colors.primaryGreen)
-        
-        Button(action: { self.isPresented = true }) {
+      NavigationLink {
+        NavigationLazyView(AddBalanceView())
+      } label: {
+        VStack {
+          Image(systemName: "plus.app")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 24, height: 24)
+            .foregroundColor(Colors.primaryGreen)
           Text("Add")
             .font(.system(size: 14, weight: .semibold))
             .foregroundColor(Colors.primaryGreen)
         }
+        .padding(.vertical, 12)
+        .padding(.horizontal, 40)
+        
       }
-      .padding(.vertical, 12)
-      .padding(.horizontal, 40)
     }
     .background(.white)
     .cornerRadius(16)

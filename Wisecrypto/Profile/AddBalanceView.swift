@@ -15,7 +15,8 @@ enum Payments: String, CaseIterable, Identifiable {
 import SwiftUI
 
 struct AddBalanceView: View {
-    @Environment(\.presentationMode) var presentationMode
+  @Environment(\.presentationMode) var presentationMode
+  @StateObject private var portfolioViewModel = PortfolioViewModel()
   @State private var balance: String = ""
   let payments = PaymentModel.paymentData
   @State private var selectedPayment = Payments.ovo
@@ -52,6 +53,7 @@ struct AddBalanceView: View {
         )
       }
       Button(action: {
+        portfolioViewModel.addUserBalance(balance: Double(balance) ?? 0)
         self.presentationMode.wrappedValue.dismiss()
       }) {
         Text("Fill up")
