@@ -26,24 +26,28 @@ struct CoinDetailView: View {
             ProgressView()
           }
           .frame(width: 64, height: 64)
-          Text(String(format: "%.4f", coin.currentPrice))
-            .font(.system(size: 24, weight: .semibold))
-          RoundedRectangle(cornerRadius: 20)
-            .frame(width: 80, height: 33)
-            .foregroundColor(coin.priceChangePercentage24H ?? 0 < 0 ? Colors.primaryRed : Colors.primaryGreen)
-            .overlay {
-              HStack(spacing: 4) {
-                Image(systemName: coin.priceChangePercentage24H ?? 0 < 0 ? "chevron.down" : "chevron.up")
-                  .foregroundColor(.white)
-                Text("\(String(format: "%.2f", coin.priceChangePercentage24H ?? 0))%")
-                  .font(.system(size: 14, weight: .medium))
-                  .foregroundColor(.white)
+          
+          HStack {
+            Text(String(format: "%.4f", coin.currentPrice))
+              .font(.system(size: 24, weight: .semibold))
+            RoundedRectangle(cornerRadius: 20)
+              .frame(width: 80, height: 33)
+              .foregroundColor(coin.priceChangePercentage24H ?? 0 < 0 ? Colors.primaryRed : Colors.primaryGreen)
+              .overlay {
+                HStack(spacing: 4) {
+                  Image(systemName: coin.priceChangePercentage24H ?? 0 < 0 ? "chevron.down" : "chevron.up")
+                    .foregroundColor(.white)
+                  Text("\(String(format: "%.2f", coin.priceChangePercentage24H ?? 0))%")
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundColor(.white)
+                }
               }
-            }
+          }
+          
           ChartView(data: coin.sparklineIn7D.price, maxPrice: coin.sparklineIn7D.price.max() ?? 0, minPrice: coin.sparklineIn7D.price.min() ?? 0, startingDate: Date(), endingDate: Date().addingTimeInterval(-7*24*60*60), rank: coin.marketCapRank)
 //          coinStaticticSection
         }
-        .padding(.top, 100)
+        .padding(.top, 50)
         
         Button(action: { isPresented.toggle()}) {
           Image(systemName: "plus.circle")

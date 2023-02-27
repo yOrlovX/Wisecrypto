@@ -25,7 +25,7 @@ struct ChartView: View {
       Divider()
       bottomLabels
       dateLabels
-      .padding(.horizontal, 5)
+      
     }
     .padding(.horizontal, 5)
     .onAppear {
@@ -68,6 +68,7 @@ extension ChartView {
       Spacer()
       Text("Market cap rank: \(rank)")
     }
+    .padding(.horizontal, 5)
   }
   
   private var bottomLabels: some View {
@@ -75,6 +76,7 @@ extension ChartView {
       Text("Min Price: \(String(format: "%.2f", minPrice))")
       Spacer()
     }
+    .padding(.horizontal, 5)
   }
   
   private var dateLabels: some View {
@@ -83,6 +85,7 @@ extension ChartView {
       Spacer()
       Text(startingDate.shortDate())
     }
+    .padding(.horizontal, 5)
   }
 }
 
