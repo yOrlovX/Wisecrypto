@@ -39,6 +39,14 @@ class PortfolioViewModel: ObservableObject {
     saveData() 
   }
   
+  func totalCoinsSum() -> Double {
+    userCoins.reduce(0) { $0 + $1.sum }
+  }
+  
+  func portfolioCurrentPecentage() -> Double {
+    userCoins.reduce(0) { $0 + $1.priceChange}
+  }
+  
   func saveData() {
     do {
       try manager.container.viewContext.save()

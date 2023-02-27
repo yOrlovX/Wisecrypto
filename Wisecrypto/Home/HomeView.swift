@@ -72,11 +72,11 @@ extension HomeView {
       .cornerRadius(10)
       .overlay {
         HStack {
-          VStack {
+          VStack(alignment: .leading) {
             Text("Total Portofolio")
               .font(.system(size: 16, weight: .semibold))
               .foregroundColor(.white)
-            Text("$56.98")
+            Text("$ \(String(format:"%.2f",portfolioViewModel.totalCoinsSum()))")
               .font(.system(size: 32, weight: .bold))
               .foregroundColor(.white)
           }
@@ -87,15 +87,15 @@ extension HomeView {
             .cornerRadius(8)
             .overlay {
               HStack(spacing: 2) {
-                Image(systemName: "arrow.up.right")
+                Image(systemName: portfolioViewModel.portfolioCurrentPecentage() < 0 ? "arrow.down.right" : "arrow.up.right")
                   .resizable()
                   .scaledToFit()
                   .frame(width: 6, height: 6)
-                  .foregroundColor(Colors.primaryGreen)
+                  .foregroundColor(portfolioViewModel.portfolioCurrentPecentage() < 0 ? Colors.primaryRed : Colors.primaryGreen)
                   .padding(.vertical, 4)
-                Text("\(String(format:"%.1f", 15))%")
+                Text("\(String(format:"%.1f", portfolioViewModel.portfolioCurrentPecentage()))%")
                   .font(.system(size: 10, weight: .bold))
-                  .foregroundColor(Colors.primaryGreen)
+                  .foregroundColor(portfolioViewModel.portfolioCurrentPecentage() < 0 ? Colors.primaryRed : Colors.primaryGreen)
                   .padding(.vertical, 4)
               }
             }
