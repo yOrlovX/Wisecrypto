@@ -9,6 +9,10 @@ import SwiftUI
 
 @main
 struct WisecryptoApp: App {
+  
+  init() {
+    UIScrollView.appearance().keyboardDismissMode = .onDrag
+  }
     
   var body: some Scene {
         WindowGroup {

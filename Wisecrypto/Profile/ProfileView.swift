@@ -12,7 +12,7 @@ struct ProfileView: View {
   private let sectionsData = ProfileCellModel.profileCellData
   private let logoutData = ProfileCellModel.logoutData
   @State var isPresented: Bool = false
-  @StateObject var portfolioViewModel = PortfolioViewModel()
+  @EnvironmentObject var portfolioViewModel: PortfolioViewModel
   
   var body: some View {
     NavigationView {
@@ -144,8 +144,8 @@ enum ProfileLinksSwitcher: String {
   case nonSelected = "nonSelected"
 }
 
-struct ProfileView_Previews: PreviewProvider {
-  static var previews: some View {
-    ProfileView()
-  }
-}
+//struct ProfileView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    ProfileView()
+//  }
+//}

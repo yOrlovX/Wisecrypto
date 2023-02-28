@@ -16,7 +16,7 @@ import SwiftUI
 
 struct AddBalanceView: View {
   @Environment(\.presentationMode) var presentationMode
-  @StateObject private var portfolioViewModel = PortfolioViewModel()
+  @EnvironmentObject var portfolioViewModel: PortfolioViewModel
   @State private var balance: String = ""
   let payments = PaymentModel.paymentData
   @State private var selectedPayment = Payments.ovo
@@ -31,6 +31,7 @@ struct AddBalanceView: View {
           .font(.system(.subheadline))
           .frame(width: 160, height: 56)
           .modifier(TextFieldModifier())
+          .keyboardType(.numberPad)
       }
      
       VStack {

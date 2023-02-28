@@ -10,7 +10,7 @@ import CachedAsyncImage
 
 struct AddCoinsView: View {
   @Environment(\.presentationMode) var presentationMode
-  @StateObject var portfolioViewModel = PortfolioViewModel()
+  @EnvironmentObject var portfolioViewModel: PortfolioViewModel
   @State private var sumForCoin: String = ""
   @State private var coinSum: String = ""
   @State private var showCoinAnimation: Bool = false
