@@ -43,17 +43,23 @@ struct AddCoinsView: View {
             .font(.system(size: 20, weight: .bold))
             .foregroundColor(.black)
         }
-        Button(action: { portfolioViewModel.addCoin(image: coin.image, symbol: coin.symbol, name: coin.name, priceChange: coin.priceChangePercentage24H ?? 0, sum: Double(sumForCoin) ?? 0, currentPrice: coin.currentPrice)
-          showCoinAnimation = true
-          DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.presentationMode.wrappedValue.dismiss()
-          }
-        }) {
+        Button(action: { addCoinButtonActions() }) {
           Text("Add coins")
             .modifier(PrimaryGreenButtonModifier())
         }
       }
     }
+  }
+}
+
+extension AddCoinsView {
+  private func addCoinButtonActions() {
+    portfolioViewModel.addCoin(image: coin.image, symbol: coin.symbol, name: coin.name, priceChange: coin.priceChangePercentage24H ?? 0, sum: Double(sumForCoin) ?? 0, currentPrice: coin.currentPrice)
+     showCoinAnimation = true
+    portfolioViewModel.update(sum: Double(sumForCoin) ?? 0)
+     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+       self.presentationMode.wrappedValue.dismiss()
+     }
   }
 }
 //struct AddCoinsView_Previews: PreviewProvider {

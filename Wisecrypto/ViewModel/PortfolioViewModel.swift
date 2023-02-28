@@ -59,6 +59,12 @@ class PortfolioViewModel: ObservableObject {
   func getUserBalance() -> Double {
     userData.reduce(0) { $0 + $1.balance}
   }
+    
+  func update(sum: Double) {
+    guard let user = userData.last else { return }
+    user.balance = -sum
+    saveData()
+  }
   
   func totalCoinsSum() -> Double {
     userCoins.reduce(0) { $0 + $1.sum }
