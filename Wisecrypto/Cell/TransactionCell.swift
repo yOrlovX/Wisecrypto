@@ -38,11 +38,11 @@ struct TransactionCell: View {
         HStack {
           VStack(alignment: .leading, spacing: 5) {
             Text(name)
-              .font(.system(size: 16, weight: .bold))
+              .font(.system(size: 16, weight: .regular))
             Text("$ \(String(format: "%.2f", sum))")
-              .font(.system(size: 16, weight: .bold))
+              .font(.system(size: 16, weight: .regular))
             Text("\(symbol.uppercased()) \(String(format: "%.4f", sum / coinSum))")
-              .font(.system(size: 16, weight: .bold))
+              .font(.system(size: 16, weight: .regular))
           }
           Spacer()
           Text("\(Date.now.shortDate())")
