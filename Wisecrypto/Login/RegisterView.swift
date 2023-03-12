@@ -7,11 +7,16 @@
 
 import SwiftUI
 
+struct MyType: Codable {
+  let string: String
+}
+
 struct RegisterView: View {
   @State var fullName: String = ""
   @State var email: String = ""
   @State var password: String = ""
   @Binding var currentViewShowing: AuthViewState
+  @KeychainStorage("MyKey") var savedValue = MyType(string: "Hello")
   
   var body: some View {
     ZStack {
@@ -62,6 +67,9 @@ extension RegisterView {
         .font(.system(size: 14, weight: .medium))
       TextField("Please enter the password", text: $password)
         .modifier(TextFieldModifier())
+      
+      Text(savedValue?.string ?? "No value")
+        .font(.system(size: 14, weight: .medium))
       Text("Conform Password")
         .font(.system(size: 14, weight: .medium))
       TextField("Please conform Password", text: $password)
@@ -72,7 +80,7 @@ extension RegisterView {
   
   private var buttonsContainer: some View {
     VStack(spacing: 24) {
-      Button(action: {}) {
+      Button(action: {savedValue = MyType(string: password)}) {
         Text("Register")
           .modifier(PrimaryGreenButtonModifier())
       }

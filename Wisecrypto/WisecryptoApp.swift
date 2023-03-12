@@ -16,7 +16,7 @@ struct WisecryptoApp: App {
     
   var body: some Scene {
         WindowGroup {
-          SplashView()
+          AuthView()
         }
     }
 }

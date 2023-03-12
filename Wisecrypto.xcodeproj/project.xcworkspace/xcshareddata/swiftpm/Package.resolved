@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "KeychainAccess",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
+        "state": {
+          "branch": "master",
+          "revision": "ecb18d8ce4d88277cc4fb103973352d91e18c535",
+          "version": null
+        }
+      },
+      {
         "package": "swiftui-cached-async-image",
         "repositoryURL": "https://github.com/lorenzofiamingo/swiftui-cached-async-image",
         "state": {
