@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-  @State var email: String = ""
-  @State var password: String = ""
+  @StateObject private var authViewModel = AuthViewModel()
   @Binding var currentViewShowing: AuthViewState
   
   var body: some View {
@@ -52,20 +51,26 @@ extension LoginView {
       Text("Email")
         .font(.system(size: 14, weight: .medium))
       HStack {
-        TextField("botpablo@gmail.com", text: $email)
-        if email.count != 0 {
-          Image(systemName: email.isValidEmail() ? "checkmark" : "xmark")
-            .foregroundColor(email.isValidEmail() ? Colors.primaryGreen : Colors.primaryRed)
+        TextField("botpablo@gmail.com", text: $authViewModel.email)
+          .onChange(of: authViewModel.email) { newValue in
+            authViewModel.emailPublisher.send(newValue)
+          }
+        if authViewModel.email.count != 0 {
+          Image(systemName: authViewModel.emailStatus == .login ? "checkmark" : "xmark")
+            .foregroundColor(authViewModel.emailStatus == .login ? Colors.primaryGreen : Colors.primaryRed)
         }
       }
       .modifier(TextFieldModifier())
       Text("Password")
         .font(.system(size: 14, weight: .medium))
       HStack {
-        TextField("Please enter the password", text: $password)
-        if password.count != 0 {
-          Image(systemName: isValidPassword(password) ? "checkmark" : "xmark")
-            .foregroundColor(isValidPassword(password) ? Colors.primaryGreen : Colors.primaryRed)
+        TextField("Please enter the password", text: $authViewModel.password)
+          .onChange(of: authViewModel.password) { newValue in
+            authViewModel.passwordPublisher.send(newValue)
+          }
+        if authViewModel.password.count != 0 {
+          Image(systemName: authViewModel.passwordStatus == .login ? "checkmark" : "xmark")
+            .foregroundColor(authViewModel.passwordStatus == .login ? Colors.primaryGreen : Colors.primaryRed)
         }
       }
       .modifier(TextFieldModifier())
@@ -96,15 +101,9 @@ extension LoginView {
     }
   }
   
-  func isValidPassword(_ password: String) -> Bool {
-    let passwordRegex = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])(?=.*[A-Z]).{6,}$")
-    
-    return passwordRegex.evaluate(with: password)
-  }
-}
-
-struct LoginView_Previews: PreviewProvider {
-  static var previews: some View {
-    LoginView(currentViewShowing: .constant(.login))
+  struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+      LoginView(currentViewShowing: .constant(.login))
+    }
   }
 }
