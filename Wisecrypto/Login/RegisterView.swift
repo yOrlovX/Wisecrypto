@@ -19,7 +19,7 @@ struct RegisterView: View {
   @KeychainStorage("UserPassword") var savedPassword = MyType(string: "")
   @KeychainStorage("UserMail") var savedMail = MyType(string: "")
   @KeychainStorage("UserInitials") var savedInitials = MyType(string: "")
-  @StateObject private var authViewModel = AuthViewModel()
+  @EnvironmentObject private var authViewModel: AuthViewModel
   
   var body: some View {
     ZStack {

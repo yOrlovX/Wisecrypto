@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
-  @StateObject private var authViewModel = AuthViewModel()
+  
+  @EnvironmentObject private var authViewModel: AuthViewModel
   @Binding var currentViewShowing: AuthViewState
   
   var body: some View {

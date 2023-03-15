@@ -15,7 +15,7 @@ enum AuthViewState {
 
 struct AuthView: View {
   @State private var currentViewShowing: AuthViewState = .login
-  @StateObject private var authViewModel = AuthViewModel()
+  @EnvironmentObject private var authViewModel: AuthViewModel
   
   var body: some View {
     ZStack {

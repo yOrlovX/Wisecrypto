@@ -11,6 +11,7 @@ struct SplashView: View {
   
   let coinsViewModel: CoinsViewModel
   let portfolioViewModel: PortfolioViewModel
+  let authViewModel: AuthViewModel
   
   @State private var isActive: Bool = false
   @State private var opacity = 0.0
@@ -21,6 +22,7 @@ struct SplashView: View {
   init() {
     coinsViewModel = .init()
     portfolioViewModel = .init()
+    authViewModel = .init()
   }
   
   var body: some View {
@@ -33,6 +35,7 @@ struct SplashView: View {
     }
     .environmentObject(coinsViewModel)
     .environmentObject(portfolioViewModel)
+    .environmentObject(authViewModel)
   }
 }
 
