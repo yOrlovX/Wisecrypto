@@ -26,7 +26,7 @@ struct SplashView: View {
   var body: some View {
     ZStack {
       if isActive {
-        MainView()
+        AuthView()
       } else {
         splashState
       }

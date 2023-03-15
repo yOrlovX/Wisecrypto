@@ -10,19 +10,26 @@ import SwiftUI
 enum AuthViewState {
   case login
   case register
+  case main
 }
 
 struct AuthView: View {
   @State private var currentViewShowing: AuthViewState = .login
+  @StateObject private var authViewModel = AuthViewModel()
   
   var body: some View {
     ZStack {
-      if currentViewShowing == .login {
-        LoginView(currentViewShowing: $currentViewShowing)
-          .transition(.move(edge: .top))
+      if authViewModel.isRegister {
+        MainView()
       } else {
-        RegisterView(currentViewShowing: $currentViewShowing)
-          .transition(.move(edge: .bottom))
+        switch currentViewShowing {
+        case .login:
+          LoginView(currentViewShowing: $currentViewShowing)
+        case .register:
+          RegisterView(currentViewShowing: $currentViewShowing)
+        case .main:
+          MainView()
+        }
       }
     }
     .background(Colors.lightBackground)

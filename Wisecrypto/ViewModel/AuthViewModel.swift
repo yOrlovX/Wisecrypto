@@ -19,8 +19,11 @@ class AuthViewModel: ObservableObject {
   
   @Published var email: String = ""
   @Published var password: String = ""
+  @Published var confirmedPassword: String = ""
+  @Published var fullName: String = ""
   @Published var emailStatus: LoginStatus = .notEvaluated
   @Published var passwordStatus: LoginStatus = .notEvaluated
+  @AppStorage("UserRegister") var isRegister: Bool = false
   
   let emailPublisher = PassthroughSubject<String, Never>()
   let passwordPublisher = PassthroughSubject<String, Never>()

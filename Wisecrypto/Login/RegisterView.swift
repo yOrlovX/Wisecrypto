@@ -16,7 +16,10 @@ struct RegisterView: View {
   @State var email: String = ""
   @State var password: String = ""
   @Binding var currentViewShowing: AuthViewState
-  @KeychainStorage("MyKey") var savedValue = MyType(string: "Hello")
+  @KeychainStorage("UserPassword") var savedPassword = MyType(string: "")
+  @KeychainStorage("UserMail") var savedMail = MyType(string: "")
+  @KeychainStorage("UserInitials") var savedInitials = MyType(string: "")
+  @StateObject private var authViewModel = AuthViewModel()
   
   var body: some View {
     ZStack {
@@ -57,22 +60,37 @@ extension RegisterView {
     VStack(alignment: .leading, spacing: 8) {
       Text("Full name")
         .font(.system(size: 14, weight: .medium))
-      TextField("Axel Rose", text: $email)
+      TextField("Axel Rose", text: $fullName)
         .modifier(TextFieldModifier())
       Text("Email")
         .font(.system(size: 14, weight: .medium))
-      TextField("botpablo@gmail.com", text: $email)
-        .modifier(TextFieldModifier())
+      HStack {
+        TextField("botpablo@gmail.com", text: $authViewModel.email)
+          .onChange(of: authViewModel.email) { newValue in
+            authViewModel.emailPublisher.send(newValue)
+          }
+        if authViewModel.email.count != 0 {
+          Image(systemName: authViewModel.emailStatus == .login ? "checkmark" : "xmark")
+            .foregroundColor(authViewModel.emailStatus == .login ? Colors.primaryGreen : Colors.primaryRed)
+        }
+      }
+      .modifier(TextFieldModifier())
       Text("Password")
         .font(.system(size: 14, weight: .medium))
-      TextField("Please enter the password", text: $password)
-        .modifier(TextFieldModifier())
-      
-      Text(savedValue?.string ?? "No value")
-        .font(.system(size: 14, weight: .medium))
+      HStack {
+        TextField("Please enter the password", text: $authViewModel.password)
+          .onChange(of: authViewModel.password) { newValue in
+            authViewModel.passwordPublisher.send(newValue)
+          }
+        if authViewModel.password.count != 0 {
+          Image(systemName: authViewModel.passwordStatus == .login ? "checkmark" : "xmark")
+            .foregroundColor(authViewModel.passwordStatus == .login ? Colors.primaryGreen : Colors.primaryRed)
+        }
+      }
+      .modifier(TextFieldModifier())
       Text("Conform Password")
         .font(.system(size: 14, weight: .medium))
-      TextField("Please conform Password", text: $password)
+      TextField("Please confirm Password", text: $authViewModel.confirmedPassword)
         .modifier(TextFieldModifier())
     }
     .padding(.horizontal, 15)
@@ -80,7 +98,12 @@ extension RegisterView {
   
   private var buttonsContainer: some View {
     VStack(spacing: 24) {
-      Button(action: {savedValue = MyType(string: password)}) {
+      Button(action: {savedPassword = MyType(string: authViewModel.password)
+        savedMail = MyType(string: authViewModel.email)
+        savedInitials = MyType(string: authViewModel.fullName)
+        authViewModel.isRegister = true
+        currentViewShowing = .main
+      }) {
         Text("Register")
           .modifier(PrimaryGreenButtonModifier())
       }
