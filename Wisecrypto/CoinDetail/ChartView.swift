@@ -37,7 +37,7 @@ struct ChartView: View {
   }
 }
 
-extension ChartView {
+private extension ChartView {
   private var chart: some View {
     GeometryReader { geo in
       Path { path in

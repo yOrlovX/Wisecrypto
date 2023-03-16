@@ -27,7 +27,7 @@ struct LoginView: View {
   }
 }
 
-extension LoginView {
+private extension LoginView {
   private var logoContainer: some View {
     VStack(spacing: 4) {
       HStack {

@@ -35,7 +35,7 @@ struct HomeView: View {
   }
 }
 
-extension HomeView {
+private extension HomeView {
   
   private var userSection: some View {
     HStack(spacing: 12) {
