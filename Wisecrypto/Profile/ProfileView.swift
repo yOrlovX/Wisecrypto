@@ -13,6 +13,7 @@ struct ProfileView: View {
   private let logoutData = ProfileCellModel.logoutData
   @State var isPresented: Bool = false
   @EnvironmentObject var portfolioViewModel: PortfolioViewModel
+  @EnvironmentObject var authViewModel: AuthViewModel
   
   var body: some View {
     NavigationView {
@@ -41,7 +42,7 @@ struct ProfileView: View {
                   showLogoutAlert = true
                 }
                 .alert("Are you sure you want to leave?", isPresented: $showLogoutAlert) {
-                  Button("OK", role: .cancel) { }
+                  Button("OK", role: .cancel) { authViewModel.isRegister = false }
                   Button("Cancel", role: .destructive) {}
                 }
             }
