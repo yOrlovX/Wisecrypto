@@ -16,7 +16,7 @@ struct ProfileView: View {
   
   var body: some View {
     NavigationView {
-      ZStack {
+      ZStack(alignment: .top) {
         Colors.lightBackground
           .ignoresSafeArea()
         ScrollView {
@@ -47,8 +47,11 @@ struct ProfileView: View {
             }
           }
           .background(Colors.lightBackground)
+          .padding(.top, 40)
         }
       }
+      
+      .navigationBarHidden(true)
       .onAppear(perform: {
         portfolioViewModel.getUserData()
       })
