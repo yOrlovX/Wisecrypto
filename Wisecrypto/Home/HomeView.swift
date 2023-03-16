@@ -13,6 +13,7 @@ struct HomeView: View {
   @EnvironmentObject var portfolioViewModel: PortfolioViewModel
   @State var selection: String = ""
   var filterConditions = ["Rank", "Max", "Min", "Percentage"]
+  @KeychainStorage("UserInitials") var savedInitials = MyType(string: "")
   
   var body: some View {
     NavigationView {
@@ -46,7 +47,7 @@ private extension HomeView {
         Text("Hello")
           .font(.system(size: 12, weight: .semibold))
           .foregroundColor(.gray)
-        Text("Nadila Aulia")
+        Text(savedInitials?.string ?? "No name")
           .font(.system(size: 20, weight: .bold))
       }
       Spacer()

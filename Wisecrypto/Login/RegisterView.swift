@@ -12,9 +12,6 @@ struct MyType: Codable {
 }
 
 struct RegisterView: View {
-  @State var fullName: String = ""
-  @State var email: String = ""
-  @State var password: String = ""
   @Binding var currentViewShowing: AuthViewState
   @KeychainStorage("UserPassword") var savedPassword = MyType(string: "")
   @KeychainStorage("UserMail") var savedMail = MyType(string: "")
@@ -60,7 +57,7 @@ private extension RegisterView {
     VStack(alignment: .leading, spacing: 8) {
       Text("Full name")
         .font(.system(size: 14, weight: .medium))
-      TextField("Axel Rose", text: $fullName)
+      TextField("Axel Rose", text: $authViewModel.fullName)
         .modifier(TextFieldModifier())
       Text("Email")
         .font(.system(size: 14, weight: .medium))
