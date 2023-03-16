@@ -22,7 +22,11 @@ struct HomeView: View {
           VStack(spacing: 20) {
             userSection
             totalPortfolioSection
-            myCoinSection
+            if portfolioViewModel.userData.isEmpty {
+              Text("Already no coins in portfolio")
+            } else {
+              myCoinSection
+            }
             watchlistSection
           }
           .onAppear {
