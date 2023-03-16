@@ -26,7 +26,6 @@ struct CoinDetailView: View {
             ProgressView()
           }
           .frame(width: 64, height: 64)
-          
           HStack {
             Text(String(format: "%.4f", coin.currentPrice))
               .font(.system(size: 24, weight: .semibold))
@@ -45,10 +44,8 @@ struct CoinDetailView: View {
           }
           
           ChartView(data: coin.sparklineIn7D.price, maxPrice: coin.sparklineIn7D.price.max() ?? 0, minPrice: coin.sparklineIn7D.price.min() ?? 0, startingDate: Date(), endingDate: Date().addingTimeInterval(-7*24*60*60), rank: coin.marketCapRank)
-//          coinStaticticSection
         }
         .padding(.top, 50)
-        
         Button(action: { isPresented.toggle()}) {
           Image(systemName: "plus.circle")
             .resizable()

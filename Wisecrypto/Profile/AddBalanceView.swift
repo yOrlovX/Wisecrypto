@@ -5,13 +5,6 @@
 //  Created by Yaroslav Orlov on 14.02.2023.
 //
 
-
-enum Payments: String, CaseIterable, Identifiable {
-    case ovo
-    case goPay
-    var id: String { self.rawValue }
-}
-
 import SwiftUI
 
 struct AddBalanceView: View {
@@ -33,7 +26,6 @@ struct AddBalanceView: View {
           .modifier(TextFieldModifier())
           .keyboardType(.numberPad)
       }
-     
       VStack {
         Text("Select you payment method:")
         HStack(spacing: 10) {

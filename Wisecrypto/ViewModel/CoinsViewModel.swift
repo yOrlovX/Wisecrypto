@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import UIKit
 
-class CoinsViewModel: ObservableObject {
+final class CoinsViewModel: ObservableObject {
   @Published var coinData: [Coin] = []
   @Published var isLoading: Bool = false
   @Published var searchText: String = ""

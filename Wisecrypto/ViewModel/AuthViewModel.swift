@@ -9,13 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-enum LoginStatus {
-  case login
-  case fail
-  case notEvaluated
-}
-
-class AuthViewModel: ObservableObject {
+final class AuthViewModel: ObservableObject {
   
   @Published var email: String = ""
   @Published var password: String = ""
@@ -33,7 +27,7 @@ class AuthViewModel: ObservableObject {
     verifyEmailStatus()
   }
       
-  func verifyPasswordStatus() {
+  private func verifyPasswordStatus() {
     passwordPublisher
       .map { password -> LoginStatus in
         if self.isValidPassword(self.password) {
@@ -45,7 +39,7 @@ class AuthViewModel: ObservableObject {
       .assign(to: &$passwordStatus)
   }
   
-  func verifyEmailStatus() {
+  private func verifyEmailStatus() {
     emailPublisher
       .map { email -> LoginStatus in
         if self.isValidEmail() {

@@ -8,9 +8,9 @@
 import Foundation
 import CoreData
 
-class PortfolioViewModel: ObservableObject {
+final class PortfolioViewModel: ObservableObject {
   
-  let manager = DataManager.instance
+  private let manager = DataManager.instance
   @Published var userCoins: [PortofolioEntity] = []
   @Published var userData: [UserEntity] = []
   

@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct LogoView: View {
-    var body: some View {
-      VStack {
-        Image("Logo")
-          .renderingMode(.template)
-          .resizable()
-          .scaledToFit()
-          .frame(width: 100, height: 100)
+ 
+  var body: some View {
+    VStack {
+      Image("Logo")
+        .renderingMode(.template)
+        .resizable()
+        .scaledToFit()
+        .frame(width: 100, height: 100)
         .foregroundColor(Colors.primaryGreen)
         .padding()
-//        .clipShape(Capsule())
-      }
-      .background(.black)
-      .clipShape(Capsule())
     }
+    .background(.black)
+    .clipShape(Capsule())
+  }
 }
 
 struct LogoView_Previews: PreviewProvider {
-    static var previews: some View {
-        LogoView()
-    }
+  static var previews: some View {
+    LogoView()
+  }
 }

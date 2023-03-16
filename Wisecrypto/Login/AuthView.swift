@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-enum AuthViewState {
-  case login
-  case register
-  case main
-}
-
 struct AuthView: View {
   @State private var currentViewShowing: AuthViewState = .login
   @EnvironmentObject private var authViewModel: AuthViewModel

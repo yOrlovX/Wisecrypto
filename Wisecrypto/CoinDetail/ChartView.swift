@@ -14,7 +14,7 @@ struct ChartView: View {
   let startingDate: Date
   let endingDate: Date
   let rank: Int
- 
+  
   @State private var percentage: CGFloat = 0
   
   var body: some View {
@@ -25,7 +25,6 @@ struct ChartView: View {
       Divider()
       bottomLabels
       dateLabels
-      
     }
     .padding(.horizontal, 5)
     .onAppear {

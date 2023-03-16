@@ -25,11 +25,9 @@ struct ProfileView: View {
               .resizable()
               .scaledToFit()
               .frame(width: 80, height: 80)
-            
             currentBalanceSection
             buttonsSections
               .offset(y: -30)
-            
             VStack(spacing: 8) {
               ForEach(sectionsData) { data in
                 NavigationLink {
@@ -135,17 +133,3 @@ extension ProfileView {
     }
   }
 }
-
-enum ProfileLinksSwitcher: String {
-  case privacy = "Privacy"
-  case notifications = "Notifications"
-  case payment = "Payment"
-  case transactions = "Transaction List"
-  case nonSelected = "nonSelected"
-}
-
-//struct ProfileView_Previews: PreviewProvider {
-//  static var previews: some View {
-//    ProfileView()
-//  }
-//}

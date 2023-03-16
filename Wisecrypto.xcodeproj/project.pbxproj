@@ -33,13 +33,16 @@
 		92671FAE299CE43A004ACA87 /* AddBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92671FAD299CE43A004ACA87 /* AddBalanceView.swift */; };
 		9276461129B63362007F9D25 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276461029B63362007F9D25 /* AuthViewModel.swift */; };
 		92873D1C2994218300114EBB /* CoinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92873D1B2994218300114EBB /* CoinDetailView.swift */; };
+		928BAC4629C30D3400B0E437 /* AuthViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928BAC4529C30D3400B0E437 /* AuthViewState.swift */; };
+		928BAC4829C30DC100B0E437 /* ProfileLinksSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928BAC4729C30DC100B0E437 /* ProfileLinksSwitcher.swift */; };
+		928BAC4A29C30DE000B0E437 /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928BAC4929C30DE000B0E437 /* Payments.swift */; };
+		928BAC4D29C3212900B0E437 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928BAC4C29C3212900B0E437 /* LoginStatus.swift */; };
 		929A158C299B9C95001FFD23 /* AddCoinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929A158B299B9C95001FFD23 /* AddCoinsView.swift */; };
 		92A718AD29AE42C600257CC0 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A718AC29AE42C600257CC0 /* TransactionCell.swift */; };
 		92C76322299244DA00F5161C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C76321299244DA00F5161C /* LoginView.swift */; };
 		92C763242992565D00F5161C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C763232992565D00F5161C /* RegisterView.swift */; };
 		92C763272992648300F5161C /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C763262992648300F5161C /* ViewModifiers.swift */; };
 		92C763292992905600F5161C /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C763282992905600F5161C /* AuthView.swift */; };
-		92C7632C29929A5B00F5161C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C7632B29929A5B00F5161C /* String.swift */; };
 		92C8793B298BB860000A4AB8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C8793A298BB860000A4AB8 /* MainView.swift */; };
 		92C8793D298BD389000A4AB8 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C8793C298BD389000A4AB8 /* ProfileView.swift */; };
 		92C8793F298BD493000A4AB8 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C8793E298BD493000A4AB8 /* ProfileCell.swift */; };
@@ -79,13 +82,16 @@
 		92671FAD299CE43A004ACA87 /* AddBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBalanceView.swift; sourceTree = "<group>"; };
 		9276461029B63362007F9D25 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		92873D1B2994218300114EBB /* CoinDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailView.swift; sourceTree = "<group>"; };
+		928BAC4529C30D3400B0E437 /* AuthViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewState.swift; sourceTree = "<group>"; };
+		928BAC4729C30DC100B0E437 /* ProfileLinksSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLinksSwitcher.swift; sourceTree = "<group>"; };
+		928BAC4929C30DE000B0E437 /* Payments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
+		928BAC4C29C3212900B0E437 /* LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
 		929A158B299B9C95001FFD23 /* AddCoinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoinsView.swift; sourceTree = "<group>"; };
 		92A718AC29AE42C600257CC0 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		92C76321299244DA00F5161C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		92C763232992565D00F5161C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		92C763262992648300F5161C /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		92C763282992905600F5161C /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
-		92C7632B29929A5B00F5161C /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		92C8793A298BB860000A4AB8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		92C8793C298BD389000A4AB8 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		92C8793E298BD493000A4AB8 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				920C1B702987D8BE00311990 /* WisecryptoApp.swift */,
+				928BAC4B29C3211800B0E437 /* Enums */,
 				92CFA070299A500B002D939A /* Managers */,
 				92873D1A2994215700114EBB /* CoinDetail */,
 				92C7632A29929A3700F5161C /* Extensions */,
@@ -276,6 +283,17 @@
 			path = CoinDetail;
 			sourceTree = "<group>";
 		};
+		928BAC4B29C3211800B0E437 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				928BAC4729C30DC100B0E437 /* ProfileLinksSwitcher.swift */,
+				928BAC4C29C3212900B0E437 /* LoginStatus.swift */,
+				928BAC4929C30DE000B0E437 /* Payments.swift */,
+				928BAC4529C30D3400B0E437 /* AuthViewState.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		92C763252992642E00F5161C /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,7 +305,6 @@
 		92C7632A29929A3700F5161C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				92C7632B29929A5B00F5161C /* String.swift */,
 				922180FB2992BE83006EF9BE /* UIAplication.swift */,
 				921471D0299668EE00072D97 /* Date.swift */,
 				9223506E29ABE4D300EF1AD3 /* URLCache.swift */,
@@ -397,7 +414,7 @@
 				922180FA2992B7D3006EF9BE /* SearchBarView.swift in Sources */,
 				9223C7B029954F16002288F5 /* ChartView.swift in Sources */,
 				920C1B992988147900311990 /* CoinService.swift in Sources */,
-				92C7632C29929A5B00F5161C /* String.swift in Sources */,
+				928BAC4629C30D3400B0E437 /* AuthViewState.swift in Sources */,
 				92C763292992905600F5161C /* AuthView.swift in Sources */,
 				92174760298EA60C0066301F /* MarketView.swift in Sources */,
 				92C87945298BFFE9000A4AB8 /* PaymentView.swift in Sources */,
@@ -409,13 +426,16 @@
 				920C1B922987EF7000311990 /* CoinCell.swift in Sources */,
 				920C1B96298813C400311990 /* CoinsViewModel.swift in Sources */,
 				922180FC2992BE83006EF9BE /* UIAplication.swift in Sources */,
+				928BAC4D29C3212900B0E437 /* LoginStatus.swift in Sources */,
 				920C1B882987E21D00311990 /* SplashView.swift in Sources */,
 				920C1B8F2987EC7000311990 /* HomeView.swift in Sources */,
 				920C1B862987DC2900311990 /* Colors.swift in Sources */,
 				9217475C298E64B50066301F /* NavigationLazyView.swift in Sources */,
 				92CFA075299A5056002D939A /* CoreDataModel.xcdatamodeld in Sources */,
+				928BAC4A29C30DE000B0E437 /* Payments.swift in Sources */,
 				923D58C629892A88008BFD8C /* MyCoinsCell.swift in Sources */,
 				92873D1C2994218300114EBB /* CoinDetailView.swift in Sources */,
+				928BAC4829C30DC100B0E437 /* ProfileLinksSwitcher.swift in Sources */,
 				92C87947298C0010000A4AB8 /* TransactionsListView.swift in Sources */,
 				92CFA077299A53F7002D939A /* PortfolioViewModel.swift in Sources */,
 				92C76322299244DA00F5161C /* LoginView.swift in Sources */,

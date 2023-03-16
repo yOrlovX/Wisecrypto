@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class DataManager {
+final class DataManager {
   
   static let instance = DataManager()
   let container: NSPersistentContainer

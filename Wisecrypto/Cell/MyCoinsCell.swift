@@ -94,6 +94,7 @@ struct MyCoinsCell: View {
     }
   }
 }
+
 struct MyCoinsCell_Previews: PreviewProvider {
   static var previews: some View {
     MyCoinsCell(image: "bts", symbol: "BTC", name: "Bitcoin", currentPrice: 54.38264, priceChange: 15.3, sum: 300)
