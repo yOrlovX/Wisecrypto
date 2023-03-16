@@ -50,7 +50,7 @@ struct AddCoinsView: View {
   }
 }
 
-extension AddCoinsView {
+private extension AddCoinsView {
   private func addCoinButtonActions() {
     portfolioViewModel.addCoin(image: coin.image, symbol: coin.symbol, name: coin.name, priceChange: coin.priceChangePercentage24H ?? 0, sum: Double(sumForCoin) ?? 0, currentPrice: coin.currentPrice)
     showCoinAnimation = true

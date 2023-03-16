@@ -40,7 +40,7 @@ struct SplashView: View {
 }
 
 
-extension SplashView {
+private extension SplashView {
   private var splashState: some View {
     ZStack {
       Colors.backgroundGradient

@@ -36,7 +36,7 @@ struct RegisterView: View {
   }
 }
 
-extension RegisterView {
+private extension RegisterView {
   private var logoContainer: some View {
     VStack(spacing: 4) {
       HStack {

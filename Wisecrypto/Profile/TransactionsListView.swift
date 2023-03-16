@@ -24,9 +24,3 @@ struct TransactionsListView: View {
       .background(Colors.lightBackground)
     }
 }
-
-//struct TransactionsListView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TransactionsListView()
-//    }
-//}

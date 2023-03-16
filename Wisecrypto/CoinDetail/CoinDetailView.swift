@@ -65,7 +65,7 @@ struct CoinDetailView: View {
   func dismiss() {}
 }
 
-extension CoinDetailView {
+ private extension CoinDetailView {
   private var coinStaticticSection: some View {
     VStack {
       HStack {

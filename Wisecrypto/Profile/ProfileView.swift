@@ -59,7 +59,7 @@ struct ProfileView: View {
   }
 }
 
-extension ProfileView {
+private extension ProfileView {
   private var currentBalanceSection: some View {
     HStack {
       Rectangle()
