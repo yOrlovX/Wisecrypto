@@ -19,8 +19,10 @@ struct AuthView: View {
         switch currentViewShowing {
         case .login:
           LoginView(currentViewShowing: $currentViewShowing)
+            .transition(.move(edge: .leading))
         case .register:
-          RegisterView(currentViewShowing: $currentViewShowing)  
+          RegisterView(currentViewShowing: $currentViewShowing)
+            .transition(.move(edge: .trailing))
         }
       }
     }

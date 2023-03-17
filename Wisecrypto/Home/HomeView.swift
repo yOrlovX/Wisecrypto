@@ -13,6 +13,7 @@ struct HomeView: View {
   @EnvironmentObject var portfolioViewModel: PortfolioViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
   @State var selection: String = ""
+  @State private var hasAppeared = false
   var filterConditions = ["Rank", "Max", "Min", "Percentage"]
   
   var body: some View {
@@ -30,8 +31,11 @@ struct HomeView: View {
             watchlistSection
           }
           .onAppear {
-            portfolioViewModel.getUserData()
-            portfolioViewModel.getPortfolioData()
+            if !hasAppeared {
+              portfolioViewModel.getUserData()
+              portfolioViewModel.getPortfolioData()
+              hasAppeared = true
+            }
           }
         }
       }
