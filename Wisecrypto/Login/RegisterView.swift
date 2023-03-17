@@ -13,9 +13,6 @@ struct MyType: Codable {
 
 struct RegisterView: View {
   @Binding var currentViewShowing: AuthViewState
-  @KeychainStorage("UserPassword") var savedPassword = MyType(string: "")
-  @KeychainStorage("UserMail") var savedMail = MyType(string: "")
-  @KeychainStorage("UserInitials") var savedInitials = MyType(string: "")
   @EnvironmentObject private var authViewModel: AuthViewModel
   
   var body: some View {
@@ -95,9 +92,10 @@ private extension RegisterView {
   
   private var buttonsContainer: some View {
     VStack(spacing: 24) {
-      Button(action: {savedPassword = MyType(string: authViewModel.password)
-        savedMail = MyType(string: authViewModel.email)
-        savedInitials = MyType(string: authViewModel.fullName)
+      Button(action: {
+        authViewModel.savedPassword = MyType(string: authViewModel.password)
+        authViewModel.savedMail = MyType(string: authViewModel.email)
+        authViewModel.savedInitials = MyType(string: authViewModel.fullName)
         authViewModel.userLogin = true
       }) {
         Text("Register")

@@ -22,6 +22,7 @@ final class AuthViewModel: ObservableObject {
   @AppStorage("UserLogin") var userLogin: Bool = false
   @KeychainStorage("UserPassword") var savedPassword = MyType(string: "")
   @KeychainStorage("UserMail") var savedMail = MyType(string: "")
+  @KeychainStorage("UserInitials") var savedInitials = MyType(string: "")
   
   let emailPublisher = PassthroughSubject<String, Never>()
   let passwordPublisher = PassthroughSubject<String, Never>()

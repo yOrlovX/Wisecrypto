@@ -14,7 +14,6 @@ struct ProfileView: View {
   @State var isPresented: Bool = false
   @EnvironmentObject var portfolioViewModel: PortfolioViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
-  @KeychainStorage("UserInitials") var savedInitials = MyType(string: "")
   
   var body: some View {
     NavigationView {
@@ -27,7 +26,7 @@ struct ProfileView: View {
               .resizable()
               .scaledToFit()
               .frame(width: 80, height: 80)
-            Text(savedInitials?.string ?? "")
+            Text(authViewModel.savedInitials?.string ?? "")
               .font(.system(size: 24, weight: .bold))
             currentBalanceSection
             buttonsSections

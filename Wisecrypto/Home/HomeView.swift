@@ -11,9 +11,9 @@ struct HomeView: View {
   
   @EnvironmentObject var coinsViewModel: CoinsViewModel
   @EnvironmentObject var portfolioViewModel: PortfolioViewModel
+  @EnvironmentObject var authViewModel: AuthViewModel
   @State var selection: String = ""
   var filterConditions = ["Rank", "Max", "Min", "Percentage"]
-  @KeychainStorage("UserInitials") var savedInitials = MyType(string: "")
   
   var body: some View {
     NavigationView {
@@ -51,7 +51,7 @@ private extension HomeView {
         Text("Hello")
           .font(.system(size: 12, weight: .semibold))
           .foregroundColor(.gray)
-        Text(savedInitials?.string ?? "No name")
+        Text(authViewModel.savedInitials?.string ?? "No name")
           .font(.system(size: 20, weight: .bold))
       }
       Spacer()
