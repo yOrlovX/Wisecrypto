@@ -17,7 +17,11 @@ final class AuthViewModel: ObservableObject {
   @Published var fullName: String = ""
   @Published var emailStatus: LoginStatus = .notEvaluated
   @Published var passwordStatus: LoginStatus = .notEvaluated
+  
   @AppStorage("UserRegister") var isRegister: Bool = false
+  @AppStorage("UserLogin") var userLogin: Bool = false
+  @KeychainStorage("UserPassword") var savedPassword = MyType(string: "")
+  @KeychainStorage("UserMail") var savedMail = MyType(string: "")
   
   let emailPublisher = PassthroughSubject<String, Never>()
   let passwordPublisher = PassthroughSubject<String, Never>()
@@ -26,7 +30,7 @@ final class AuthViewModel: ObservableObject {
     verifyPasswordStatus()
     verifyEmailStatus()
   }
-      
+        
   private func verifyPasswordStatus() {
     passwordPublisher
       .map { password -> LoginStatus in

@@ -13,16 +13,14 @@ struct AuthView: View {
   
   var body: some View {
     ZStack {
-      if authViewModel.isRegister {
+      if authViewModel.userLogin {
         MainView()
       } else {
         switch currentViewShowing {
         case .login:
           LoginView(currentViewShowing: $currentViewShowing)
         case .register:
-          RegisterView(currentViewShowing: $currentViewShowing)
-        case .main:
-          MainView()
+          RegisterView(currentViewShowing: $currentViewShowing)  
         }
       }
     }

@@ -10,5 +10,4 @@ import Foundation
 enum AuthViewState {
   case login
   case register
-  case main
 }

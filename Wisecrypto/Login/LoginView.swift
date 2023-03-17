@@ -11,6 +11,7 @@ struct LoginView: View {
   
   @EnvironmentObject private var authViewModel: AuthViewModel
   @Binding var currentViewShowing: AuthViewState
+  @State private var incorrectCredentialsAllert: Bool = false
   
   var body: some View {
     ZStack {
@@ -86,9 +87,18 @@ private extension LoginView {
           .font(.system(size: 12, weight: .semibold))
           .foregroundColor(Colors.primaryYellow)
       }
-      Button(action: {}) {
+      Button(action: {
+        if authViewModel.email != authViewModel.savedMail?.string && authViewModel.password != authViewModel.savedPassword?.string {
+          incorrectCredentialsAllert = true
+        } else {
+          authViewModel.userLogin = true
+        }
+      }) {
         Text("Login")
           .modifier(PrimaryGreenButtonModifier())
+      }
+      .alert("Incorrect email or password", isPresented: $incorrectCredentialsAllert) {
+        Button("OK", role: .cancel) { }
       }
       Button(action: {
         withAnimation(.easeIn) {

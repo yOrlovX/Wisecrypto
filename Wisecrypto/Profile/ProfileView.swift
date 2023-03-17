@@ -45,7 +45,7 @@ struct ProfileView: View {
                   showLogoutAlert = true
                 }
                 .alert("Are you sure you want to leave?", isPresented: $showLogoutAlert) {
-                  Button("OK", role: .cancel) { authViewModel.isRegister = false }
+                  Button("OK", role: .cancel) { authViewModel.userLogin = false }
                   Button("Cancel", role: .destructive) {}
                 }
             }

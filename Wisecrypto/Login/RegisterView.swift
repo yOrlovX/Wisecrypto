@@ -98,8 +98,7 @@ private extension RegisterView {
       Button(action: {savedPassword = MyType(string: authViewModel.password)
         savedMail = MyType(string: authViewModel.email)
         savedInitials = MyType(string: authViewModel.fullName)
-        authViewModel.isRegister = true
-        currentViewShowing = .main
+        authViewModel.userLogin = true
       }) {
         Text("Register")
           .modifier(PrimaryGreenButtonModifier())
