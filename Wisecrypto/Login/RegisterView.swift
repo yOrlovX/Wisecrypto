@@ -82,10 +82,17 @@ private extension RegisterView {
         }
       }
       .modifier(TextFieldModifier())
-      Text("Conform Password")
+      Text("Confirm Password")
         .font(.system(size: 14, weight: .medium))
-      TextField("Please confirm Password", text: $authViewModel.confirmedPassword)
-        .modifier(TextFieldModifier())
+      HStack {
+        TextField("Please confirm Password", text: $authViewModel.confirmedPassword)
+        if authViewModel.confirmedPassword.count != 0 {
+          Image(systemName: authViewModel.confirmedPassword == authViewModel.password ? "checkmark" : "xmark")
+            .foregroundColor(authViewModel.confirmedPassword == authViewModel.password ? Colors.primaryGreen : Colors.primaryRed)
+        }
+      }
+      .modifier(TextFieldModifier())
+      
     }
     .padding(.horizontal, 15)
   }
