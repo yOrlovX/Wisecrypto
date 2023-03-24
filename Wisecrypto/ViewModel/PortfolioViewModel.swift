@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 final class PortfolioViewModel: ObservableObject {
   
@@ -52,9 +53,14 @@ final class PortfolioViewModel: ObservableObject {
     newCoin.priceChange = priceChange
     newCoin.sum = sum
     newCoin.currentPrice = currentPrice
-    
     saveData() 
   }
+  
+  func addImageToUser(_ image: UIImage) {
+      guard let user = userData.last else { return }
+      user.userImage = image.jpegData(compressionQuality: 0.1)
+      saveData()
+  } 
   
   func getUserBalance() -> Double {
     userData.reduce(0) { $0 + $1.balance}

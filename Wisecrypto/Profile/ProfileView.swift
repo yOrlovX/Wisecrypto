@@ -9,9 +9,12 @@ import SwiftUI
 
 struct ProfileView: View {
   @State private var showLogoutAlert = false
+  @State private var showImagePicker: Bool = false
+  @State var isPresented: Bool = false
+  
   private let sectionsData = ProfileCellModel.profileCellData
   private let logoutData = ProfileCellModel.logoutData
-  @State var isPresented: Bool = false
+  
   @EnvironmentObject var portfolioViewModel: PortfolioViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
   
@@ -22,10 +25,25 @@ struct ProfileView: View {
           .ignoresSafeArea()
         ScrollView {
           VStack {
-            Image("userImage")
-              .resizable()
-              .scaledToFit()
-              .frame(width: 80, height: 80)
+            if let userImageData = portfolioViewModel.userData.last?.userImage,
+               let userImage = UIImage(data: userImageData) {
+              Image(uiImage: userImage)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 100, height: 100)
+                .clipShape(Circle())
+                .onTapGesture {
+                  showImagePicker.toggle()
+                }
+            } else {
+              Image(systemName: "person.circle")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 100, height: 100)
+                .onTapGesture {
+                  showImagePicker.toggle()
+                }
+            }
             Text(authViewModel.savedInitials?.string ?? "")
               .font(.system(size: 24, weight: .bold))
             currentBalanceSection
@@ -53,12 +71,18 @@ struct ProfileView: View {
           .padding(.top, 40)
         }
       }
-      
+      .fullScreenCover(isPresented: $showImagePicker, onDismiss: didDismiss, content: {
+        PhotoPicker(viewModel: portfolioViewModel)
+      })
       .navigationBarHidden(true)
       .onAppear(perform: {
         portfolioViewModel.getUserData()
       })
     }
+  }
+  
+  func didDismiss() {
+    portfolioViewModel.getUserData()
   }
 }
 

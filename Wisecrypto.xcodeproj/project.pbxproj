@@ -54,6 +54,7 @@
 		92CFA075299A5056002D939A /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 92CFA073299A5056002D939A /* CoreDataModel.xcdatamodeld */; };
 		92CFA077299A53F7002D939A /* PortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CFA076299A53F7002D939A /* PortfolioViewModel.swift */; };
 		92DE364C29A69BDF00352C9A /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DE364B29A69BDF00352C9A /* AnimationView.swift */; };
+		92F0DD3829CDAD6800130E6E /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F0DD3729CDAD6800130E6E /* PhotoPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		92CFA074299A5056002D939A /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		92CFA076299A53F7002D939A /* PortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewModel.swift; sourceTree = "<group>"; };
 		92DE364B29A69BDF00352C9A /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		92F0DD3729CDAD6800130E6E /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 			children = (
 				920C1B852987DC2900311990 /* Colors.swift */,
 				9217475B298E64B50066301F /* NavigationLazyView.swift */,
+				92F0DD3729CDAD6800130E6E /* PhotoPicker.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				928BAC4A29C30DE000B0E437 /* Payments.swift in Sources */,
 				923D58C629892A88008BFD8C /* MyCoinsCell.swift in Sources */,
 				92873D1C2994218300114EBB /* CoinDetailView.swift in Sources */,
+				92F0DD3829CDAD6800130E6E /* PhotoPicker.swift in Sources */,
 				928BAC4829C30DC100B0E437 /* ProfileLinksSwitcher.swift in Sources */,
 				92C87947298C0010000A4AB8 /* TransactionsListView.swift in Sources */,
 				92CFA077299A53F7002D939A /* PortfolioViewModel.swift in Sources */,
