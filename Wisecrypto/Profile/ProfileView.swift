@@ -16,7 +16,7 @@ struct ProfileView: View {
   private let logoutData = ProfileCellModel.logoutData
   
   @EnvironmentObject var portfolioViewModel: PortfolioViewModel
-  @EnvironmentObject var authViewModel: UserViewModel
+  @EnvironmentObject var userViewModel: UserViewModel
   
   var body: some View {
     NavigationView {
@@ -25,7 +25,7 @@ struct ProfileView: View {
           .ignoresSafeArea()
         ScrollView {
           VStack {
-            if let userImageData = portfolioViewModel.userData.last?.userImage,
+            if let userImageData = userViewModel.userData.last?.userImage,
                let userImage = UIImage(data: userImageData) {
               Image(uiImage: userImage)
                 .resizable()
@@ -45,7 +45,7 @@ struct ProfileView: View {
                 }
             }
             
-            if let user = authViewModel.currentUser {
+            if let user = userViewModel.currentUser {
               Text(user.fullName ?? "")
                 .font(.system(size: 20, weight: .bold))
             }
@@ -65,7 +65,7 @@ struct ProfileView: View {
                   showLogoutAlert = true
                 }
                 .alert("Are you sure you want to leave?", isPresented: $showLogoutAlert) {
-                  Button("OK", role: .cancel) { authViewModel.userLogin = false }
+                  Button("OK", role: .cancel) { userViewModel.userLogin = false }
                   Button("Cancel", role: .destructive) {}
                 }
             }
@@ -75,17 +75,17 @@ struct ProfileView: View {
         }
       }
       .fullScreenCover(isPresented: $showImagePicker, onDismiss: didDismiss, content: {
-        PhotoPicker(viewModel: portfolioViewModel)
+        PhotoPicker(userViewModel: userViewModel)
       })
       .navigationBarHidden(true)
       .onAppear(perform: {
-        portfolioViewModel.getUserData()
+        userViewModel.getUserData()
       })
     }
   }
   
   func didDismiss() {
-    portfolioViewModel.getUserData()
+    userViewModel.getUserData()
   }
 }
 
@@ -103,7 +103,7 @@ private extension ProfileView {
               .foregroundColor(.white)
               .padding()
             Spacer()
-            Text("$ \(String(format:"%.2f",portfolioViewModel.getUserBalance()))")
+            Text("$ \(String(format:"%.2f",userViewModel.getUserBalance()))")
               .font(.system(size: 32, weight: .bold))
               .foregroundColor(.white)
               .padding()

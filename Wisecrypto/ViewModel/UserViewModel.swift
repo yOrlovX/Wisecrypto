@@ -8,8 +8,11 @@
 import Foundation
 import SwiftUI
 import Combine
+import CoreData
 
 final class UserViewModel: ObservableObject {
+  
+  @Published var userData: [UserEntity] = []
   
   private let manager = DataManager.instance
   
@@ -33,19 +36,7 @@ final class UserViewModel: ObservableObject {
   init() {
     verifyPasswordStatus()
     verifyEmailStatus()
-  }
-  
-  func registerUser() {
-    let user = UserEntity(context: manager.container.viewContext)
-    user.email = email
-    user.password = password
-    user.fullName = fullName
-    do {
-      try manager.container.viewContext.save()
-      self.currentUser = user
-    } catch {
-      print("Error saving user data: \(error.localizedDescription)")
-    }
+    getUserData()
   }
 }
 
@@ -85,5 +76,53 @@ extension UserViewModel {
   private func isValidPassword(_ password: String) -> Bool {
     let passwordRegex = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])(?=.*[A-Z]).{6,}$")
     return passwordRegex.evaluate(with: password)
+  }
+}
+
+//MARK: User operations
+extension UserViewModel {
+  
+  func registerUser() {
+    let user = UserEntity(context: manager.context)
+    user.email = email
+    user.password = password
+    user.fullName = fullName
+    
+    self.currentUser = user
+    saveData()
+  }
+  
+  func getUserData() {
+    let request = NSFetchRequest<UserEntity>(entityName: "UserEntity")
+    do {
+      userData = try manager.context.fetch(request)
+    } catch _ {
+      print("Error")
+    }
+  }
+  
+  func addImageToUser(_ image: UIImage) {
+      guard let user = userData.last else { return }
+      user.userImage = image.jpegData(compressionQuality: 0.1)
+      saveData()
+  }
+  
+  func getUserBalance() -> Double {
+    userData.reduce(0) { $0 + $1.balance}
+  }
+    
+  func update(sum: Double) {
+    guard let user = userData.last else { return }
+    user.balance = -sum
+    saveData()
+  }
+  
+  func saveData() {
+    do {
+      try manager.container.viewContext.save()
+      getUserData()
+    } catch let error {
+      print("Error saving \(error)")
+    }
   }
 }

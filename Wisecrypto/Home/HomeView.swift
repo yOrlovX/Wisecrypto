@@ -11,7 +11,7 @@ struct HomeView: View {
   
   @EnvironmentObject var coinsViewModel: CoinsViewModel
   @EnvironmentObject var portfolioViewModel: PortfolioViewModel
-  @EnvironmentObject var authViewModel: UserViewModel
+  @EnvironmentObject var userViewModel: UserViewModel
   @State var selection: String = ""
   @State private var hasAppeared = false
   var filterConditions = ["Rank", "Max", "Min", "Percentage"]
@@ -33,7 +33,7 @@ struct HomeView: View {
           .padding(.top, 30)
           .onAppear {
             if !hasAppeared {
-              portfolioViewModel.getUserData()
+              userViewModel.getUserData()
               portfolioViewModel.getPortfolioData()
               hasAppeared = true
             }
@@ -50,7 +50,7 @@ private extension HomeView {
   
   private var userSection: some View {
     HStack(spacing: 12) {
-      if let userImageData = portfolioViewModel.userData.last?.userImage,
+      if let userImageData = userViewModel.userData.last?.userImage,
          let userImage = UIImage(data: userImageData) {
         Image(uiImage: userImage)
           .resizable()
@@ -67,7 +67,7 @@ private extension HomeView {
         Text("Hello")
           .font(.system(size: 12, weight: .semibold))
           .foregroundColor(.gray)
-        if let user = authViewModel.currentUser,
+        if let user = userViewModel.currentUser,
            let fullName = user.fullName {
           Text(fullName)
             .font(.system(size: 20, weight: .bold))

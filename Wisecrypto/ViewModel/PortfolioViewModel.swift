@@ -13,11 +13,10 @@ final class PortfolioViewModel: ObservableObject {
   
   private let manager = DataManager.instance
   @Published var userCoins: [PortofolioEntity] = []
-  @Published var userData: [UserEntity] = []
   
   init() {
     getPortfolioData()
-    getUserData()
+    
   }
     
   func getPortfolioData() {
@@ -26,15 +25,6 @@ final class PortfolioViewModel: ObservableObject {
       userCoins = try manager.context.fetch(request)
     } catch let error {
       print("Error fetching \(error)")
-    }
-  }
-  
-  func getUserData() {
-    let request = NSFetchRequest<UserEntity>(entityName: "UserEntity")
-    do {
-      userData = try manager.context.fetch(request)
-    } catch _ {
-      print("Error")
     }
   }
   
@@ -56,22 +46,6 @@ final class PortfolioViewModel: ObservableObject {
     saveData() 
   }
   
-  func addImageToUser(_ image: UIImage) {
-      guard let user = userData.last else { return }
-      user.userImage = image.jpegData(compressionQuality: 0.1)
-      saveData()
-  } 
-  
-  func getUserBalance() -> Double {
-    userData.reduce(0) { $0 + $1.balance}
-  }
-    
-  func update(sum: Double) {
-    guard let user = userData.last else { return }
-    user.balance = -sum
-    saveData()
-  }
-  
   func totalCoinsSum() -> Double {
     userCoins.reduce(0) { $0 + $1.sum }
   }
@@ -84,7 +58,6 @@ final class PortfolioViewModel: ObservableObject {
     do {
       try manager.container.viewContext.save()
       getPortfolioData()
-      getUserData()
     } catch let error {
       print("Error saving \(error)")
     }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PhotoPicker: UIViewControllerRepresentable {
   
-  @StateObject var viewModel: PortfolioViewModel
+  @StateObject var userViewModel: UserViewModel
   
   func makeUIViewController(context: Context) -> UIImagePickerController {
     let picker = UIImagePickerController()
@@ -32,7 +32,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
       if let image = info[.originalImage] as? UIImage {
-        photoPicker.viewModel.addImageToUser(image)
+        photoPicker.userViewModel.addImageToUser(image)
       }
       picker.dismiss(animated: true)
     }
