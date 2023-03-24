@@ -35,6 +35,23 @@ final class UserViewModel: ObservableObject {
     verifyEmailStatus()
   }
   
+  func registerUser() {
+    let user = UserEntity(context: manager.container.viewContext)
+    user.email = email
+    user.password = password
+    user.fullName = fullName
+    do {
+      try manager.container.viewContext.save()
+      self.currentUser = user
+    } catch {
+      print("Error saving user data: \(error.localizedDescription)")
+    }
+  }
+}
+
+// MARK: verify & validation functions
+extension UserViewModel {
+  
   private func verifyPasswordStatus() {
     passwordPublisher
       .map { password -> LoginStatus in
@@ -57,19 +74,6 @@ final class UserViewModel: ObservableObject {
         }
       }
       .assign(to: &$emailStatus)
-  }
-  
-  func registerUser() {
-    let user = UserEntity(context: manager.container.viewContext)
-    user.email = email
-    user.password = password
-    user.fullName = fullName
-    do {
-      try manager.container.viewContext.save()
-      self.currentUser = user
-    } catch {
-      print("Error saving user data: \(error.localizedDescription)")
-    }
   }
   
   private func isValidEmail() -> Bool {
