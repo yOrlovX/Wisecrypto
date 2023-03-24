@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AuthView: View {
   @State private var currentViewShowing: AuthViewState = .login
-  @EnvironmentObject private var authViewModel: AuthViewModel
+  @EnvironmentObject private var authViewModel: UserViewModel
   
   var body: some View {
     ZStack {

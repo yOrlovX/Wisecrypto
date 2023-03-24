@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-final class AuthViewModel: ObservableObject {
+final class UserViewModel: ObservableObject {
   
   private let manager = DataManager.instance
   

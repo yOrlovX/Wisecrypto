@@ -31,7 +31,7 @@
 		9252C3E529BE06BD0015B4DF /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 9252C3E429BE06BD0015B4DF /* KeychainAccess */; };
 		9252C3E729BE06FD0015B4DF /* KeychainStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9252C3E629BE06FD0015B4DF /* KeychainStorage.swift */; };
 		92671FAE299CE43A004ACA87 /* AddBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92671FAD299CE43A004ACA87 /* AddBalanceView.swift */; };
-		9276461129B63362007F9D25 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276461029B63362007F9D25 /* AuthViewModel.swift */; };
+		9276461129B63362007F9D25 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9276461029B63362007F9D25 /* UserViewModel.swift */; };
 		92873D1C2994218300114EBB /* CoinDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92873D1B2994218300114EBB /* CoinDetailView.swift */; };
 		928BAC4629C30D3400B0E437 /* AuthViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928BAC4529C30D3400B0E437 /* AuthViewState.swift */; };
 		928BAC4829C30DC100B0E437 /* ProfileLinksSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928BAC4729C30DC100B0E437 /* ProfileLinksSwitcher.swift */; };
@@ -81,7 +81,7 @@
 		923D58C529892A88008BFD8C /* MyCoinsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCoinsCell.swift; sourceTree = "<group>"; };
 		9252C3E629BE06FD0015B4DF /* KeychainStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStorage.swift; sourceTree = "<group>"; };
 		92671FAD299CE43A004ACA87 /* AddBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBalanceView.swift; sourceTree = "<group>"; };
-		9276461029B63362007F9D25 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		9276461029B63362007F9D25 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		92873D1B2994218300114EBB /* CoinDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailView.swift; sourceTree = "<group>"; };
 		928BAC4529C30D3400B0E437 /* AuthViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewState.swift; sourceTree = "<group>"; };
 		928BAC4729C30DC100B0E437 /* ProfileLinksSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLinksSwitcher.swift; sourceTree = "<group>"; };
@@ -242,7 +242,7 @@
 			children = (
 				920C1B95298813C400311990 /* CoinsViewModel.swift */,
 				92CFA076299A53F7002D939A /* PortfolioViewModel.swift */,
-				9276461029B63362007F9D25 /* AuthViewModel.swift */,
+				9276461029B63362007F9D25 /* UserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -410,7 +410,7 @@
 				92C8793F298BD493000A4AB8 /* ProfileCell.swift in Sources */,
 				920C1B8B2987E41000311990 /* CoinModel.swift in Sources */,
 				92C763242992565D00F5161C /* RegisterView.swift in Sources */,
-				9276461129B63362007F9D25 /* AuthViewModel.swift in Sources */,
+				9276461129B63362007F9D25 /* UserViewModel.swift in Sources */,
 				92C8793B298BB860000A4AB8 /* MainView.swift in Sources */,
 				921471D1299668EE00072D97 /* Date.swift in Sources */,
 				92DE364C29A69BDF00352C9A /* AnimationView.swift in Sources */,

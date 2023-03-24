@@ -13,7 +13,7 @@ struct MyType: Codable {
 
 struct RegisterView: View {
   @Binding var currentViewShowing: AuthViewState
-  @EnvironmentObject private var authViewModel: AuthViewModel
+  @EnvironmentObject private var authViewModel: UserViewModel
   
   var body: some View {
     ZStack {

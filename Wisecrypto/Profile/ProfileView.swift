@@ -16,7 +16,7 @@ struct ProfileView: View {
   private let logoutData = ProfileCellModel.logoutData
   
   @EnvironmentObject var portfolioViewModel: PortfolioViewModel
-  @EnvironmentObject var authViewModel: AuthViewModel
+  @EnvironmentObject var authViewModel: UserViewModel
   
   var body: some View {
     NavigationView {

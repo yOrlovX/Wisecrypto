@@ -11,7 +11,7 @@ struct SplashView: View {
   
   let coinsViewModel: CoinsViewModel
   let portfolioViewModel: PortfolioViewModel
-  let authViewModel: AuthViewModel
+  let authViewModel: UserViewModel
   
   @State private var isActive: Bool = false
   @State private var opacity = 0.0
