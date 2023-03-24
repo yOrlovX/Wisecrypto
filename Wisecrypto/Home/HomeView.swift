@@ -48,9 +48,19 @@ private extension HomeView {
   
   private var userSection: some View {
     HStack(spacing: 12) {
-      Image("userImage")
-        .resizable().scaledToFit()
-        .frame(width: 40, height: 40)
+      if let userImageData = portfolioViewModel.userData.last?.userImage,
+         let userImage = UIImage(data: userImageData) {
+        Image(uiImage: userImage)
+          .resizable()
+          .aspectRatio(contentMode: .fill)
+          .frame(width: 40, height: 40)
+          .clipShape(Circle())
+      } else {
+        Image(systemName: "person.circle")
+          .resizable()
+          .aspectRatio(contentMode: .fill)
+          .frame(width: 40, height: 40)
+      }
       VStack(alignment: .leading) {
         Text("Hello")
           .font(.system(size: 12, weight: .semibold))
