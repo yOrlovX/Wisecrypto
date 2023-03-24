@@ -30,6 +30,7 @@ struct HomeView: View {
             }
             watchlistSection
           }
+          .padding(.top, 30)
           .onAppear {
             if !hasAppeared {
               portfolioViewModel.getUserData()
@@ -40,6 +41,7 @@ struct HomeView: View {
         }
       }
       .background(Colors.lightBackground)
+      .navigationBarHidden(true)
     }
   }
 }
