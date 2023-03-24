@@ -11,27 +11,30 @@ import Combine
 
 final class AuthViewModel: ObservableObject {
   
+  private let manager = DataManager.instance
+  
   @Published var email: String = ""
   @Published var password: String = ""
   @Published var confirmedPassword: String = ""
   @Published var fullName: String = ""
   @Published var emailStatus: LoginStatus = .notEvaluated
   @Published var passwordStatus: LoginStatus = .notEvaluated
+  @Published var currentUser: UserEntity?
   
   @AppStorage("UserRegister") var isRegister: Bool = false
   @AppStorage("UserLogin") var userLogin: Bool = false
-  @KeychainStorage("UserPassword") var savedPassword = MyType(string: "")
-  @KeychainStorage("UserMail") var savedMail = MyType(string: "")
-  @KeychainStorage("UserInitials") var savedInitials = MyType(string: "")
+  @KeychainStorage("UserPassword") var keychainPassword = MyType(string: "")
+  @KeychainStorage("UserMail") var keychainMail = MyType(string: "")
+  @KeychainStorage("UserFullName") var keychainFullName = MyType(string: "")
   
   let emailPublisher = PassthroughSubject<String, Never>()
   let passwordPublisher = PassthroughSubject<String, Never>()
-    
+  
   init() {
     verifyPasswordStatus()
     verifyEmailStatus()
   }
-        
+  
   private func verifyPasswordStatus() {
     passwordPublisher
       .map { password -> LoginStatus in
@@ -56,8 +59,20 @@ final class AuthViewModel: ObservableObject {
       .assign(to: &$emailStatus)
   }
   
-    
-   private func isValidEmail() -> Bool {
+  func registerUser() {
+    let user = UserEntity(context: manager.container.viewContext)
+    user.email = email
+    user.password = password
+    user.fullName = fullName
+    do {
+      try manager.container.viewContext.save()
+      self.currentUser = user
+    } catch {
+      print("Error saving user data: \(error.localizedDescription)")
+    }
+  }
+  
+  private func isValidEmail() -> Bool {
     let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
     
     return regex.firstMatch(in: email, range: NSRange(location: 0, length: email.count)) != nil

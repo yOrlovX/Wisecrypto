@@ -23,7 +23,7 @@ struct HomeView: View {
           VStack(spacing: 20) {
             userSection
             totalPortfolioSection
-            if portfolioViewModel.userData.isEmpty {
+            if portfolioViewModel.userCoins.isEmpty {
               Text("Already no coins in portfolio")
             } else {
               myCoinSection
@@ -67,8 +67,10 @@ private extension HomeView {
         Text("Hello")
           .font(.system(size: 12, weight: .semibold))
           .foregroundColor(.gray)
-        Text(authViewModel.savedInitials?.string ?? "No name")
-          .font(.system(size: 20, weight: .bold))
+        if let user = authViewModel.currentUser {
+          Text(user.fullName ?? "")
+            .font(.system(size: 20, weight: .bold))
+        }
       }
       Spacer()
       Picker("", selection: $selection) {

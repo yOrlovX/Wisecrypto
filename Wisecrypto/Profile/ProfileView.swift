@@ -44,8 +44,11 @@ struct ProfileView: View {
                   showImagePicker.toggle()
                 }
             }
-            Text(authViewModel.savedInitials?.string ?? "")
-              .font(.system(size: 24, weight: .bold))
+            
+            if let user = authViewModel.currentUser {
+              Text(user.fullName ?? "")
+                .font(.system(size: 20, weight: .bold))
+            }
             currentBalanceSection
             buttonsSections
               .offset(y: -30)

@@ -88,7 +88,7 @@ private extension LoginView {
           .foregroundColor(Colors.primaryYellow)
       }
       Button(action: {
-        if authViewModel.email != authViewModel.savedMail?.string && authViewModel.password != authViewModel.savedPassword?.string {
+        if authViewModel.email != authViewModel.keychainMail?.string && authViewModel.password != authViewModel.keychainPassword?.string {
           incorrectCredentialsAllert = true
         } else {
           authViewModel.userLogin = true

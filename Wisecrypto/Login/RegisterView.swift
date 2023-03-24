@@ -100,9 +100,10 @@ private extension RegisterView {
   private var buttonsContainer: some View {
     VStack(spacing: 24) {
       Button(action: {
-        authViewModel.savedPassword = MyType(string: authViewModel.password)
-        authViewModel.savedMail = MyType(string: authViewModel.email)
-        authViewModel.savedInitials = MyType(string: authViewModel.fullName)
+        authViewModel.keychainPassword = MyType(string: authViewModel.password)
+        authViewModel.keychainMail = MyType(string: authViewModel.email)
+        authViewModel.keychainFullName = MyType(string: authViewModel.fullName)
+        authViewModel.registerUser()
         authViewModel.userLogin = true
       }) {
         Text("Register")
