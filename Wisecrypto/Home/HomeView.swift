@@ -61,6 +61,9 @@ private extension HomeView {
           .aspectRatio(contentMode: .fill)
           .frame(width: 40, height: 40)
       }
+      Image("userImage")
+        .resizable().scaledToFit()
+        .frame(width: 40, height: 40)
       VStack(alignment: .leading) {
         Text("Hello")
           .font(.system(size: 12, weight: .semibold))
