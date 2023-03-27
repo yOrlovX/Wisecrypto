@@ -9,12 +9,9 @@ import SwiftUI
 
 struct ProfileView: View {
   @State private var showLogoutAlert = false
-  @State private var showImagePicker: Bool = false
-  @State var isPresented: Bool = false
-  
   private let sectionsData = ProfileCellModel.profileCellData
   private let logoutData = ProfileCellModel.logoutData
-  
+  @State var isPresented: Bool = false
   @EnvironmentObject var portfolioViewModel: PortfolioViewModel
   @EnvironmentObject var userViewModel: UserViewModel
   
@@ -49,6 +46,12 @@ struct ProfileView: View {
               Text(user.fullName ?? "")
                 .font(.system(size: 20, weight: .bold))
             }
+            Image("userImage")
+              .resizable()
+              .scaledToFit()
+              .frame(width: 80, height: 80)
+            Text(authViewModel.savedInitials?.string ?? "")
+              .font(.system(size: 24, weight: .bold))
             currentBalanceSection
             buttonsSections
               .offset(y: -30)

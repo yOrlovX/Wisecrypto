@@ -7,7 +7,6 @@
 
 import Foundation
 import CoreData
-import UIKit
 
 final class PortfolioViewModel: ObservableObject {
   
@@ -43,7 +42,18 @@ final class PortfolioViewModel: ObservableObject {
     newCoin.priceChange = priceChange
     newCoin.sum = sum
     newCoin.currentPrice = currentPrice
+    
     saveData() 
+  }
+  
+  func getUserBalance() -> Double {
+    userData.reduce(0) { $0 + $1.balance}
+  }
+    
+  func update(sum: Double) {
+    guard let user = userData.last else { return }
+    user.balance = -sum
+    saveData()
   }
   
   func totalCoinsSum() -> Double {
