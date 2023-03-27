@@ -49,7 +49,7 @@ struct MyCoinsCell: View {
           .cornerRadius(8)
           .overlay {
             HStack(spacing: 2) {
-              Image(systemName: changeImage())
+              Image(systemName: priceChange < 0 ? "arrow.up.right" : "arrow.up.left")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 6, height: 6)
@@ -86,13 +86,13 @@ struct MyCoinsCell: View {
     .cornerRadius(10)
   }
   
-  func changeImage() -> String {
-    if priceChange < 0 {
-      return "arrow.down.left"
-    } else {
-      return "arrow.up.right"
-    }
-  }
+//  func changeImage() -> String {
+//    if priceChange < 0 {
+//      return "arrow.down.left"
+//    } else {
+//      return "arrow.up.right"
+//    }
+//  }
 }
 
 struct MyCoinsCell_Previews: PreviewProvider {
