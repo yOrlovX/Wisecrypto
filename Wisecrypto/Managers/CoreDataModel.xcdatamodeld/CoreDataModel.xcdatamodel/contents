@@ -21,5 +21,6 @@
     <elements>
         <element name="PortofolioEntity" positionX="-54" positionY="9" width="128" height="149"/>
         <element name="UserEntity" positionX="-63" positionY="-18" width="128" height="119"/>
+        <element name="UserEntity" positionX="-63" positionY="-18" width="128" height="59"/>
     </elements>
 </model>
