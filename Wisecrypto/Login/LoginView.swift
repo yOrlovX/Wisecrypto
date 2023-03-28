@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
   
-  @EnvironmentObject private var authViewModel: UserViewModel
+  @EnvironmentObject private var userViewModel: UserViewModel
   @Binding var currentViewShowing: AuthViewState
   @State private var incorrectCredentialsAllert: Bool = false
   
@@ -53,26 +53,26 @@ private extension LoginView {
       Text("Email")
         .font(.system(size: 14, weight: .medium))
       HStack {
-        TextField("botpablo@gmail.com", text: $authViewModel.email)
-          .onChange(of: authViewModel.email) { newValue in
-            authViewModel.emailPublisher.send(newValue)
+        TextField("botpablo@gmail.com", text: $userViewModel.email)
+          .onChange(of: userViewModel.email) { newValue in
+            userViewModel.emailPublisher.send(newValue)
           }
-        if authViewModel.email.count != 0 {
-          Image(systemName: authViewModel.emailStatus == .login ? "checkmark" : "xmark")
-            .foregroundColor(authViewModel.emailStatus == .login ? Colors.primaryGreen : Colors.primaryRed)
+        if userViewModel.email.count != 0 {
+          Image(systemName: userViewModel.emailStatus == .login ? "checkmark" : "xmark")
+            .foregroundColor(userViewModel.emailStatus == .login ? Colors.primaryGreen : Colors.primaryRed)
         }
       }
       .modifier(TextFieldModifier())
       Text("Password")
         .font(.system(size: 14, weight: .medium))
       HStack {
-        TextField("Please enter the password", text: $authViewModel.password)
-          .onChange(of: authViewModel.password) { newValue in
-            authViewModel.passwordPublisher.send(newValue)
+        TextField("Please enter the password", text: $userViewModel.password)
+          .onChange(of: userViewModel.password) { newValue in
+            userViewModel.passwordPublisher.send(newValue)
           }
-        if authViewModel.password.count != 0 {
-          Image(systemName: authViewModel.passwordStatus == .login ? "checkmark" : "xmark")
-            .foregroundColor(authViewModel.passwordStatus == .login ? Colors.primaryGreen : Colors.primaryRed)
+        if userViewModel.password.count != 0 {
+          Image(systemName: userViewModel.passwordStatus == .login ? "checkmark" : "xmark")
+            .foregroundColor(userViewModel.passwordStatus == .login ? Colors.primaryGreen : Colors.primaryRed)
         }
       }
       .modifier(TextFieldModifier())
@@ -88,10 +88,10 @@ private extension LoginView {
           .foregroundColor(Colors.primaryYellow)
       }
       Button(action: {
-        if authViewModel.email != authViewModel.savedMail?.string && authViewModel.password != authViewModel.savedPassword?.string {
+        if userViewModel.email != userViewModel.savedMail?.string && userViewModel.password != userViewModel.savedPassword?.string {
           incorrectCredentialsAllert = true
         } else {
-          authViewModel.userLogin = true
+          userViewModel.userLogin = true
         }
       }) {
         Text("Login")

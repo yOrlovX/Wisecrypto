@@ -10,7 +10,7 @@ import SwiftUI
 struct SplashView: View {
   
   let coinsViewModel: CoinsViewModel
-  let authViewModel: UserViewModel
+  let userViewModel: UserViewModel
   
   @State private var isActive: Bool = false
   @State private var opacity = 0.0
@@ -20,7 +20,7 @@ struct SplashView: View {
   
   init() {
     coinsViewModel = .init()
-    authViewModel = .init()
+    userViewModel = .init()
   }
   
   var body: some View {
@@ -32,7 +32,7 @@ struct SplashView: View {
       }
     }
     .environmentObject(coinsViewModel)
-    .environmentObject(authViewModel)
+    .environmentObject(userViewModel)
   }
 }
 

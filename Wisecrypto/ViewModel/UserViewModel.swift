@@ -1,5 +1,5 @@
 //
-//  AuthViewModel.swift
+//  UserViewModel.swift
 //  Wisecrypto
 //
 //  Created by Yaroslav Orlov on 06.03.2023.

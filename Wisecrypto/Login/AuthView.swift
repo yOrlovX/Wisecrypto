@@ -9,11 +9,11 @@ import SwiftUI
 
 struct AuthView: View {
   @State private var currentViewShowing: AuthViewState = .login
-  @EnvironmentObject private var authViewModel: UserViewModel
+  @EnvironmentObject private var userViewModel: UserViewModel
   
   var body: some View {
     ZStack {
-      if authViewModel.userLogin {
+      if userViewModel.userLogin {
         MainView()
       } else {
         switch currentViewShowing {

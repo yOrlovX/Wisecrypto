@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct TransactionsListView: View {
-  @EnvironmentObject var authViewModel: UserViewModel
+  @EnvironmentObject var userViewModel: UserViewModel
   
     var body: some View {
       VStack {
         ScrollView {
-          ForEach(authViewModel.userCoins, id: \.self) { data in
+          ForEach(userViewModel.userCoins, id: \.self) { data in
               VStack(spacing: 3) {
                 TransactionCell(id: data.id ?? UUID(), name: data.name ?? "", symbol: data.symbol ?? "", sum: data.sum, coinSum: data.currentPrice)
               }

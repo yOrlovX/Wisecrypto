@@ -13,7 +13,7 @@ struct MyType: Codable {
 
 struct RegisterView: View {
   @Binding var currentViewShowing: AuthViewState
-  @EnvironmentObject private var authViewModel: UserViewModel
+  @EnvironmentObject private var userViewModel: UserViewModel
   
   var body: some View {
     ZStack {
@@ -54,41 +54,41 @@ private extension RegisterView {
     VStack(alignment: .leading, spacing: 8) {
       Text("Full name")
         .font(.system(size: 14, weight: .medium))
-      TextField("Axel Rose", text: $authViewModel.fullName)
+      TextField("Axel Rose", text: $userViewModel.fullName)
         .modifier(TextFieldModifier())
       Text("Email")
         .font(.system(size: 14, weight: .medium))
       HStack {
-        TextField("botpablo@gmail.com", text: $authViewModel.email)
-          .onChange(of: authViewModel.email) { newValue in
-            authViewModel.emailPublisher.send(newValue)
+        TextField("botpablo@gmail.com", text: $userViewModel.email)
+          .onChange(of: userViewModel.email) { newValue in
+            userViewModel.emailPublisher.send(newValue)
           }
-        if authViewModel.email.count != 0 {
-          Image(systemName: authViewModel.emailStatus == .login ? "checkmark" : "xmark")
-            .foregroundColor(authViewModel.emailStatus == .login ? Colors.primaryGreen : Colors.primaryRed)
+        if userViewModel.email.count != 0 {
+          Image(systemName: userViewModel.emailStatus == .login ? "checkmark" : "xmark")
+            .foregroundColor(userViewModel.emailStatus == .login ? Colors.primaryGreen : Colors.primaryRed)
         }
       }
       .modifier(TextFieldModifier())
       Text("Password")
         .font(.system(size: 14, weight: .medium))
       HStack {
-        TextField("Please enter the password", text: $authViewModel.password)
-          .onChange(of: authViewModel.password) { newValue in
-            authViewModel.passwordPublisher.send(newValue)
+        TextField("Please enter the password", text: $userViewModel.password)
+          .onChange(of: userViewModel.password) { newValue in
+            userViewModel.passwordPublisher.send(newValue)
           }
-        if authViewModel.password.count != 0 {
-          Image(systemName: authViewModel.passwordStatus == .login ? "checkmark" : "xmark")
-            .foregroundColor(authViewModel.passwordStatus == .login ? Colors.primaryGreen : Colors.primaryRed)
+        if userViewModel.password.count != 0 {
+          Image(systemName: userViewModel.passwordStatus == .login ? "checkmark" : "xmark")
+            .foregroundColor(userViewModel.passwordStatus == .login ? Colors.primaryGreen : Colors.primaryRed)
         }
       }
       .modifier(TextFieldModifier())
       Text("Confirm Password")
         .font(.system(size: 14, weight: .medium))
       HStack {
-        TextField("Please confirm Password", text: $authViewModel.confirmedPassword)
-        if authViewModel.confirmedPassword.count != 0 {
-          Image(systemName: authViewModel.confirmedPassword == authViewModel.password ? "checkmark" : "xmark")
-            .foregroundColor(authViewModel.confirmedPassword == authViewModel.password ? Colors.primaryGreen : Colors.primaryRed)
+        TextField("Please confirm Password", text: $userViewModel.confirmedPassword)
+        if userViewModel.confirmedPassword.count != 0 {
+          Image(systemName: userViewModel.confirmedPassword == userViewModel.password ? "checkmark" : "xmark")
+            .foregroundColor(userViewModel.confirmedPassword == userViewModel.password ? Colors.primaryGreen : Colors.primaryRed)
         }
       }
       .modifier(TextFieldModifier())
@@ -100,11 +100,11 @@ private extension RegisterView {
   private var buttonsContainer: some View {
     VStack(spacing: 24) {
       Button(action: {
-        authViewModel.savedPassword = MyType(string: authViewModel.password)
-        authViewModel.savedMail = MyType(string: authViewModel.email)
-        authViewModel.savedInitials = MyType(string: authViewModel.fullName)
-        authViewModel.userLogin = true
-        authViewModel.registerUser()
+        userViewModel.savedPassword = MyType(string: userViewModel.password)
+        userViewModel.savedMail = MyType(string: userViewModel.email)
+        userViewModel.savedInitials = MyType(string: userViewModel.fullName)
+        userViewModel.userLogin = true
+        userViewModel.registerUser()
       }) {
         Text("Register")
           .modifier(PrimaryGreenButtonModifier())
