@@ -8,8 +8,13 @@
 import Foundation
 import SwiftUI
 import Combine
+import CoreData
 
 final class AuthViewModel: ObservableObject {
+  
+  private let manager = DataManager.instance
+  
+  @Published var userData: [UserEntity] = []
   
   @Published var email: String = ""
   @Published var password: String = ""
@@ -30,6 +35,7 @@ final class AuthViewModel: ObservableObject {
   init() {
     verifyPasswordStatus()
     verifyEmailStatus()
+    getUserData()
   }
         
   private func verifyPasswordStatus() {
@@ -67,4 +73,73 @@ final class AuthViewModel: ObservableObject {
     let passwordRegex = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])(?=.*[A-Z]).{6,}$")
     return passwordRegex.evaluate(with: password)
   }
+  
+  func registerUser() {
+    let newUser = UserEntity(context: manager.context)
+    newUser.fullName = fullName
+    newUser.password = password
+    newUser.email = email
+    
+    saveData()
+  }
+  
+  func saveData() {
+    do {
+      try manager.container.viewContext.save()
+      print("User Data saved")
+      getUserData()
+    } catch let error {
+      print("Error saving \(error)")
+    }
+  }
+  
+  func getUserData() {
+    let request = NSFetchRequest<UserEntity>(entityName: "UserEntity")
+    do {
+      userData = try manager.context.fetch(request)
+    } catch let error {
+      print("Error fetching: \(error)")
+    }
+  }
+  
+  
+  func addImageToUser(_ image: UIImage) {
+      guard let user = userData.last else { return }
+      user.userImage = image.jpegData(compressionQuality: 0.1)
+      saveData()
+  }
+  
+  func getUserBalance() -> Double {
+    userData.reduce(0) { $0 + $1.balance}
+  }
+    
+  func update(sum: Double) {
+    guard let user = userData.last else { return }
+    user.balance = -sum
+    saveData()
+  }
+  
+  
+  func addCoin(image: String, symbol: String, name: String, priceChange: Double, sum: Double, currentPrice: Double) {
+    let newCoin = PortofolioEntity(context: manager.context)
+    
+    newCoin.image = image
+    newCoin.symbol = symbol
+    newCoin.name = name
+    newCoin.priceChange = priceChange
+    newCoin.sum = sum
+    newCoin.currentPrice = currentPrice
+    newCoin.user = [userData[0]]
+    
+    saveData()
+  }
+  
+  func addUserBalance(balance: Double) {
+    guard let user = userData.last else { return }
+    user.balance = balance
+    saveData()
+  }
+  
+ 
 }
+

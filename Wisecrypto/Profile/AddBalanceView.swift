@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddBalanceView: View {
   @Environment(\.presentationMode) var presentationMode
-  @EnvironmentObject var portfolioViewModel: PortfolioViewModel
+  @EnvironmentObject var authViewModel: AuthViewModel
   @State private var balance: String = ""
   let payments = PaymentModel.paymentData
   @State private var selectedPayment = Payments.ovo
@@ -46,7 +46,7 @@ struct AddBalanceView: View {
         )
       }
       Button(action: {
-        portfolioViewModel.addUserBalance(balance: Double(balance) ?? 0)
+        authViewModel.addUserBalance(balance: Double(balance) ?? 0)
         self.presentationMode.wrappedValue.dismiss()
       }) {
         Text("Fill up")

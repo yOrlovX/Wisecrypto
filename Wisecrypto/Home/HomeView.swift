@@ -23,18 +23,13 @@ struct HomeView: View {
           VStack(spacing: 20) {
             userSection
             totalPortfolioSection
-            if portfolioViewModel.userData.isEmpty {
-              Text("Already no coins in portfolio")
-            } else {
-              myCoinSection
-            }
+            myCoinSection
             watchlistSection
           }
           .padding(.top, 30)
           .onAppear {
             if !hasAppeared {
-              portfolioViewModel.getUserData()
-              portfolioViewModel.getPortfolioData()
+              authViewModel.getUserData()
               hasAppeared = true
             }
           }
@@ -50,7 +45,7 @@ private extension HomeView {
   
   private var userSection: some View {
     HStack(spacing: 12) {
-      if let userImageData = portfolioViewModel.userData.last?.userImage,
+      if let userImageData = authViewModel.userData.last?.userImage,
          let userImage = UIImage(data: userImageData) {
         Image(uiImage: userImage)
           .resizable()
@@ -137,9 +132,9 @@ private extension HomeView {
           .foregroundColor(Colors.primaryGreen)
       }
       ScrollView(.horizontal) {
-        LazyHStack(spacing: 16) {
-          ForEach(portfolioViewModel.userCoins) { data in
-            MyCoinsCell(image: data.image ?? "", symbol: data.symbol ?? "", name: data.name ?? "", currentPrice: data.currentPrice, priceChange: data.priceChange, sum: data.sum)
+        HStack(spacing: 16) {
+          ForEach(authViewModel.userData) { data in
+            PortfolioCoinCell(entity: data)
           }
         }
       }

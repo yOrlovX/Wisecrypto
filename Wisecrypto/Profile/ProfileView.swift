@@ -25,7 +25,7 @@ struct ProfileView: View {
           .ignoresSafeArea()
         ScrollView {
           VStack {
-            if let userImageData = portfolioViewModel.userData.last?.userImage,
+            if let userImageData = authViewModel.userData.last?.userImage,
                let userImage = UIImage(data: userImageData) {
               Image(uiImage: userImage)
                 .resizable()
@@ -72,17 +72,17 @@ struct ProfileView: View {
         }
       }
       .fullScreenCover(isPresented: $showImagePicker, onDismiss: didDismiss, content: {
-        PhotoPicker(viewModel: portfolioViewModel)
+        PhotoPicker(viewModel: authViewModel)
       })
       .navigationBarHidden(true)
       .onAppear(perform: {
-        portfolioViewModel.getUserData()
+        authViewModel.getUserData()
       })
     }
   }
   
   func didDismiss() {
-    portfolioViewModel.getUserData()
+    authViewModel.getUserData()
   }
 }
 
@@ -100,7 +100,7 @@ private extension ProfileView {
               .foregroundColor(.white)
               .padding()
             Spacer()
-            Text("$ \(String(format:"%.2f",portfolioViewModel.getUserBalance()))")
+            Text("$ \(String(format:"%.2f",portfolioViewModel.totalCoinsSum()))")
               .font(.system(size: 32, weight: .bold))
               .foregroundColor(.white)
               .padding()

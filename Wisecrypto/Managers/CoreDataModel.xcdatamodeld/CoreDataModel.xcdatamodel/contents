@@ -8,15 +8,18 @@
         <attribute name="priceChange" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="sum" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="symbol" optional="YES" attributeType="String"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="portfolio" inverseEntity="UserEntity"/>
+        <relationship name="user" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="portfolio" inverseEntity="UserEntity"/>
     </entity>
     <entity name="UserEntity" representedClassName="UserEntity" syncable="YES" codeGenerationType="class">
         <attribute name="balance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="fullName" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="userImage" optional="YES" attributeType="Binary"/>
-        <relationship name="portfolio" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PortofolioEntity" inverseName="user" inverseEntity="PortofolioEntity"/>
+        <relationship name="portfolio" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PortofolioEntity" inverseName="user" inverseEntity="PortofolioEntity"/>
     </entity>
     <elements>
         <element name="PortofolioEntity" positionX="-54" positionY="9" width="128" height="149"/>
-        <element name="UserEntity" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="UserEntity" positionX="-63" positionY="-18" width="128" height="119"/>
     </elements>
 </model>

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PhotoPicker: UIViewControllerRepresentable {
   
-  @StateObject var viewModel: PortfolioViewModel
+  @StateObject var viewModel: AuthViewModel
   
   func makeUIViewController(context: Context) -> UIImagePickerController {
     let picker = UIImagePickerController()

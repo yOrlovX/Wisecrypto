@@ -10,7 +10,7 @@ import CachedAsyncImage
 
 struct AddCoinsView: View {
   @Environment(\.presentationMode) var presentationMode
-  @EnvironmentObject var portfolioViewModel: PortfolioViewModel
+  @EnvironmentObject var authViewModel: AuthViewModel
   @State private var sumForCoin: String = ""
   @State private var coinSum: String = ""
   @State private var showCoinAnimation: Bool = false
@@ -52,9 +52,9 @@ struct AddCoinsView: View {
 
 private extension AddCoinsView {
   private func addCoinButtonActions() {
-    portfolioViewModel.addCoin(image: coin.image, symbol: coin.symbol, name: coin.name, priceChange: coin.priceChangePercentage24H ?? 0, sum: Double(sumForCoin) ?? 0, currentPrice: coin.currentPrice)
+    authViewModel.addCoin(image: coin.image, symbol: coin.symbol, name: coin.name, priceChange: coin.priceChange24H ?? 0, sum: Double(sumForCoin) ?? 0, currentPrice: coin.currentPrice)
     showCoinAnimation = true
-    portfolioViewModel.update(sum: Double(sumForCoin) ?? 0)
+//    portfolioViewModel.update(sum: Double(sumForCoin) ?? 0)
     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
       self.presentationMode.wrappedValue.dismiss()
     }
