@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
   
-  @EnvironmentObject private var authViewModel: AuthViewModel
+  @EnvironmentObject private var authViewModel: UserViewModel
   @Binding var currentViewShowing: AuthViewState
   @State private var incorrectCredentialsAllert: Bool = false
   

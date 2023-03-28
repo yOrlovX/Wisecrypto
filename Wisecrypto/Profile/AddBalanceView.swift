@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddBalanceView: View {
   @Environment(\.presentationMode) var presentationMode
-  @EnvironmentObject var authViewModel: AuthViewModel
+  @EnvironmentObject var authViewModel: UserViewModel
   @State private var balance: String = ""
   let payments = PaymentModel.paymentData
   @State private var selectedPayment = Payments.ovo

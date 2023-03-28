@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TransactionsListView: View {
-  @EnvironmentObject var authViewModel: AuthViewModel
+  @EnvironmentObject var authViewModel: UserViewModel
   
     var body: some View {
       VStack {

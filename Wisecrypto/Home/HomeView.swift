@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
   
   @EnvironmentObject var coinsViewModel: CoinsViewModel
-  @EnvironmentObject var authViewModel: AuthViewModel
+  @EnvironmentObject var userViewModel: UserViewModel
   @State var selection: String = ""
   @State private var hasAppeared = false
   var filterConditions = ["Rank", "Max", "Min", "Percentage"]
@@ -29,7 +29,7 @@ struct HomeView: View {
           .onAppear {
             if !hasAppeared {
 //              authViewModel.getUserData()
-              authViewModel.getPortfolioData()
+              userViewModel.getPortfolioData()
               hasAppeared = true
             }
           }
@@ -45,7 +45,7 @@ private extension HomeView {
   
   private var userSection: some View {
     HStack(spacing: 12) {
-      if let userImageData = authViewModel.userData.last?.userImage,
+      if let userImageData = userViewModel.userData.last?.userImage,
          let userImage = UIImage(data: userImageData) {
         Image(uiImage: userImage)
           .resizable()
@@ -62,7 +62,7 @@ private extension HomeView {
         Text("Hello")
           .font(.system(size: 12, weight: .semibold))
           .foregroundColor(.gray)
-        Text(authViewModel.savedInitials?.string ?? "No name")
+        Text(userViewModel.savedInitials?.string ?? "No name")
           .font(.system(size: 20, weight: .bold))
       }
       Spacer()
@@ -93,7 +93,7 @@ private extension HomeView {
             Text("Total Portofolio")
               .font(.system(size: 16, weight: .semibold))
               .foregroundColor(.white)
-            Text("$ \(String(format:"%.2f",authViewModel.totalCoinsSum()))")
+            Text("$ \(String(format:"%.2f",userViewModel.totalCoinsSum()))")
               .font(.system(size: 32, weight: .bold))
               .foregroundColor(.white)
           }
@@ -104,15 +104,15 @@ private extension HomeView {
             .cornerRadius(8)
             .overlay {
               HStack(spacing: 2) {
-                Image(systemName: authViewModel.portfolioCurrentPecentage() < 0 ? "arrow.down.right" : "arrow.up.right")
+                Image(systemName: userViewModel.portfolioCurrentPecentage() < 0 ? "arrow.down.right" : "arrow.up.right")
                   .resizable()
                   .scaledToFit()
                   .frame(width: 6, height: 6)
-                  .foregroundColor(authViewModel.portfolioCurrentPecentage() < 0 ? Colors.primaryRed : Colors.primaryGreen)
+                  .foregroundColor(userViewModel.portfolioCurrentPecentage() < 0 ? Colors.primaryRed : Colors.primaryGreen)
                   .padding(.vertical, 4)
-                Text("\(String(format:"%.1f", authViewModel.portfolioCurrentPecentage()))%")
+                Text("\(String(format:"%.1f", userViewModel.portfolioCurrentPecentage()))%")
                   .font(.system(size: 10, weight: .bold))
-                  .foregroundColor(authViewModel.portfolioCurrentPecentage() < 0 ? Colors.primaryRed : Colors.primaryGreen)
+                  .foregroundColor(userViewModel.portfolioCurrentPecentage() < 0 ? Colors.primaryRed : Colors.primaryGreen)
                   .padding(.vertical, 4)
               }
             }
@@ -133,7 +133,7 @@ private extension HomeView {
       }
       ScrollView(.horizontal) {
         HStack(spacing: 16) {
-          ForEach(authViewModel.userCoins) { data in
+          ForEach(userViewModel.userCoins) { data in
             MyCoinsCell(entity: data)
           }
         }
