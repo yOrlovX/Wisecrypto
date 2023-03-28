@@ -23,9 +23,10 @@ final class UserViewModel: ObservableObject {
   @Published var fullName: String = ""
   @Published var emailStatus: LoginStatus = .notEvaluated
   @Published var passwordStatus: LoginStatus = .notEvaluated
+  @Published var canLogin: Bool = false
   
-  @AppStorage("UserRegister") var isRegister: Bool = false
-  @AppStorage("UserLogin") var userLogin: Bool = false
+  @AppStorage("UserLogin") var isUserLoggedIn: Bool = false
+  
   @KeychainStorage("UserPassword") var savedPassword = MyType(string: "")
   @KeychainStorage("UserMail") var savedMail = MyType(string: "")
   @KeychainStorage("UserInitials") var savedInitials = MyType(string: "")
@@ -38,6 +39,14 @@ final class UserViewModel: ObservableObject {
     verifyEmailStatus()
     getUserData()
     getPortfolioData()
+  }
+  
+  func login() {
+    if email == savedMail?.string && password == savedPassword?.string {
+      self.canLogin = true
+    } else {
+      self.canLogin = false
+    }
   }
   
   private func verifyPasswordStatus() {

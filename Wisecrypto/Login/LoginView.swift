@@ -88,16 +88,17 @@ private extension LoginView {
           .foregroundColor(Colors.primaryYellow)
       }
       Button(action: {
-        if userViewModel.email != userViewModel.savedMail?.string && userViewModel.password != userViewModel.savedPassword?.string {
-          incorrectCredentialsAllert = true
+        userViewModel.login()
+        if userViewModel.canLogin {
+          userViewModel.isUserLoggedIn = true
         } else {
-          userViewModel.userLogin = true
+          incorrectCredentialsAllert = true
         }
       }) {
         Text("Login")
           .modifier(PrimaryGreenButtonModifier())
       }
-      .alert("Incorrect email or password", isPresented: $incorrectCredentialsAllert) {
+      .alert("Incorrect or empty credentials", isPresented: $incorrectCredentialsAllert) {
         Button("OK", role: .cancel) { }
       }
       Button(action: {

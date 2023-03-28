@@ -13,7 +13,7 @@ struct AuthView: View {
   
   var body: some View {
     ZStack {
-      if userViewModel.userLogin {
+      if userViewModel.isUserLoggedIn {
         MainView()
       } else {
         switch currentViewShowing {

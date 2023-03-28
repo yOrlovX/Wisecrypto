@@ -103,7 +103,7 @@ private extension RegisterView {
         userViewModel.savedPassword = MyType(string: userViewModel.password)
         userViewModel.savedMail = MyType(string: userViewModel.email)
         userViewModel.savedInitials = MyType(string: userViewModel.fullName)
-        userViewModel.userLogin = true
+        userViewModel.isUserLoggedIn = true
         userViewModel.registerUser()
       }) {
         Text("Register")
