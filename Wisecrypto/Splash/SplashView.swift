@@ -10,7 +10,6 @@ import SwiftUI
 struct SplashView: View {
   
   let coinsViewModel: CoinsViewModel
-  let portfolioViewModel: PortfolioViewModel
   let authViewModel: AuthViewModel
   
   @State private var isActive: Bool = false
@@ -21,7 +20,6 @@ struct SplashView: View {
   
   init() {
     coinsViewModel = .init()
-    portfolioViewModel = .init()
     authViewModel = .init()
   }
   
@@ -34,7 +32,6 @@ struct SplashView: View {
       }
     }
     .environmentObject(coinsViewModel)
-    .environmentObject(portfolioViewModel)
     .environmentObject(authViewModel)
   }
 }

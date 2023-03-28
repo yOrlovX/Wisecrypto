@@ -15,7 +15,6 @@ struct ProfileView: View {
   private let sectionsData = ProfileCellModel.profileCellData
   private let logoutData = ProfileCellModel.logoutData
   
-  @EnvironmentObject var portfolioViewModel: PortfolioViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
   
   var body: some View {
@@ -100,7 +99,7 @@ private extension ProfileView {
               .foregroundColor(.white)
               .padding()
             Spacer()
-            Text("$ \(String(format:"%.2f",portfolioViewModel.totalCoinsSum()))")
+            Text("$ \(String(format:"%.2f",authViewModel.totalCoinsSum()))")
               .font(.system(size: 32, weight: .bold))
               .foregroundColor(.white)
               .padding()

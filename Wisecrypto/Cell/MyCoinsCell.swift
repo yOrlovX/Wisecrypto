@@ -9,25 +9,13 @@ import SwiftUI
 import CachedAsyncImage
 
 struct MyCoinsCell: View {
-  var image: String
-  var symbol: String
-  var name: String
-  var currentPrice: Double
-  var priceChange: Double
-  var sum: Double
   
-  init(image: String, symbol: String, name: String, currentPrice: Double, priceChange: Double, sum: Double) {
-    self.image = image
-    self.symbol = symbol
-    self.name = name
-    self.currentPrice = currentPrice
-    self.priceChange = priceChange
-    self.sum = sum
-  }
+  let entity: PortofolioEntity
+  
   var body: some View {
     VStack {
       HStack {
-        CachedAsyncImage(url: URL(string: image), urlCache: .imageCache) { image in
+        CachedAsyncImage(url: URL(string: entity.image ?? ""), urlCache: .imageCache) { image in
           image
             .resizable()
             .scaledToFit()
@@ -36,26 +24,26 @@ struct MyCoinsCell: View {
         }
         .frame(width: 40, height: 40)
         VStack(alignment: .leading, spacing: 4) {
-          Text(symbol.uppercased())
+          Text(entity.symbol ?? "")
             .font(.system(size: 16, weight: .bold))
-          Text(name)
+          Text(entity.name ?? "")
             .font(.system(size: 10, weight: .regular))
             .foregroundColor(Colors.textGray)
         }
         Spacer()
         Rectangle()
           .frame(width: 55, height: 22)
-          .foregroundColor(priceChange < 0 ? Colors.primaryRed : Colors.primaryGreen)
+          .foregroundColor(entity.priceChange < 0 ? Colors.primaryRed : Colors.primaryGreen)
           .cornerRadius(8)
           .overlay {
             HStack(spacing: 2) {
-              Image(systemName: changeImage())
+              Image(systemName: entity.priceChange < 0 ? "arrow.down.left" : "arrow.down.right")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 6, height: 6)
                 .foregroundColor(.white)
                 .padding(.vertical, 4)
-              Text("\(String(format:"%.1f", priceChange))%")
+              Text("\(String(format:"%.1f", entity.priceChange))%")
                 .font(.system(size: 10, weight: .bold))
                 .foregroundColor(.white)
                 .padding(.vertical, 4)
@@ -71,10 +59,10 @@ struct MyCoinsCell: View {
           .font(.system(size: 10, weight: .regular))
           .foregroundColor(Colors.textGray)
         HStack {
-          Text("$\(String(format:"%.2f", sum))")
+          Text("$\(String(format:"%.2f", entity.sum))")
             .font(.system(size: 14, weight: .bold))
           Spacer()
-          Text("\(sum / currentPrice) \(symbol.uppercased())")
+          Text("\(entity.sum / entity.currentPrice) \(entity.symbol ?? "")")
             .font(.system(size: 10, weight: .bold))
         }
       }
@@ -85,20 +73,4 @@ struct MyCoinsCell: View {
     .background(.white)
     .cornerRadius(10)
   }
-  
-  func changeImage() -> String {
-    if priceChange < 0 {
-      return "arrow.down.left"
-    } else {
-      return "arrow.up.right"
-    }
-  }
 }
-
-struct MyCoinsCell_Previews: PreviewProvider {
-  static var previews: some View {
-    MyCoinsCell(image: "bts", symbol: "BTC", name: "Bitcoin", currentPrice: 54.38264, priceChange: 15.3, sum: 300)
-      .previewLayout(.sizeThatFits)
-  }
-}
-

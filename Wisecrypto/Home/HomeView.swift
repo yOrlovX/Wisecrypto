@@ -10,7 +10,6 @@ import SwiftUI
 struct HomeView: View {
   
   @EnvironmentObject var coinsViewModel: CoinsViewModel
-  @EnvironmentObject var portfolioViewModel: PortfolioViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
   @State var selection: String = ""
   @State private var hasAppeared = false
@@ -29,7 +28,8 @@ struct HomeView: View {
           .padding(.top, 30)
           .onAppear {
             if !hasAppeared {
-              authViewModel.getUserData()
+//              authViewModel.getUserData()
+              authViewModel.getPortfolioData()
               hasAppeared = true
             }
           }
@@ -93,7 +93,7 @@ private extension HomeView {
             Text("Total Portofolio")
               .font(.system(size: 16, weight: .semibold))
               .foregroundColor(.white)
-            Text("$ \(String(format:"%.2f",portfolioViewModel.totalCoinsSum()))")
+            Text("$ \(String(format:"%.2f",authViewModel.totalCoinsSum()))")
               .font(.system(size: 32, weight: .bold))
               .foregroundColor(.white)
           }
@@ -104,15 +104,15 @@ private extension HomeView {
             .cornerRadius(8)
             .overlay {
               HStack(spacing: 2) {
-                Image(systemName: portfolioViewModel.portfolioCurrentPecentage() < 0 ? "arrow.down.right" : "arrow.up.right")
+                Image(systemName: authViewModel.portfolioCurrentPecentage() < 0 ? "arrow.down.right" : "arrow.up.right")
                   .resizable()
                   .scaledToFit()
                   .frame(width: 6, height: 6)
-                  .foregroundColor(portfolioViewModel.portfolioCurrentPecentage() < 0 ? Colors.primaryRed : Colors.primaryGreen)
+                  .foregroundColor(authViewModel.portfolioCurrentPecentage() < 0 ? Colors.primaryRed : Colors.primaryGreen)
                   .padding(.vertical, 4)
-                Text("\(String(format:"%.1f", portfolioViewModel.portfolioCurrentPecentage()))%")
+                Text("\(String(format:"%.1f", authViewModel.portfolioCurrentPecentage()))%")
                   .font(.system(size: 10, weight: .bold))
-                  .foregroundColor(portfolioViewModel.portfolioCurrentPecentage() < 0 ? Colors.primaryRed : Colors.primaryGreen)
+                  .foregroundColor(authViewModel.portfolioCurrentPecentage() < 0 ? Colors.primaryRed : Colors.primaryGreen)
                   .padding(.vertical, 4)
               }
             }
@@ -133,8 +133,8 @@ private extension HomeView {
       }
       ScrollView(.horizontal) {
         HStack(spacing: 16) {
-          ForEach(authViewModel.userData) { data in
-            PortfolioCoinCell(entity: data)
+          ForEach(authViewModel.userCoins) { data in
+            MyCoinsCell(entity: data)
           }
         }
       }

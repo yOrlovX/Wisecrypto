@@ -15,6 +15,7 @@ final class AuthViewModel: ObservableObject {
   private let manager = DataManager.instance
   
   @Published var userData: [UserEntity] = []
+  @Published var userCoins: [PortofolioEntity] = []
   
   @Published var email: String = ""
   @Published var password: String = ""
@@ -31,13 +32,14 @@ final class AuthViewModel: ObservableObject {
   
   let emailPublisher = PassthroughSubject<String, Never>()
   let passwordPublisher = PassthroughSubject<String, Never>()
-    
+  
   init() {
     verifyPasswordStatus()
     verifyEmailStatus()
     getUserData()
+    getPortfolioData()
   }
-        
+  
   private func verifyPasswordStatus() {
     passwordPublisher
       .map { password -> LoginStatus in
@@ -62,8 +64,8 @@ final class AuthViewModel: ObservableObject {
       .assign(to: &$emailStatus)
   }
   
-    
-   private func isValidEmail() -> Bool {
+  
+  private func isValidEmail() -> Bool {
     let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
     
     return regex.firstMatch(in: email, range: NSRange(location: 0, length: email.count)) != nil
@@ -104,15 +106,15 @@ final class AuthViewModel: ObservableObject {
   
   
   func addImageToUser(_ image: UIImage) {
-      guard let user = userData.last else { return }
-      user.userImage = image.jpegData(compressionQuality: 0.1)
-      saveData()
+    guard let user = userData.last else { return }
+    user.userImage = image.jpegData(compressionQuality: 0.1)
+    saveData()
   }
   
   func getUserBalance() -> Double {
     userData.reduce(0) { $0 + $1.balance}
   }
-    
+  
   func update(sum: Double) {
     guard let user = userData.last else { return }
     user.balance = -sum
@@ -129,9 +131,10 @@ final class AuthViewModel: ObservableObject {
     newCoin.priceChange = priceChange
     newCoin.sum = sum
     newCoin.currentPrice = currentPrice
-    newCoin.user = [userData[0]]
+    newCoin.user = userData[0]
     
     saveData()
+    getPortfolioData()
   }
   
   func addUserBalance(balance: Double) {
@@ -140,6 +143,22 @@ final class AuthViewModel: ObservableObject {
     saveData()
   }
   
- 
+  
+  func getPortfolioData() {
+    let request = NSFetchRequest<PortofolioEntity>(entityName: "PortofolioEntity")
+    do {
+      userCoins = try manager.context.fetch(request)
+    } catch let error {
+      print("Error fetching \(error)")
+    }
+  }
+  
+  func totalCoinsSum() -> Double {
+    userCoins.reduce(0) { $0 + $1.sum }
+  }
+  
+  func portfolioCurrentPecentage() -> Double {
+    userCoins.reduce(0) { $0 + $1.priceChange}
+  }
 }
 
