@@ -24,7 +24,7 @@ struct MyCoinsCell: View {
         }
         .frame(width: 40, height: 40)
         VStack(alignment: .leading, spacing: 4) {
-          Text(entity.symbol ?? "")
+          Text(entity.symbol?.uppercased() ?? "")
             .font(.system(size: 16, weight: .bold))
           Text(entity.name ?? "")
             .font(.system(size: 10, weight: .regular))
@@ -36,8 +36,8 @@ struct MyCoinsCell: View {
           .foregroundColor(entity.priceChange < 0 ? Colors.primaryRed : Colors.primaryGreen)
           .cornerRadius(8)
           .overlay {
-            HStack(spacing: 2) {
-              Image(systemName: entity.priceChange < 0 ? "arrow.down.left" : "arrow.down.right")
+            HStack(spacing: 4) {
+              Image(systemName: entity.priceChange < 0 ? "chevron.down" : "chevron.up")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 6, height: 6)
@@ -62,7 +62,7 @@ struct MyCoinsCell: View {
           Text("$\(String(format:"%.2f", entity.sum))")
             .font(.system(size: 14, weight: .bold))
           Spacer()
-          Text("\(entity.sum / entity.currentPrice) \(entity.symbol ?? "")")
+          Text("\(entity.sum / entity.currentPrice) \(entity.symbol?.uppercased() ?? "")")
             .font(.system(size: 10, weight: .bold))
         }
       }

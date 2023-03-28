@@ -40,8 +40,8 @@ struct CoinCell: View {
           .foregroundColor(rowData.priceChangePercentage24H ?? 0 < 0 ? Colors.primaryRed : Colors.primaryGreen)
           .cornerRadius(8)
           .overlay {
-            HStack(spacing: 2) {
-              Image(systemName: rowData.priceChangePercentage24H ?? 0 < 0 ? "arrow.down.left" : "arrow.up.right")
+            HStack(spacing: 4) {
+              Image(systemName: rowData.priceChangePercentage24H ?? 0 < 0 ? "chevron.down" : "chevron.up")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 6, height: 6)

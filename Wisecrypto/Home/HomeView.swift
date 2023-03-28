@@ -104,7 +104,7 @@ private extension HomeView {
             .cornerRadius(8)
             .overlay {
               HStack(spacing: 2) {
-                Image(systemName: userViewModel.portfolioCurrentPecentage() < 0 ? "arrow.down.right" : "arrow.up.right")
+                Image(systemName: userViewModel.portfolioCurrentPecentage() < 0 ? "chevron.down" : "chevron.up")
                   .resizable()
                   .scaledToFit()
                   .frame(width: 6, height: 6)
