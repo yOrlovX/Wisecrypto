@@ -117,6 +117,7 @@ final class AuthViewModel: ObservableObject {
   
   func update(sum: Double) {
     guard let user = userData.last else { return }
+    
     user.balance = -sum
     saveData()
   }
@@ -139,7 +140,7 @@ final class AuthViewModel: ObservableObject {
   
   func addUserBalance(balance: Double) {
     guard let user = userData.last else { return }
-    user.balance = balance
+    user.balance += balance
     saveData()
   }
   

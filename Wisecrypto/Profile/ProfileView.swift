@@ -99,7 +99,7 @@ private extension ProfileView {
               .foregroundColor(.white)
               .padding()
             Spacer()
-            Text("$ \(String(format:"%.2f",authViewModel.totalCoinsSum()))")
+            Text("$ \(String(format:"%.2f",authViewModel.getUserBalance()))")
               .font(.system(size: 32, weight: .bold))
               .foregroundColor(.white)
               .padding()

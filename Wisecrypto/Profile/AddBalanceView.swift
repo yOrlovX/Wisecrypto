@@ -46,7 +46,7 @@ struct AddBalanceView: View {
         )
       }
       Button(action: {
-        authViewModel.addUserBalance(balance: Double(balance) ?? 0)
+        authViewModel.addUserBalance(balance: Double(balance) ?? 0 )
         self.presentationMode.wrappedValue.dismiss()
       }) {
         Text("Fill up")
