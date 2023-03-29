@@ -13,6 +13,7 @@ import CoreData
 final class UserViewModel: ObservableObject {
   
   private let manager = DataManager.instance
+  private let credentialsService = CredentialsService()
   
   @Published var userData: [UserEntity] = []
   @Published var userCoins: [PortofolioEntity] = []
@@ -52,7 +53,7 @@ final class UserViewModel: ObservableObject {
   private func verifyPasswordStatus() {
     passwordPublisher
       .map { password -> LoginStatus in
-        if self.isValidPassword(self.password) {
+        if self.credentialsService.isValidPassword(password)  {
           return LoginStatus.login
         } else {
           return LoginStatus.fail
@@ -64,7 +65,7 @@ final class UserViewModel: ObservableObject {
   private func verifyEmailStatus() {
     emailPublisher
       .map { email -> LoginStatus in
-        if self.isValidEmail() {
+        if self.credentialsService.isValidEmail(email: email) {
           return LoginStatus.login
         } else {
           return LoginStatus.fail
@@ -72,19 +73,7 @@ final class UserViewModel: ObservableObject {
       }
       .assign(to: &$emailStatus)
   }
-  
-  
-  private func isValidEmail() -> Bool {
-    let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
     
-    return regex.firstMatch(in: email, range: NSRange(location: 0, length: email.count)) != nil
-  }
-  
-  private func isValidPassword(_ password: String) -> Bool {
-    let passwordRegex = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])(?=.*[A-Z]).{6,}$")
-    return passwordRegex.evaluate(with: password)
-  }
-  
   func registerUser() {
     let newUser = UserEntity(context: manager.context)
     newUser.fullName = fullName
@@ -124,7 +113,7 @@ final class UserViewModel: ObservableObject {
     userData.reduce(0) { $0 + $1.balance}
   }
   
-  func update(sum: Double) {
+  func updateUserBalance(sum: Double) {
     guard let user = userData.last else { return }
     
     user.balance = -sum
