@@ -22,8 +22,8 @@ final class UserViewModel: ObservableObject {
   @Published var password: String = ""
   @Published var confirmedPassword: String = ""
   @Published var fullName: String = ""
-  @Published var emailStatus: LoginStatus = .notEvaluated
-  @Published var passwordStatus: LoginStatus = .notEvaluated
+  @Published var emailStatus: CredentialsStatus = .notEvaluated
+  @Published var passwordStatus: CredentialsStatus = .notEvaluated
   @Published var canLogin: Bool = false
   
   @AppStorage("UserLogin") var isUserLoggedIn: Bool = false
@@ -52,11 +52,11 @@ final class UserViewModel: ObservableObject {
   
   private func verifyPasswordStatus() {
     passwordPublisher
-      .map { password -> LoginStatus in
+      .map { password -> CredentialsStatus in
         if self.credentialsService.isValidPassword(password)  {
-          return LoginStatus.login
+          return CredentialsStatus.valid
         } else {
-          return LoginStatus.fail
+          return CredentialsStatus.invalid
         }
       }
       .assign(to: &$passwordStatus)
@@ -64,11 +64,11 @@ final class UserViewModel: ObservableObject {
   
   private func verifyEmailStatus() {
     emailPublisher
-      .map { email -> LoginStatus in
+      .map { email -> CredentialsStatus in
         if self.credentialsService.isValidEmail(email: email) {
-          return LoginStatus.login
+          return CredentialsStatus.valid
         } else {
-          return LoginStatus.fail
+          return CredentialsStatus.invalid
         }
       }
       .assign(to: &$emailStatus)

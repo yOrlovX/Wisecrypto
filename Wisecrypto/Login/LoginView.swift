@@ -58,8 +58,8 @@ private extension LoginView {
             userViewModel.emailPublisher.send(newValue)
           }
         if userViewModel.email.count != 0 {
-          Image(systemName: userViewModel.emailStatus == .login ? "checkmark" : "xmark")
-            .foregroundColor(userViewModel.emailStatus == .login ? Colors.primaryGreen : Colors.primaryRed)
+          Image(systemName: userViewModel.emailStatus == .valid ? "checkmark" : "xmark")
+            .foregroundColor(userViewModel.emailStatus == .valid ? Colors.primaryGreen : Colors.primaryRed)
         }
       }
       .modifier(TextFieldModifier())
@@ -71,8 +71,8 @@ private extension LoginView {
             userViewModel.passwordPublisher.send(newValue)
           }
         if userViewModel.password.count != 0 {
-          Image(systemName: userViewModel.passwordStatus == .login ? "checkmark" : "xmark")
-            .foregroundColor(userViewModel.passwordStatus == .login ? Colors.primaryGreen : Colors.primaryRed)
+          Image(systemName: userViewModel.passwordStatus == .valid ? "checkmark" : "xmark")
+            .foregroundColor(userViewModel.passwordStatus == .valid ? Colors.primaryGreen : Colors.primaryRed)
         }
       }
       .modifier(TextFieldModifier())

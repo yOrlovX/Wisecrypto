@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum LoginStatus {
-  case login
-  case fail
+enum CredentialsStatus {
+  case valid
+  case invalid
   case notEvaluated
 }
