@@ -19,6 +19,11 @@ UI examples:
 
 Animations examples:
 
+<video src="https://user-images.githubusercontent.com/61916414/228867979-318c8495-1af1-4d02-bdb1-380bb9698b40.mp4">
+  <video src="https://user-images.githubusercontent.com/61916414/228868128-d39eb46a-0cf2-417c-a15c-7c7b806ab705.mp4">
+    <video src="https://user-images.githubusercontent.com/61916414/228868054-5e0064a8-60ba-4fe3-8c24-b705dcc920e2.mp4">
+      <video src="https://user-images.githubusercontent.com/61916414/228868172-8f410b66-c8be-4cfe-9d72-fd3051871a31.mp4">
+
 https://user-images.githubusercontent.com/61916414/228867979-318c8495-1af1-4d02-bdb1-380bb9698b40.mp4
 
 
