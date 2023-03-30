@@ -53,7 +53,7 @@ final class UserViewModel: ObservableObject {
   private func verifyPasswordStatus() {
     passwordPublisher
       .map { password -> CredentialsStatus in
-        if self.credentialsService.isValidPassword(password)  {
+        if self.credentialsService.isValidPassword(password) && !password.isEmpty && password != self.savedPassword?.string  {
           return CredentialsStatus.valid
         } else {
           return CredentialsStatus.invalid
@@ -65,7 +65,7 @@ final class UserViewModel: ObservableObject {
   private func verifyEmailStatus() {
     emailPublisher
       .map { email -> CredentialsStatus in
-        if self.credentialsService.isValidEmail(email: email) {
+        if self.credentialsService.isValidEmail(email: email) && !email.isEmpty && email != self.savedMail?.string {
           return CredentialsStatus.valid
         } else {
           return CredentialsStatus.invalid
@@ -79,7 +79,10 @@ final class UserViewModel: ObservableObject {
     newUser.fullName = fullName
     newUser.password = password
     newUser.email = email
-    
+    savedPassword = MyType(string: password)
+    savedMail = MyType(string: email)
+    savedInitials = MyType(string: fullName)
+    isUserLoggedIn = true
     saveData()
   }
   

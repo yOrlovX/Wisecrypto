@@ -14,6 +14,7 @@ struct MyType: Codable {
 struct RegisterView: View {
   @Binding var currentViewShowing: AuthViewState
   @EnvironmentObject private var userViewModel: UserViewModel
+  @State private var incorrectCredentialsAllert: Bool = false
   
   var body: some View {
     ZStack {
@@ -100,14 +101,17 @@ private extension RegisterView {
   private var buttonsContainer: some View {
     VStack(spacing: 24) {
       Button(action: {
-        userViewModel.savedPassword = MyType(string: userViewModel.password)
-        userViewModel.savedMail = MyType(string: userViewModel.email)
-        userViewModel.savedInitials = MyType(string: userViewModel.fullName)
-        userViewModel.isUserLoggedIn = true
-        userViewModel.registerUser()
+        if userViewModel.emailStatus == .valid && userViewModel.passwordStatus == .valid && !userViewModel.fullName.isEmpty {
+          userViewModel.registerUser()
+        } else {
+          incorrectCredentialsAllert = true
+        }
       }) {
         Text("Register")
           .modifier(PrimaryGreenButtonModifier())
+      }
+      .alert("User with this email already register or you incorect  fill credentials", isPresented: $incorrectCredentialsAllert) {
+        Button("OK", role: .cancel) { }
       }
       Button(action: {
         withAnimation(.easeOut) {
