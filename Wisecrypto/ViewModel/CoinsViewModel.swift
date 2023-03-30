@@ -11,7 +11,6 @@ import UIKit
 
 final class CoinsViewModel: ObservableObject {
   @Published var coinData: [Coin] = []
-  @Published var isLoading: Bool = false
   @Published var searchText: String = ""
   @Published var searchResults: [Coin] = []
   
@@ -28,10 +27,7 @@ final class CoinsViewModel: ObservableObject {
   }
   
   init() {
-//    Task { await fetchCoinsDataWithAsyncAwait() }
-    
-    getCoinsDataFromLocalJSON()
-//    fetchCoinsFromResponse()
+    fetchCoinsFromResponse()
   }
   
   func sortedByPercentChange() {
@@ -56,7 +52,6 @@ final class CoinsViewModel: ObservableObject {
       .sink { completion in
         switch completion {
         case .finished:
-          self.isLoading = true
           print("data was loaded")
         case .failure(let error):
           print(error)
@@ -80,7 +75,6 @@ final class CoinsViewModel: ObservableObject {
         switch completion {
         case .finished:
           print("local data was loading")
-          self.isLoading = true
         case .failure(let error):
           print(error)
         }

@@ -113,7 +113,7 @@ final class UserViewModel: ObservableObject {
   }
   
   func getUserBalance() -> Double {
-    userData.reduce(0) { $0 + $1.balance}
+    userData.reduce(0) { $0 + $1.balance }
   }
   
   func updateUserBalance(sum: Double) {
