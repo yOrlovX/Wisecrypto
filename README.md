@@ -23,6 +23,8 @@ API:          https://www.coingecko.com/
 
 ![profile](https://user-images.githubusercontent.com/61916414/228845147-fbe00f82-80e8-4938-b378-fd274e32bae2.png)
 
+<img src="[https://github.com/favicon.ico](https://user-images.githubusercontent.com/61916414/228845056-ff9758c4-9e7b-4759-a954-c1738d9b45ff.png)" width="48">
+
 
 
 https://user-images.githubusercontent.com/61916414/228845579-30f61715-c1c1-4208-a4de-178015b3cd29.mp4
