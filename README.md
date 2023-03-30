@@ -15,9 +15,7 @@ API:          https://www.coingecko.com/
 
 
 
-<img src="https://user-images.githubusercontent.com/61916414/228845056-ff9758c4-9e7b-4759-a954-c1738d9b45ff.png" width="200" height="400" />
-
-<img src="https://user-images.githubusercontent.com/61916414/228845080-bfabc602-0a54-441d-8fc0-896129b0cb9d.png" width="200" height="400" />
+<img src="https://user-images.githubusercontent.com/61916414/228845056-ff9758c4-9e7b-4759-a954-c1738d9b45ff.png" width="200" height="400" /><img src="https://user-images.githubusercontent.com/61916414/228845080-bfabc602-0a54-441d-8fc0-896129b0cb9d.png" width="200" height="400" />
 
 <img src="https://user-images.githubusercontent.com/61916414/228845118-c9c98910-2ed3-4ac3-b3aa-7999b48aa965.png" width="200" height="400" />
 
