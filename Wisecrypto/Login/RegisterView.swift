@@ -64,10 +64,6 @@ private extension RegisterView {
           .onChange(of: userViewModel.email) { newValue in
             userViewModel.emailPublisher.send(newValue)
           }
-        if userViewModel.email.count != 0 {
-          Image(systemName: userViewModel.emailStatus == .valid ? "checkmark" : "xmark")
-            .foregroundColor(userViewModel.emailStatus == .valid ? Colors.primaryGreen : Colors.primaryRed)
-        }
       }
       .modifier(TextFieldModifier())
       Text("Password")
@@ -77,23 +73,8 @@ private extension RegisterView {
           .onChange(of: userViewModel.password) { newValue in
             userViewModel.passwordPublisher.send(newValue)
           }
-        if userViewModel.password.count != 0 {
-          Image(systemName: userViewModel.passwordStatus == .valid ? "checkmark" : "xmark")
-            .foregroundColor(userViewModel.passwordStatus == .valid ? Colors.primaryGreen : Colors.primaryRed)
-        }
       }
       .modifier(TextFieldModifier())
-      Text("Confirm Password")
-        .font(.system(size: 14, weight: .medium))
-      HStack {
-        TextField("Please confirm Password", text: $userViewModel.confirmedPassword)
-        if userViewModel.confirmedPassword.count != 0 {
-          Image(systemName: userViewModel.confirmedPassword == userViewModel.password ? "checkmark" : "xmark")
-            .foregroundColor(userViewModel.confirmedPassword == userViewModel.password ? Colors.primaryGreen : Colors.primaryRed)
-        }
-      }
-      .modifier(TextFieldModifier())
-      
     }
     .padding(.horizontal, 15)
   }
