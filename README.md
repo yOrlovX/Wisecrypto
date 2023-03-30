@@ -19,6 +19,9 @@ UI examples:
 
 Animations examples:
 
+<video src="https://user-images.githubusercontent.com/61916414/228867979-318c8495-1af1-4d02-bdb1-380bb9698b40.mp4" width="200" height="400" />
+
+
 https://user-images.githubusercontent.com/61916414/228867979-318c8495-1af1-4d02-bdb1-380bb9698b40.mp4
 
 
