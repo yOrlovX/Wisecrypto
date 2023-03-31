@@ -28,7 +28,6 @@ struct HomeView: View {
           .padding(.top, 30)
           .onAppear {
             if !hasAppeared {
-//              authViewModel.getUserData()
               userViewModel.getPortfolioData()
               hasAppeared = true
             }
@@ -127,9 +126,11 @@ private extension HomeView {
         Text("My Coins")
           .font(.system(size: 14, weight: .semibold))
         Spacer()
-        Text("See all")
-          .font(.system(size: 12, weight: .bold))
-          .foregroundColor(Colors.primaryGreen)
+        NavigationLink(destination: SavedCoinsGrid()) {
+          Text("See all")
+            .font(.system(size: 12, weight: .bold))
+            .foregroundColor(Colors.primaryGreen)
+        }
       }
       ScrollView(.horizontal) {
         HStack(spacing: 16) {

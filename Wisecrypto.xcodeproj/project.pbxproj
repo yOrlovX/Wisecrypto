@@ -41,6 +41,7 @@
 		928BAC4D29C3212900B0E437 /* LoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928BAC4C29C3212900B0E437 /* LoginStatus.swift */; };
 		929A158C299B9C95001FFD23 /* AddCoinsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929A158B299B9C95001FFD23 /* AddCoinsView.swift */; };
 		92A718AD29AE42C600257CC0 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A718AC29AE42C600257CC0 /* TransactionCell.swift */; };
+		92BDE2C029D6D431001F81A0 /* SavedCoinsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BDE2BF29D6D431001F81A0 /* SavedCoinsGrid.swift */; };
 		92C76322299244DA00F5161C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C76321299244DA00F5161C /* LoginView.swift */; };
 		92C763242992565D00F5161C /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C763232992565D00F5161C /* RegisterView.swift */; };
 		92C763272992648300F5161C /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C763262992648300F5161C /* ViewModifiers.swift */; };
@@ -92,6 +93,7 @@
 		928BAC4C29C3212900B0E437 /* LoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStatus.swift; sourceTree = "<group>"; };
 		929A158B299B9C95001FFD23 /* AddCoinsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoinsView.swift; sourceTree = "<group>"; };
 		92A718AC29AE42C600257CC0 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		92BDE2BF29D6D431001F81A0 /* SavedCoinsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCoinsGrid.swift; sourceTree = "<group>"; };
 		92C76321299244DA00F5161C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		92C763232992565D00F5161C /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		92C763262992648300F5161C /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				920C1B8E2987EC7000311990 /* HomeView.swift */,
+				92BDE2BF29D6D431001F81A0 /* SavedCoinsGrid.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				92CFA075299A5056002D939A /* CoreDataModel.xcdatamodeld in Sources */,
 				928BAC4A29C30DE000B0E437 /* Payments.swift in Sources */,
 				923D58C629892A88008BFD8C /* MyCoinsCell.swift in Sources */,
+				92BDE2C029D6D431001F81A0 /* SavedCoinsGrid.swift in Sources */,
 				924AF29329D47F10006E0DDD /* CredentialsService.swift in Sources */,
 				924EC3A229D30B0200B113A2 /* PortfolioCoinCell.swift in Sources */,
 				92873D1C2994218300114EBB /* CoinDetailView.swift in Sources */,
