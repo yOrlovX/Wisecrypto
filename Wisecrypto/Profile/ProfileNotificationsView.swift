@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ProfileNotificationsView: View {
     var body: some View {
-        Text("ProfileNotificationsView")
+      ZStack {
+        Text("Coming soon 🙂")
+          .font(.headline)
+      }
     }
 }
 
