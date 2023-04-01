@@ -19,12 +19,14 @@ struct ChartView: View {
   
   var body: some View {
     VStack(spacing: 10) {
+      Divider()
       topLabels
       Divider()
       chart
       Divider()
       bottomLabels
       dateLabels
+      Divider()
     }
     .padding(.horizontal, 5)
     .onAppear {
@@ -56,7 +58,7 @@ private extension ChartView {
       }
       .trim(from: 0, to: percentage)
       .stroke(Colors.primaryGreen, style: StrokeStyle(lineWidth: 2, lineCap: .round, lineJoin: .round))
-      .shadow(color: .black, radius: 20, x: 0, y: 0)
+      .shadow(color: .green, radius: 20, x: 0, y: 0)
     }
     .frame(height: 200)
   }

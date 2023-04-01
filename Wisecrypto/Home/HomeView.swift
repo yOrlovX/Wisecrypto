@@ -34,6 +34,7 @@ struct HomeView: View {
           }
         }
       }
+      .navigationBarTitleDisplayMode(.inline)
       .background(Colors.lightBackground)
       .navigationBarHidden(true)
     }
