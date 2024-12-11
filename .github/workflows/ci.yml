@@ -1,0 +1,31 @@
+name: iOS CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    # 1. Завантаження коду з репозиторію
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 2. Встановлення останньої версії Xcode
+    - name: Set up Xcode
+      run: sudo xcode-select -switch /Applications/Xcode.app
+
+    # 3. Збірка та тестування проєкту
+    - name: Build and Test
+      run: |
+        xcodebuild clean test \
+        -scheme Wisecrypto \
+        -destination 'platform=iOS Simulator,OS=16.2,name=iPhone 11' \
+        | xcpretty
+

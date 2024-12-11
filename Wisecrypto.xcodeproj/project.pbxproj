@@ -143,6 +143,7 @@
 		920C1B6F2987D8BE00311990 /* Wisecrypto */ = {
 			isa = PBXGroup;
 			children = (
+				923C4F142D09C53D00DB3AF4 /* New Group */,
 				920C1B702987D8BE00311990 /* WisecryptoApp.swift */,
 				928BAC4B29C3211800B0E437 /* Enums */,
 				92CFA070299A500B002D939A /* Managers */,
@@ -278,6 +279,13 @@
 				924AF29229D47F10006E0DDD /* CredentialsService.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		923C4F142D09C53D00DB3AF4 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		92873D1A2994215700114EBB /* CoinDetail */ = {
