@@ -21,6 +21,7 @@
 		921471D1299668EE00072D97 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921471D0299668EE00072D97 /* Date.swift */; };
 		9217475C298E64B50066301F /* NavigationLazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217475B298E64B50066301F /* NavigationLazyView.swift */; };
 		92174760298EA60C0066301F /* MarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9217475F298EA60C0066301F /* MarketView.swift */; };
+		921F05432D0B246300012BF2 /* Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921F05422D0B246300012BF2 /* Workflow.swift */; };
 		922180FA2992B7D3006EF9BE /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922180F92992B7D3006EF9BE /* SearchBarView.swift */; };
 		922180FC2992BE83006EF9BE /* UIAplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922180FB2992BE83006EF9BE /* UIAplication.swift */; };
 		9223506929ABB53800EF1AD3 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 9223506829ABB53800EF1AD3 /* CachedAsyncImage */; };
@@ -75,6 +76,7 @@
 		921471D0299668EE00072D97 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		9217475B298E64B50066301F /* NavigationLazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLazyView.swift; sourceTree = "<group>"; };
 		9217475F298EA60C0066301F /* MarketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketView.swift; sourceTree = "<group>"; };
+		921F05422D0B246300012BF2 /* Workflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workflow.swift; sourceTree = "<group>"; };
 		922180F92992B7D3006EF9BE /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		922180FB2992BE83006EF9BE /* UIAplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAplication.swift; sourceTree = "<group>"; };
 		9223506E29ABE4D300EF1AD3 /* URLCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLCache.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		923C4F142D09C53D00DB3AF4 /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				921F05422D0B246300012BF2 /* Workflow.swift */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				92BDE2C029D6D431001F81A0 /* SavedCoinsGrid.swift in Sources */,
 				924AF29329D47F10006E0DDD /* CredentialsService.swift in Sources */,
 				924EC3A229D30B0200B113A2 /* PortfolioCoinCell.swift in Sources */,
+				921F05432D0B246300012BF2 /* Workflow.swift in Sources */,
 				92873D1C2994218300114EBB /* CoinDetailView.swift in Sources */,
 				92F0DD3829CDAD6800130E6E /* PhotoPicker.swift in Sources */,
 				928BAC4829C30DC100B0E437 /* ProfileLinksSwitcher.swift in Sources */,
